@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: dko - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP170.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "DKO_EXPORTS" /FR"Release/" /Fp"Release/dko.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\CdkoMaterial.cpp"
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\CdkoMesh.cpp"
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\CdkoModel.cpp"
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\COctree.cpp"
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\dko.cpp"
+"C:\Documents and Settings\Daivuk\Desktop\Projects\08 Zeven\ZEVEN_ENGINE\dko\eHierarchic.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP170.tmp" 
+Creating temporary file "C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP171.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /incremental:no /pdb:"Release/dko.pdb" /machine:I386 /out:"Release/dko.dll" /implib:"Release/dko.lib" 
+".\Release\CdkoAnimation.obj"
+".\Release\CdkoMaterial.obj"
+".\Release\CdkoMesh.obj"
+".\Release\CdkoModel.obj"
+".\Release\CFace.obj"
+".\Release\COctree.obj"
+".\Release\cVector.obj"
+".\Release\dko.obj"
+".\Release\eHierarchic.obj"
+".\Release\ePTexture.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP171.tmp"
+<h3>Output Window</h3>
+Compiling...
+CdkoMaterial.cpp
+CdkoMesh.cpp
+CdkoModel.cpp
+COctree.cpp
+dko.cpp
+eHierarchic.cpp
+Linking...
+   Creating library Release/dko.lib and object Release/dko.exp
+Creating temporary file "C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP175.tmp" with contents
+[
+/nologo /o"Release/dko.bsc" 
+".\Release\CdkoAnimation.sbr"
+".\Release\CdkoMaterial.sbr"
+".\Release\CdkoMesh.sbr"
+".\Release\CdkoModel.sbr"
+".\Release\CFace.sbr"
+".\Release\COctree.sbr"
+".\Release\cVector.sbr"
+".\Release\dko.sbr"
+".\Release\eHierarchic.sbr"
+".\Release\ePTexture.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\Daivuk\LOCALS~1\Temp\RSP175.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+dko.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

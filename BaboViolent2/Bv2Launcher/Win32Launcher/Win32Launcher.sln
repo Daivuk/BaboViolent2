@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Launcher", "Win32Launcher.vcproj", "{1286E1DA-AE52-4585-8F3B-A106FC625AFF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C} = {ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StaticBBnet", "..\StaticBBnet\StaticBBnet\StaticBBnet.vcproj", "{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1286E1DA-AE52-4585-8F3B-A106FC625AFF}.Debug.ActiveCfg = Debug|Win32
+		{1286E1DA-AE52-4585-8F3B-A106FC625AFF}.Debug.Build.0 = Debug|Win32
+		{1286E1DA-AE52-4585-8F3B-A106FC625AFF}.Release.ActiveCfg = Release|Win32
+		{1286E1DA-AE52-4585-8F3B-A106FC625AFF}.Release.Build.0 = Release|Win32
+		{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}.Debug.ActiveCfg = Debug|Win32
+		{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}.Debug.Build.0 = Debug|Win32
+		{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}.Release.ActiveCfg = Release|Win32
+		{ADB2F1F3-A179-4B4C-8BDA-F8580511B01C}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

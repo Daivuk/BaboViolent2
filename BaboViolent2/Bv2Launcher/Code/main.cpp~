@@ -1,0 +1,617 @@
+/*	BV2 LAUNCHER APP
+
+	RndLabs inc, All right reserved
+	by Marc Durocher
+	07-12-06
+*/
+
+
+#include <stdio.h>
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <memory.h>
+#include "baboNet.h"
+#include "sqlite3.h"
+#include "UpdateStructs.h"
+#include "dkc.h"
+
+#ifndef WIN32
+	#define stricmp strcasecmp
+#endif
+
+//#define DBPATH "bv2.db"
+#define DBPATH "bv2.db"
+
+
+//--Macros--
+
+#define SETTING_NAME	i*nColumn+2
+#define SETTING_VALUE	i*nColumn+3
+
+
+#define VERSION		1
+#define FIRST_BOOT	2
+#define UPDATE_SERVER	3
+#define	PREFERED_SERVER	4
+
+
+
+
+//--Structs--
+
+struct stUpdateServer
+{
+	stUpdateServer *Next;
+	stUpdateServer *Previous;
+	char IP[16];
+
+	bool connected;
+	float ping;
+	float lastcheck;
+	unsigned long bbID;
+};
+
+
+
+//--Globals--
+sqlite3* db=0;
+char CurrentVersion[6];		//keep the current version of the game
+bool FirstBoot = false;		//is this the first time we boot
+bool isServer = false;		//are we a server checking for updates
+bool TestServers = false;	//are we testing fastest server ?
+
+float LastCheck = 0;		//how much time since last check (in seconds)
+float UpdateTimeout = 0;	//timout before the update process is aborted
+
+int State = 0;			//what are we doing, 0 connecting to an update server, 1 updating, 2 ready to boot bv2
+
+FILE* 	CurrentFile=0;		//file we are currently receiving
+long	FileSize=0;		//total size of the file currently being received
+
+stUpdateServer *UpdateServers=0;	//list of currenty available update servers
+stUpdateServer *CurrentServer=0;	//server we are pinging right now
+stUpdateServer *BestServer=0;		//best server to date
+
+//--Prototypes--
+void InitDB();
+void InitNetwork();
+void ReadSettings();		//read from table LauncherSettings in the database
+
+void CleanUp();
+bool Update(float elapsed);
+
+int GetSettingID(char *setting);
+void RetreiveNetData();
+void AddUpdateServer(char *IP,bool isPrefered);
+bool UpdateNetwork(float elapsed);
+void AddNode(stNewNode & newNode);
+
+int main()
+{
+
+	printf("************************\n");
+	printf("*BaboViolent 2 Launcher*\n");
+	printf("************************\n\n");
+
+	//init sqlite3 and connect to database
+	InitDB();
+
+	//let's init babonet so people can connect to us
+	InitNetwork();
+
+	//init the timer
+	dkcInit(30); //clocked at 30 fps
+
+	//lets read the settings in the database
+	ReadSettings();
+
+
+	//main program here
+	bool isRunning = true;
+
+	
+
+	while(isRunning)
+	{
+		int nbFrameElapsed = dkcUpdateTimer();
+
+		while (nbFrameElapsed)
+		{
+			//let's update our NetManager
+			isRunning	=	Update(dkcGetElapsedf());
+
+			if(!isRunning) break;
+
+			nbFrameElapsed--;
+		}
+	}
+
+
+	//cleanup
+	CleanUp();
+		
+	return 0;
+}
+
+void InitDB()
+{
+	int rc = sqlite3_open(DBPATH,&db);
+
+	if(rc)
+	{
+		perror("sqlite3_open");
+		exit(0);
+	}
+	else
+	{
+		//printf("Opened database successfully\n");
+	}
+}
+
+void InitNetwork()
+{
+	if(bb_init())
+	{
+		perror("Babonet Init\n");
+		return;
+	}
+	else
+	{
+		//printf("BaboNet Loaded\n");
+	}
+
+}
+
+void CleanUp()
+{
+	sqlite3_close(db);
+
+	bb_shutdown();
+}
+
+bool Update(float elapsed)
+{
+	LastCheck += elapsed;
+
+	if(FirstBoot)
+	{
+		//were we testing servers ?
+		if(!TestServers)
+		{
+			printf(" > Checking for fastest update server\n");
+			LastCheck = 0;
+			TestServers = true;
+			CurrentServer = UpdateServers;
+
+			CurrentServer->lastcheck = 0;
+			CurrentServer->ping = 0;
+			CurrentServer->connected = false;
+		}
+
+		if(LastCheck >= 1)
+		{
+			#ifdef WIN32
+				printf(".");
+			#else
+				printf(".\n");
+			#endif
+			LastCheck = 0;
+		}
+
+		if(CurrentServer->lastcheck == 0)
+		{
+			//let's connect to ping the server
+			CurrentServer->bbID = bb_clientConnect(CurrentServer->IP,11115);
+			CurrentServer->lastcheck = 0.01f;
+			bb_clientSend(CurrentServer->bbID,0,0,PING,NET_TCP);
+			CurrentServer->connected = false;
+
+			printf("      > Testing Node#%li\n",CurrentServer->bbID);
+		}
+		else
+		{
+			//are we finished pinging the server
+			if(CurrentServer->ping)
+			{
+				//printf("      > Ping to Node#%li is %f\n",CurrentServer->bbID,CurrentServer->ping);
+
+				if(!BestServer)
+				{
+					BestServer = CurrentServer;
+				}
+				else
+				{
+					if(CurrentServer->ping < BestServer->ping) BestServer = CurrentServer;
+				}
+
+				if(!CurrentServer->Next)
+				{
+					//are we finished checking servers?
+					printf(" > Finished checking update servers\n");
+					FirstBoot = false;
+					UpdateServers = BestServer;
+					CurrentServer = UpdateServers;
+
+					//lets save in our database, the prefered server
+					char SQL[256];
+					sprintf(SQL,"Update LauncherSettings set Value = '%s' where Name = 'PreferedServer';",CurrentServer->IP);
+					sqlite3_exec(db,SQL,0,0,0);
+
+					return true;
+				}
+				else
+				{
+					printf(" > Preparing to query another server\n");
+					CurrentServer = CurrentServer->Next;
+					CurrentServer->lastcheck = 0;
+					CurrentServer->ping = 0;
+					CurrentServer->connected = false;
+				}
+			}
+			else
+			{
+				//lets increment time elapsed
+				CurrentServer->lastcheck += elapsed;
+			}
+			
+		}
+		
+	}
+	else
+	{
+		switch(State)
+		{
+			case 0: //need to see if update needed
+			{
+				//let's connect to prefered server
+				if(CurrentServer->ping == 999)
+				{
+					printf(" > No server for update\n");
+					State = 2; //ready to boot bv2
+				}
+				else
+				{
+					CurrentServer->connected = false;
+					CurrentServer->bbID = bb_clientConnect(CurrentServer->IP,11115);
+					
+					//let's send our current version
+					stVersion v;
+					sprintf(v.Version,CurrentVersion);
+
+					bb_clientSend(CurrentServer->bbID,(char*)&v,sizeof(stVersion),VERSION);
+					State = 1;
+				}
+				break;
+			}
+			case 1: //updating
+			{
+				UpdateTimeout += elapsed;
+
+				if(UpdateTimeout > 5) //have we reached a 5 seconds timeout ?
+				{
+					bb_clientDisconnect(CurrentServer->bbID);
+					printf(" > Update process timed out, try again later...\n");
+
+					char SQL[256];
+					sprintf(SQL,"Update LauncherSettings set Value = '1' where Name = 'FirstBoot';");
+					sqlite3_exec(db,SQL,0,0,0);
+
+					return false; //close the program
+				}
+				
+				break;
+			}
+			case 2: //ready to boot bv2
+			{
+
+				char SQL[256];
+				sprintf(SQL,"Update LauncherSettings set Value = '0' where Name = 'FirstBoot';");
+				sqlite3_exec(db,SQL,0,0,0);
+
+				//CleanUP
+
+				//start new process
+				printf("\n\n*** BOOTING BABOVIOLENT 2 ***\n\n");
+				exit(0); //temporary
+				break;
+			}
+		}
+	}
+
+
+	//update the network
+	if(!UpdateNetwork(elapsed)) return false;
+
+	return true;
+}
+
+void RetreiveNetData()
+{
+	
+	char *buffer;
+	int typeID;
+
+	while(buffer = bb_clientReceive(CurrentServer->bbID,&typeID))
+	{
+		switch(typeID)
+		{
+			case PONG:
+			{
+				CurrentServer->ping = CurrentServer->lastcheck;
+				bb_clientDisconnect(CurrentServer->bbID);
+
+				printf("      > Souce ID %li has %i ping\n",CurrentServer->bbID,(int)CurrentServer->ping);
+				break;
+			}
+			case NEW_NODE:
+			{
+				stNewNode nn;
+				memcpy(&nn,buffer,sizeof(stNewNode));
+				AddNode(nn);
+				break;
+			}
+			case STATUS:
+			{
+				stStatus st;
+				memcpy(&st,buffer,sizeof(stStatus));
+
+				if(st.Status == 0) //the player is up to date
+				{
+					printf(" > Version is up to date\n");
+					bb_clientDisconnect(CurrentServer->bbID);
+					State = 2; //ready to boot bv2
+				}
+				else
+				{
+					printf(" > Version is out of date\n");
+					UpdateTimeout = 0;
+					State = 1; //updating
+				}
+				break;
+			}
+			case FILE_HEADER:
+			{
+				stFileHeader fh;
+				memcpy(&fh,buffer,sizeof(stFileHeader));
+
+				if(!fh.Action) //adding a file
+				{
+					CurrentFile = fopen(fh.Filename,"wb");
+					FileSize = fh.Filesize;
+
+					printf(" > Receiving '%s'\n",fh.Filename);
+				}
+				else //removing a file
+				{
+					printf(" > Deleting '%s' : No longer needed\n",fh.Filename);
+					remove(fh.Filename);
+				}
+				
+				UpdateTimeout = 0;
+
+				break;
+			}
+			case FILE_CHUNK:
+			{
+				stFileChunk fc;
+				memcpy(&fc,buffer,sizeof(stFileChunk));
+				
+				//write to the file
+				fwrite(fc.ChunkData, 1, fc.ChunkSize, CurrentFile);
+								
+				FileSize -= fc.ChunkSize;
+
+				if(FileSize < 1) //are we finished			
+				{
+					printf("      > OK\n");
+					fclose(CurrentFile);
+				}
+				
+				
+				UpdateTimeout = 0;
+
+				break;
+			}
+			case VERSION:
+			{
+				//we are receiving our new version number
+				stVersion v;
+				memcpy(&v,buffer,sizeof(stVersion));
+
+				printf(" > Updated to version %s\n",v.Version);
+
+				//let's write it to our database
+				char SQL[256];
+				sprintf(SQL,"Update LauncherSettings set Value = '%s' where Name = 'Version';",v.Version);
+				sqlite3_exec(db,SQL,0,0,0);
+				
+				break;
+			}
+			case END_OF_UPDATE:
+			{
+				State = 2; //ready to boot bv2
+				bb_clientDisconnect(CurrentServer->bbID);
+				break;
+			}
+		}
+	}
+
+}
+
+void ReadSettings()
+{
+	//let's read settings from our LauncherSettings table first
+	printf(" > Reading Settings\n");
+
+	//Quelques infos sur la table qu'on va loader
+	char	*zErrMsg;		// Contient un message d'erreur s'il y a lieu
+	char	**azResult;		// Contient le resultat de la requete
+	int	nRow;			// nombre denregistrement retourner par la requete
+	int	nColumn;		// nombre de column
+	char	SQL[128];
+
+	sprintf(SQL,"Select * From LauncherSettings;");
+	
+	int dbResult = sqlite3_get_table(db,SQL,&azResult,&nRow,&nColumn,&zErrMsg);
+
+	for(int i=0;i<nRow;i++)
+	{
+		switch(GetSettingID(azResult[SETTING_NAME]))
+		{
+			case VERSION:
+			{
+				sprintf(CurrentVersion,azResult[SETTING_VALUE]);
+				printf("      > Version is %s\n",CurrentVersion);
+				break;
+			}
+			case UPDATE_SERVER:
+			{
+				AddUpdateServer(azResult[SETTING_VALUE],false);
+				break;
+			}
+			case PREFERED_SERVER:
+			{
+				AddUpdateServer(azResult[SETTING_VALUE],true);
+				CurrentServer = UpdateServers;
+				break;
+			}
+			case FIRST_BOOT:
+			{
+				FirstBoot = atoi(azResult[SETTING_VALUE]) == 0 ? false : true;
+				printf("      > FirsBoot Settings : %s\n",FirstBoot ? "Yes" : "No");
+				break;
+			}
+		}
+	}	
+
+	sqlite3_free_table(azResult);
+
+}
+
+int GetSettingID(char *setting)
+{
+	if(!stricmp(setting,"Version"))
+	{
+		return VERSION;
+	}
+
+	if(!stricmp(setting,"UpdateServer"))
+	{
+		return UPDATE_SERVER;
+	}
+	
+	if(!stricmp(setting,"PreferedServer"))
+	{
+		return PREFERED_SERVER;
+	}
+
+	if(!stricmp(setting,"FirstBoot"))
+	{
+		return FIRST_BOOT;
+	}
+}
+
+void AddUpdateServer(char *IP,bool isPrefered)
+{
+	if(!IP) return;
+
+	if(UpdateServers)
+	{
+		
+		if(isPrefered)
+		{
+			UpdateServers->Previous = new stUpdateServer();
+			sprintf(UpdateServers->Previous->IP,IP);
+			UpdateServers->Previous->Previous = 0;
+			UpdateServers->Previous->Next = UpdateServers;
+			UpdateServers = UpdateServers->Previous;
+		}
+		else
+		{
+			stUpdateServer *US = 0;
+			for(US = UpdateServers;US->Next;US=US->Next) {}
+
+			US->Next = new stUpdateServer();
+			sprintf(US->Next->IP,IP);
+			US->Next->Next = 0;
+			US->Next->Previous = US;
+		}
+	}
+	else
+	{
+		UpdateServers = new stUpdateServer();
+		sprintf(UpdateServers->IP,IP);
+		UpdateServers->Next = 0;
+		UpdateServers->Previous = 0;
+	}
+}
+
+bool UpdateNetwork(float elapsed)
+{
+	if(!CurrentServer || !CurrentServer->bbID) return true;
+
+	//printf("updating client with id %li\n",CurrentServer->bbID);
+	int rc = bb_clientUpdate(CurrentServer->bbID,elapsed);
+	//printf("update response : %i\n",rc);
+	
+	switch(rc)
+	{
+		case CLIENT_CONNECT_FAILURE:
+		{
+			//server not responding
+			printf("      > Server not responding\n");
+			CurrentServer->ping = 999;
+			CurrentServer->connected = false;
+			
+			if(State == 1)
+			{
+				//server was prefered, but not answering anymore, ask for firstboot settings
+				char SQL[256];
+				sprintf(SQL,"Update LauncherSettings set Value = '1' where Name = 'FirstBoot';");
+				sqlite3_exec(db,SQL,0,0,0);
+			}
+
+
+			break;
+		}
+		case SERVER_CLOSED_CONNECTION:
+		{
+			//potential hacking ? stop evrything
+			printf("      > Server closed connection\n");
+			CurrentServer->connected = false;
+
+			if(State == 1)
+			{
+				//server was prefered, but not answering anymore, ask for firstboot settings
+				char SQL[256];
+				sprintf(SQL,"Update LauncherSettings set Value = '1' where Name = 'FirstBoot';");
+				sqlite3_exec(db,SQL,0,0,0);
+			}
+
+			return false;
+		}
+		case CLIENT_CONNECT_SUCCESS:
+		{
+			printf("      > Connection to update server successfull\n");
+			CurrentServer->connected = true;
+			break;
+		}
+	}
+
+	if(CurrentServer->connected == true) RetreiveNetData();
+	
+	return true;
+}
+
+void AddNode(stNewNode & newNode)
+{
+	//lets a new source and tell to make a first boot check on next boot
+	sqlite3_exec(db,"Begin;",0,0,0);
+	sqlite3_exec(db,"Update LauncherSettings set Value = 1 where Name = 'FirstBoot';",0,0,0);
+	char SQL[512];
+	sprintf(SQL,"Insert into LauncherSettings Values('UpdateServer','%s');",newNode.IP);
+	sqlite3_exec(db,SQL,0,0,0);
+	sqlite3_exec(db,"Commit;",0,0,0);
+}
+

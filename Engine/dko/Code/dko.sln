@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dko", "dko.vcproj", "{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Console|Win32 = Console|Win32
+		Debug|Win32 = Debug|Win32
+		DXRelease|Win32 = DXRelease|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Console|Win32.ActiveCfg = Console|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Console|Win32.Build.0 = Console|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Debug|Win32.Build.0 = Debug|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.DXRelease|Win32.ActiveCfg = DXRelease|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.DXRelease|Win32.Build.0 = DXRelease|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Release|Win32.ActiveCfg = Release|Win32
+		{4F0FDC4F-52AD-4805-B86F-FB6CA4EF9FEA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
