@@ -312,52 +312,52 @@ void Map::renderGround()
 		float farthestRedSpawn = 0;
 		float currentBlueDist = 0;
 		float farthestBlueSpawn = 0;
-		for (int i = 0; i < dm_spawns.size(); i++)
+		for (int i = 0; i < (int)dm_spawns.size(); i++)
 		{//draw projected spawn
 			int dist = 1000000;
-			for (int j = 0; j < blue_spawns.size(); j++)
+			for (int j = 0; j < (int)blue_spawns.size(); j++)
 			{
 				if(distanceSquared(dm_spawns[i],blue_spawns[j]) < dist)
-					dist = distanceSquared(dm_spawns[i],blue_spawns[j]);
+					dist = (int)distanceSquared(dm_spawns[i],blue_spawns[j]);
 			}
 			if(dist > currentRedDist)
 			{
-				currentRedDist = dist;
-				farthestRedSpawn = i;
+				currentRedDist = (float)dist;
+				farthestRedSpawn = (float)i;
 			}
 			dist = 1000000;
-			for (int j = 0; j < red_spawns.size(); j++)
+			for (int j = 0; j < (int)red_spawns.size(); j++)
 			{
 				if(distanceSquared(dm_spawns[i],red_spawns[j]) < dist)
-					dist = distanceSquared(dm_spawns[i],red_spawns[j]);
+					dist = (int)distanceSquared(dm_spawns[i],red_spawns[j]);
 			}
 			if(dist > currentBlueDist)
 			{
-				currentBlueDist = dist;
-				farthestBlueSpawn = i;
+				currentBlueDist = (float)dist;
+				farthestBlueSpawn = (float)i;
 			}
 		}
-		for(int i = 0; i < blue_spawns.size(); i++)
+		for(int i = 0; i < (int)blue_spawns.size(); i++)
 		{
 #ifndef _DX_
 			glColor3f(1.0,0.0,0.0);
 			glLineWidth(2);
 			glBegin(GL_LINE_LOOP);
 			{
-				glVertex2f(dm_spawns[farthestRedSpawn][0],dm_spawns[farthestRedSpawn][1]);
+				glVertex2f(dm_spawns[(int)farthestRedSpawn][0],dm_spawns[(int)farthestRedSpawn][1]);
 				glVertex2f(blue_spawns[i][0],blue_spawns[i][1]);
 			}
 			glEnd();
 #endif
 		}
-		for(int i = 0; i < red_spawns.size(); i++)
+		for(int i = 0; i < (int)red_spawns.size(); i++)
 		{
 #ifndef _DX_
 			glColor3f(0.0,0.0,1.0);
 			glLineWidth(2);
 			glBegin(GL_LINE_LOOP);
 			{
-				glVertex2f(dm_spawns[farthestBlueSpawn][0],dm_spawns[farthestBlueSpawn][1]);
+				glVertex2f(dm_spawns[(int)farthestBlueSpawn][0],dm_spawns[(int)farthestBlueSpawn][1]);
 				glVertex2f(red_spawns[i][0],red_spawns[i][1]);
 			}
 			glEnd();

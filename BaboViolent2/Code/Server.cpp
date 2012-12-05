@@ -363,7 +363,7 @@ CString Server::queryNextMap()
 {
 	CString currentName = game->mapName;
 	int lengthDif = mapList.size() - mapInfoList.size();
-	for(int i = mapList.size() - lengthDif; i < mapList.size(); i++)
+	for(int i = (int)mapList.size() - lengthDif; i < (int)mapList.size(); i++)
 	{//because generating the map info requires creating the map and we dont want to do this midgame with the addmap command for fear of bugs, this is kept separately in map list
 		game->mapName = mapList[i];
 		game->createMap();//we just create and add any maps in maplist that arent also in the info list

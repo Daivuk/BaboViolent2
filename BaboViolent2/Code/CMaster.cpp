@@ -1114,8 +1114,8 @@ void CMaster::HashPass(char* pass)
 
 bool AccountManagerClient::createAccount(char* login, char* password, char* nick, char* email)
 {
-	if (strlen(login) > loginMaxLength || strlen(password) > passMaxLength ||
-		strlen(nick) > nickMaxLength || strlen(email) > emailMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(login) > loginMaxLength || (short)strlen(password) > passMaxLength ||
+		(short)strlen(nick) > nickMaxLength || (short)strlen(email) > emailMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	unsigned char output[16];
@@ -1135,7 +1135,7 @@ bool AccountManagerClient::createAccount(char* login, char* password, char* nick
 
 bool AccountManagerClient::deleteAccount(int userID, char* password)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	unsigned char output[16];
@@ -1152,8 +1152,8 @@ bool AccountManagerClient::deleteAccount(int userID, char* password)
 
 bool AccountManagerClient::updateAccount(char* login, char* password, char* nick, char* email)
 {
-	if (strlen(login) > loginMaxLength || strlen(password) > passMaxLength ||
-		strlen(nick) > nickMaxLength || strlen(email) > emailMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(login) > loginMaxLength || (short)strlen(password) > passMaxLength ||
+		(short)strlen(nick) > nickMaxLength || (short)strlen(email) > emailMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	unsigned char output[16];
@@ -1172,7 +1172,7 @@ bool AccountManagerClient::updateAccount(char* login, char* password, char* nick
 
 bool AccountManagerClient::changePassword(int userID, char* oldPass, char* newPass)
 {
-	if (strlen(oldPass) > passMaxLength || strlen(newPass) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(oldPass) > passMaxLength || (short)strlen(newPass) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stChangePassword cp;
@@ -1194,7 +1194,7 @@ bool AccountManagerClient::changePassword(int userID, char* oldPass, char* newPa
 
 bool AccountManagerClient::recoverPassword(char* login)
 {
-	if (strlen(login) > loginMaxLength)
+	if ((short)strlen(login) > loginMaxLength)
 		return false;
 
 	stRecoverPassword rp;
@@ -1206,7 +1206,7 @@ bool AccountManagerClient::recoverPassword(char* login)
 
 bool AccountManagerClient::loginAccount(char* login, char* password)
 {
-	if (strlen(login) > loginMaxLength || strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(login) > loginMaxLength || (short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	unsigned char output[16];
@@ -1223,7 +1223,7 @@ bool AccountManagerClient::loginAccount(char* login, char* password)
 
 bool AccountManagerClient::logoutAccount(char* login, char* password)
 {
-	if (strlen(login) > loginMaxLength || strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(login) > loginMaxLength || (short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	unsigned char output[16];
@@ -1240,7 +1240,7 @@ bool AccountManagerClient::logoutAccount(char* login, char* password)
 
 bool AccountManagerClient::userStatusUpdate(int userID, char* password, char* serverName, char* ip, short port)
 {
-	if (strlen(password) > passMaxLength || strlen(serverName) > 64 || strlen(ip) > 16 || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || (short)strlen(serverName) > 64 || strlen(ip) > 16 || !master->hasValidHashSeed())
 		return false;
 
 	stUserStatusUpdate su;
@@ -1261,8 +1261,8 @@ bool AccountManagerClient::userStatusUpdate(int userID, char* password, char* se
 
 bool AccountManagerClient::registerClan(int userID, char* password, char* name, char* tag, char* email, char* website)
 {
-	if (strlen(password) > passMaxLength || strlen(name) > clanNameMaxLength ||
-		strlen(tag) > clanTagMaxLength || strlen(website) > websiteMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || (short)strlen(name) > clanNameMaxLength ||
+		(short)strlen(tag) > clanTagMaxLength || (short)strlen(website) > websiteMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stRegisterClan data;
@@ -1285,7 +1285,7 @@ bool AccountManagerClient::registerClan(int userID, char* password, char* name, 
 
 bool AccountManagerClient::removeClan(int userID, char* password)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stRemoveClan data;
@@ -1303,7 +1303,7 @@ bool AccountManagerClient::removeClan(int userID, char* password)
 
 bool AccountManagerClient::changeClanPermissions(int userID, char* password, int userIDChanging, char permissions)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stChangeClanPermissions data;
@@ -1323,7 +1323,7 @@ bool AccountManagerClient::changeClanPermissions(int userID, char* password, int
 
 bool AccountManagerClient::joinClanRequest(int userID, char* password, int userIDDest)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stJoinClanRequest data;
@@ -1342,7 +1342,7 @@ bool AccountManagerClient::joinClanRequest(int userID, char* password, int userI
 
 bool AccountManagerClient::joinClanAccept(int userID, char* password, int userIDFrom)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stJoinClanAccept data;
@@ -1361,7 +1361,7 @@ bool AccountManagerClient::joinClanAccept(int userID, char* password, int userID
 
 bool AccountManagerClient::leaveClan(int userID, char* password)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stLeaveClan data;
@@ -1379,7 +1379,7 @@ bool AccountManagerClient::leaveClan(int userID, char* password)
 
 bool AccountManagerClient::requestFriend(int userID, char* password, int userIDDest, char* groupName)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stFriendOp data;
@@ -1399,7 +1399,7 @@ bool AccountManagerClient::requestFriend(int userID, char* password, int userIDD
 
 bool AccountManagerClient::acceptFriend(int userID, char* password, int userIDDest, char* groupName)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stFriendOp data;
@@ -1419,7 +1419,7 @@ bool AccountManagerClient::acceptFriend(int userID, char* password, int userIDDe
 
 bool AccountManagerClient::removeFriend(int userID, char* password, int userIDDest)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stFriendOp data;
@@ -1438,7 +1438,7 @@ bool AccountManagerClient::removeFriend(int userID, char* password, int userIDDe
 
 bool AccountManagerClient::moveFriend(int userID, char* password, int userIDDest, char* groupName)
 {
-	if (strlen(password) > passMaxLength || !master->hasValidHashSeed())
+	if ((short)strlen(password) > passMaxLength || !master->hasValidHashSeed())
 		return false;
 
 	stFriendOp data;

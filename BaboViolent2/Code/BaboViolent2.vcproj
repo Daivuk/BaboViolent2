@@ -367,13 +367,13 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="../inc;../inc/fmod;../Bv2RemoteAdmin/inc"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_PRO_;_MD5CODESEG_"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_PRO_;_MD5CODESEG_;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -449,11 +449,11 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/D &quot;RELEASE&quot;"
 				AdditionalIncludeDirectories="../inc;../inc/fmod;../Bv2RemoteAdmin/inc"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_PRO_;_MD5CODESEG_"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_PRO_;_MD5CODESEG_;_CRT_NONSTDC_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 			/>
 			<Tool

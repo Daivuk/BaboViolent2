@@ -500,10 +500,10 @@ GameVar::GameVar()
 	sv_ftExpirationTimer = 1.5f;
 	dksvarRegister(CString("sv_ftExpirationTimer [float : 0 to 30  (default 1.5)]"), &sv_ftExpirationTimer, 0, 30,
 		LIMIT_MIN | LIMIT_MAX, true);
-	sv_photonDamageCoefficient = 0.5;
+	sv_photonDamageCoefficient = 0.5f;
 	dksvarRegister(CString("sv_photonDamageCoefficient [float : -100 to 100 (default 0.5)]"), &sv_photonDamageCoefficient, -100, 100,
 		LIMIT_MIN | LIMIT_MAX, true);
-	sv_photonVerticalShift = 0.325;
+	sv_photonVerticalShift = 0.325f;
 	dksvarRegister(CString("sv_photonVerticalShift [float : -100 to 100 (default 0.325)]"), &sv_photonVerticalShift, -100, 100,
 		LIMIT_MIN | LIMIT_MAX, true);
 	sv_photonDistMult = 0.25;
