@@ -322,7 +322,11 @@ void CDkoModel::buildOctree()
 	size = (size>OABB[5])?size:OABB[5];
 
 	// On construit le octree
-	octree = new COctreeNode(ptrFaceArray, nbFace, CVector(OABB), size, 0);
+	CVector3f v;
+	v[0] = OABB[0];
+	v[1] = OABB[1];
+	v[2] = OABB[2];
+	octree = new COctreeNode(ptrFaceArray, nbFace, v, size, 0);
 
 	// On efface la liste temporaire
 	delete [] ptrFaceArray;

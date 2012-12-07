@@ -144,7 +144,7 @@ void MD5::update(istream& stream){
 
   while (stream.good()){
     stream.read((char*)buffer, 1024); // note that return value of read is unusable.
-    len=stream.gcount();
+    len=(int)stream.gcount();
     update(buffer, len);
   }
 
@@ -165,7 +165,7 @@ void MD5::update(ifstream& stream){
 
   while (stream.good()){
     stream.read((char*)buffer, 1024); // note that return value of read is unusable.
-    len=stream.gcount();
+    len=(int)stream.gcount();
     update(buffer, len);
   }
 
