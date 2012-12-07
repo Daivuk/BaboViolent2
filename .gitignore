@@ -72,8 +72,8 @@ mt.dep
 *.tlog
 *manifest.rc
 *.lastbuildstate
-*.filters
 ProDebug/
+BaboViolent2.vcxproj.filters
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
 #packages/
