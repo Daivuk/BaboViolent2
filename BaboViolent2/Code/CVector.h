@@ -70,12 +70,12 @@ public:
 	// Constructeur
 	CVector2i();					///< constructeur par default: coord (0,0)
 	CVector2i(int x, int y);		///< constructeur avec initialisation: coord (x,y)
-	CVector2i(int* array);			///< constructeur par tableau
+	CVector2i(int* in_v);			///< constructeur par tableau
 	CVector2i(const CVector2i& vector);	///< constructeur copie
 	
 	/// Fonctions d'affectation
 	void set(int x, int y){s[0] = x; s[1] = y;}				///< affectation par x,y
-	void set(int* array){s[0] = array[0]; s[1] = array[1];}	///< affectation par tableau[2]
+	void set(int* in_v){s[0] = in_v[0]; s[1] = in_v[1];}	///< affectation par tableau[2]
 
 	/// Ses accesseurs
 	int& operator[](const int i) {return s[i];}	///< obtenir x ou y selon i
@@ -135,12 +135,12 @@ public:
 	/// Constructeur
 	CVector2f();						///< constructeur par default: coord (0,0)
 	CVector2f(float x, float y);		///< constructeur avec initialisation: coord (x,y)
-	CVector2f(float* array);			///< constructeur par tableau
+	CVector2f(float* in_v);			///< constructeur par tableau
 	CVector2f(const CVector2f& vector);	///< constructeur copie
 
 	/// Fonctions d'affectation
 	void set(float x, float y){s[0] = x; s[1] = y;}				///< affectation par x,y
-	void set(float* array){s[0] = array[0]; s[1] = array[1];}	///< affectation par tableau[2]
+	void set(float* in_v){s[0] = in_v[0]; s[1] = in_v[1];}	///< affectation par tableau[2]
 
 	/// Ses accesseurs
 	float& operator[](const int i) {return s[i];}	/// obtenir x ou y selon i
@@ -205,12 +205,12 @@ public:
 	/// Constructeur
 	CVector3i();					///< constructeur par default (0,0,0)
 	CVector3i(int x, int y, int z);	///< constructeur avec initialisation (x,y,z)
-	CVector3i(int* array);			///< constructeur avec initialisation par tableau
+	CVector3i(int* in_v);			///< constructeur avec initialisation par tableau
 	CVector3i(const CVector3i& vector);	///< constructeur copie
 
 	/// Fonctions d'affectation
 	void set(int x, int y, int z){s[0] = x; s[1] = y; s[2] = z;}	///< affectation de x,y,z
-	void set(int* array){s[0] = array[0]; s[1] = array[1]; s[2] = array[2];}	///< affectation de x,y,zn par un tableau
+	void set(int* in_v){s[0] = in_v[0]; s[1] = in_v[1]; s[2] = in_v[2];}	///< affectation de x,y,zn par un tableau
 
 	/// Ses accesseurs
 	int& operator[](const int i) {return s[i];}		///< obtenir la valeur de x,y ou z selon i
@@ -271,12 +271,12 @@ public:
 	/// Constructeur
 	CVector3f();							///< constructeur par default (0,0,0)
 	CVector3f(float x, float y, float z);	///< constructeur avec initialisation (x,y,z)
-	CVector3f(float* array);				///< constructeur avec initialisation par tableau
+	CVector3f(const float* in_v);				///< constructeur avec initialisation par tableau
 	CVector3f(const CVector3f& vector);		///< constructeur copie
 
 	/// Fonctions d'affectation
 	void set(float x, float y, float z){s[0] = x; s[1] = y; s[2] = z;}			///< affectation de x,y,z
-	void set(float* array){s[0] = array[0]; s[1] = array[1]; s[2] = array[2];}	///< affectation de x,y,zn par un tableau
+	void set(float* in_v){s[0] = in_v[0]; s[1] = in_v[1]; s[2] = in_v[2];}	///< affectation de x,y,zn par un tableau
 
 	/// Ses accesseurs
 	float& operator[](const int i) {return s[i];}	///< obtenir la valeur de x,y ou z selon i
@@ -365,12 +365,12 @@ public:
 	/// Constructeur
 	CVector4f();			///< constructeur par default (0,0,0,0)
 	CVector4f(float x, float y, float z, float w);	///< constructeur avec initialisation (x,y,z,w)
-	CVector4f(float* array);	///< constructeur avec inialisation par tableau
+	CVector4f(const float* in_v);	///< constructeur avec inialisation par tableau
 	CVector4f(const CVector4f& vector);	///< constructeur copie
 
 	/// Fonctions d'affectation
 	void set(float x, float y, float z, float w){s[0] = x; s[1] = y; s[2] = z; s[3] = w;}		///< affectation des valeurs x,y,z,w
-	void set(float* array){s[0] = array[0]; s[1] = array[1]; s[2] = array[2]; s[3] = array[3];}	///< affectation des valeurs x,y,z,w par un tableau
+	void set(float* in_v){s[0] = in_v[0]; s[1] = in_v[1]; s[2] = in_v[2]; s[3] = in_v[3];}	///< affectation des valeurs x,y,z,w par un tableau
 
 	/// Ses accesseurs
 	float& operator[](const int i) {return s[i];}	///< obtention de x,y,z,w selon i
@@ -651,6 +651,7 @@ float rand(float from, float to);
 #define CColor3f CVector3f
 #define CColor4f CVector4f
 #define cVector CVector3f // Pour les anciennes compatibilit�
+#define CVector CVector3f // Pour les anciennes compatibilit�
 //@}
 
 #endif

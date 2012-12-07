@@ -83,7 +83,7 @@ void Player::update(float delay)
 	if (immuneTime > 0)
 	{
 		immuneTime -= delay;
-		if (immuneTime < 0) immuneTime < 0;
+		if (immuneTime < 0) immuneTime = 0;
 	}
 
 	frameSinceLast++; // For server hacking prevention

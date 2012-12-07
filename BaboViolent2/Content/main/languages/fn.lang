@@ -1,0 +1,187 @@
+glang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Tupla konekiv‰‰ri
+lang_subMachineGun					Konekiv‰‰ri
+lang_changGun						Raskas konekiv‰‰ri
+lang_shotgun						Haulikko
+lang_sniper							Tarkkuuskiv‰‰ri
+lang_bazooka						Sinko
+lang_grenade						Granaatti
+lang_flame							Liekki
+
+lang_autoAssignTeam					Valitse joukkue satunnaisesti
+lang_joinBlueTeam					Liity siniseen joukkueeseen
+lang_joinRedTeam					Liity punaiseen joukkueeseen
+lang_spectator						Katsoja
+lang_mainMenu						P‰‰valikko
+lang_disconnect						Katkaise yhteys
+
+lang_serverDisconnected				Serveri katkaisi yhteyden
+
+lang_dead							Kuollut
+lang_team							Joukkue
+
+lang_joinedTheGame					%s\x/ Liittyi joukkueeseen
+lang_playerDisconnected				%s\x/ Katkaisi yhteyden
+lang_player							Pelaaja
+lang_playerChangedHisNameFor		Player %s\x8 vaihtoi nimens‰: %s
+lang_returnBlueFlag					\x1%s\x8 palautti sinisen lipun
+lang_returnRedFlag					\x4%s\x8 palautti punaisen lipun
+lang_tookBlueFlag					\x4%s\x/ otti sinisen lipun
+lang_tookRedFlag					\x1%s\x/ otti punaisen lipun
+lang_redScore						Punainen joukkue tekee pisteen!
+lang_blueScore						Sininen joukkue tekee pisteen!
+
+lang_reloading						Ladataan
+
+lang_spawnIn						Synnyt: %i:%02i
+lang_pressToRespawn					Paina "k‰yt‰" n‰pp‰int‰ [%s] to respawn
+
+lang_blueTeamWin					SININEN JOUKKUE VOITTAA
+lang_redTeamWin						PUNAINEN JOUKKUE VOITTAA
+lang_roundDraw						PELI TASAN
+lang_changingMap					VAIHDETAAN KENTTƒƒ
+
+lang_deathmatchC					Kuolemanottelu
+lang_deathmatchD					Pelaaja suurimmalla pistem‰‰r‰ll‰ voittaa!
+lang_teamDeathmatchC				Joukkue Kuolemanottelu
+lang_teamDeathmatchD				Pelaaja suurimmalla pistem‰‰r‰ll‰ voittaa!
+lang_captureTheFlagC				VALTAA LIPPU
+lang_captureTheFlagD				Hanki vastustajien lippu ja palauta se!
+lang_counterBaboristC				POMMIN ASETUS MATSI
+lang_counterBaboristD				Punainen : Aseta pommi pommialueelle. Sininen : Puolusta pommi aluetta
+
+lang_connectingC					Yhdistet‰‰n
+lang_pressF10ToCancel				Paina F10 peruuttaaksesi
+
+lang_goesSpectator					%s\x8 menee katsojaksi
+lang_joinBlueTeamP					%s\x1 liittyy siniseen joukkueeseen
+lang_joinRedTeamP					%s\x4 liittyy punaiseen joukkueeseen
+
+lang_blueTeamC						SININEN JOUKKUE %i
+lang_redTeamC						PUNAINEN JOUKKUE %i
+lang_freeForAllC					Tapa ket‰ vaan %i
+lang_spectatorC						KATSOJAT
+
+lang_playerNameC					PELAAJAN NIMI
+lang_scoreC							PISTEET
+lang_pingC							PING
+
+lang_laggerC						*LAGITTAJA*
+
+lang_friendlyFire					Liekki
+
+lang_serverVersion					serveri versio %01i.%02i.%02i
+lang_clientVersion					clientti versio %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Yhteys ei toiminut! \x8 Tarkista IP osoite
+lang_back							<- Takaisin
+
+lang_launch							K‰ynnist‰ !
+lang_dedicate						Dedikoitu
+
+lang_generalGameOption				Pelin asetukset
+lang_gameNameS						Pelin nimi
+lang_gameType						Pelin tyyppi
+lang_freeForAll						Tapa ket‰ vaan
+lang_teamDeathmatch					Tiimi Kuolemanottelu
+lang_captureTheFlag					Valtaa lippu
+lang_TCPnUDPport					TCP & UDP Portti
+lang_gameLimits						Peli limiitit
+lang_scoreLimit						Piste Limiitti (0 = ei limiitti‰)
+lang_teamWinLimit					Joukkue voitto limiitti (0 = ei limiitti‰)
+lang_timeLimit						Aika limiitti sekunnissa (0 = ei limiitti‰)
+lang_maxPlayer						Maximi pelaajat (1-32)
+lang_spawning						syntyy
+lang_timeToSpawn					Aika synty‰ sekunneissa
+lang_forceRespawn					Pakota syntym‰‰n
+lang_no								\x4Ei
+lang_yes							\x2Kyll‰
+lang_reflectDamage					Torju Iskua
+lang_maps							Kartat
+lang_includedMaps					Kartat peliss‰:
+
+lang_RndLabsTeam					RndLabs Tiimi
+lang_gameDesigner					Pelin suunnittelija
+lang_programmers					Ohjelmoijat
+lang_soundDesigners					ƒ‰ni suunnittelijat
+lang_musics							Musiikit
+lang_thanksTo						Kiitokset
+lang_betaTesters					Beta Testaajille
+lang_buyAlbum						Katsokaa myˆs heid‰n uusi albuminsa "Sacrament"
+
+lang_internet						Internetti
+lang_localNetwork					L‰hiverkko
+lang_refreshList					P‰ivit‰ lista
+lang_players						Pelaajat
+lang_mapName						Kartan nimi
+lang_join							Liity !
+lang_IPAdress						IP Osoite
+lang_canRefreshIn					P‰ivitt‰‰ %i sekunnissa
+lang_nbGamesRefreshed				%i / %i
+lang_noGameFound					Pelej‰ ei lˆytynyt. P‰ivit‰ uudelleen
+lang_problemConnectingToMaster		Ongelmia yhteydess‰ hostaajan kanssa.
+
+lang_resumeCurrentGame				Jatka t‰m‰nhetkist‰ peli‰
+lang_joinGame						Liity peliin
+lang_createServer					Tee serveri
+lang_options						Asetukset
+lang_credits						Tekij‰t
+lang_quit							Lopeta
+
+lang_noGameRunning					Yht‰‰n peli‰ ei ole t‰ll‰ hetkell‰ p‰‰ll‰
+
+lang_selectAtLeastOneMap			Sinun pit‰‰ valita v‰hint‰‰n yksi kartta
+
+lang_apply							<- Talleta
+lang_cancel							Peruuta
+lang_someOptionRequireRestart		Jotkut asetukset tarvivat pelin uudelleen k‰ynnist‰misen
+lang_clientOptions					Clientin asetukset
+lang_playerName						Pelaajan nimi
+lang_inGameMusic					Pelin musiikki
+lang_renderingOptions				S‰‰det‰‰n asetuksia
+lang_showStats						N‰yt‰ FPS
+lang_fullscreen						Koko n‰yttˆ
+lang_screenResolution				N‰ytˆn resoluutio
+lang_colorDepth						V‰rin syvyys
+lang_bits							bittej‰
+lang_wallShadowQuality				Sein‰n varjo laatu
+lang_noShadows						Ei varjoja
+lang_hardEdges						Ter‰v‰t kulmat
+lang_softEdges						Pehme‰t kulmat
+lang_baboShadow						Babo varjo
+lang_projectileShadow				Projektiivinen varjo
+lang_particleLighting				Esineen valo
+lang_particleSorting				Esineen Sorttaus
+lang_terrainSplatter				Maan laatu
+lang_showCasing						N‰yt‰ ammuksen "kotelo" 
+lang_groundMarkNBlood				Maa merkki & veri
+lang_soundOptions					ƒ‰ni asetukset
+lang_mixRate						Miksaus 
+lang_hertz							Hertsej‰
+lang_maxSoftwareChannels			Maximiso
+lang_masterVolume					voluumi
+lang_keyOptions						N‰pp‰in asetukset
+lang_moveUp							Liiku ylˆs
+lang_moveDown						Liiku alas
+lang_moveRight						Liiku oikealle
+lang_moveLeft						Liiku vasemmalle
+lang_shoot							Ammu
+lang_throwGrenade					Heit‰ granaatti
+lang_throwCocktailMolotov			Heit‰ molotovin koktaili
+lang_use							K‰yt‰
+lang_chatToAll						Kirjoita kaikille
+lang_chatToTeam						Kirjoita joukkueelle
+lang_showScoreBoard					N‰yt‰ pistetaulukko
+lang_toggleMenu						N‰yt‰ p‰‰valikko
+
+lang_areYouSureYouWantToQuit		Oletko varma ett‰ haluat lopettaa?
+lang_yesQ							Kyll‰
+lang_noQ							En
+
+lang_serverHasClosedTheConnection	Serveri sulki yhteyden
+
+lang_language						Kieli
+lang_incorrectName					Nimimerkkisi pit‰‰ olla v‰hint‰‰n 2kirjainta/numeroa pitk‰ eik‰ "Unnamed Babo".\nVaihda se nyt
+
+END
