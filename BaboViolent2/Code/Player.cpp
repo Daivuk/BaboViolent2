@@ -824,7 +824,7 @@ void Player::spawn(const CVector3f & spawnPoint)
 	status = PLAYER_STATUS_ALIVE;
 	life = 1; // Full of life
 	timeToSpawn = gameVar.sv_timeToSpawn;
-	immuneTime = 3.0f;
+	immuneTime = gameVar.sv_spawnImmunityTime;
 
 	timeDead = 0.0f;
 	timeAlive = 0.0f;
