@@ -80,6 +80,12 @@ void Player::update(float delay)
 		if (protection < 0) protection = 0;
 	}
 
+	if (immuneTime > 0)
+	{
+		immuneTime -= delay;
+		if (immuneTime < 0) immuneTime < 0;
+	}
+
 	frameSinceLast++; // For server hacking prevention
 
 	if (fireFrameDelay > 0) fireFrameDelay--;

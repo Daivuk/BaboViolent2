@@ -341,6 +341,8 @@ public:
 	// On attends 10 sec avant de spawner
 	float timeToSpawn;
 
+	float immuneTime;
+
 	// Si c'est un entity controll�par le server
 	bool remoteEntity;
 

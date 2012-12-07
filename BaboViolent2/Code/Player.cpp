@@ -824,6 +824,7 @@ void Player::spawn(const CVector3f & spawnPoint)
 	status = PLAYER_STATUS_ALIVE;
 	life = 1; // Full of life
 	timeToSpawn = gameVar.sv_timeToSpawn;
+	immuneTime = 3.0f;
 
 	timeDead = 0.0f;
 	timeAlive = 0.0f;
@@ -1178,6 +1179,11 @@ void Player::hitSV(Weapon * fromWeapon, Player * from, float damage)
 	if (protection > .6f)
 	{
 		cdamage *= .50f; // Shield power !
+	}
+
+	if (immuneTime > 0.3f)
+	{
+		cdamage = 0.0f;
 	}
 
 #ifdef _PRO_
