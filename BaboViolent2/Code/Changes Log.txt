@@ -1,0 +1,3 @@
+Changes:
+
+06.12.2012. - Added aditional variable to player.h, immuneTime. It's initialized at value 3 in player.cpp. In the Player::Hit method, the value of immune time is checked and damage changed accordingly. Time is decreased in PlayerUpdate.cpp
