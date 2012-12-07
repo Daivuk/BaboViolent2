@@ -38,7 +38,7 @@
 
 
 #ifdef WIN32
-#pragma comment (lib, "dksvar.lib")
+//#pragma comment (lib, "dksvar.lib")
 #endif
 
 

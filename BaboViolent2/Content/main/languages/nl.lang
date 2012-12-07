@@ -1,0 +1,190 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dubbel Machinegeweer
+lang_subMachineGun					Machinegeweer
+lang_changGun						Kettinggeweer
+lang_shotgun						Geweer
+lang_sniper							Sluipschuttersgeweer
+lang_bazooka						Bazooka
+lang_grenade						Granaat
+lang_flame							Vlam
+
+lang_autoAssignTeam					Team automatisch kiezen
+lang_joinBlueTeam					Ga bij blauwe team
+lang_joinRedTeam					Ga bij rode team
+lang_spectator						Toekijker
+lang_mainMenu						Hoofdmenu
+lang_disconnect						Verbreek verbinding
+
+lang_serverDisconnected				De verbinding met de server is verbroken
+
+lang_dead							Dood
+lang_team							Team
+
+lang_joinedTheGame					%s\x8 doet mee met het spel
+lang_playerDisconnected				%s\x8 heeft de verbinding verbroken
+lang_player							Speler
+lang_playerChangedHisNameFor		Speler %s\x8 heeft zijn naam veranderd in %s
+lang_returnBlueFlag					\x1%s\x8 heeft de blauwe vlag teruggebracht
+lang_returnRedFlag					\x4%s\x8 heeft de rode vlag teruggebracht
+lang_tookBlueFlag					\x4%s\x8 heeft de blauwe vlag veroverd
+lang_tookRedFlag					\x1%s\x8 heeft de rode vlag veroverd
+lang_redScore						Het rode team scoort!
+lang_blueScore						Het blauwe team scoort!
+
+lang_reloading						Herladen...
+
+lang_spawnIn						Terugkeer over %i:%02i
+lang_pressToRespawn					Druk op de 'Gebruik'toets [%s] om terug te keren
+
+lang_blueTeamWin					HET BLAUWE TEAM WINT
+lang_redTeamWin						HET RODE TEAM WINT
+lang_roundDraw						GELIJKSPEL
+lang_changingMap					DE KAART WORDT VERANDERD
+
+lang_deathmatchC					DEATHMATCH
+lang_deathmatchD					De speler met de hoogste score wint!
+lang_teamDeathmatchC				TEAM DEATHMATCH
+lang_teamDeathmatchD				Het team met de hoogste score wint!
+lang_captureTheFlagC				VEROVER DE VLAG
+lang_captureTheFlagD				Verover de vlag van de vijand en breng deze naar die 
+van jou!
+lang_counterBaboristC				COUNTER BABORIST
+lang_counterBaboristD				Red : plank the explosive on the bomb site. Blue :
+defend the bomb site
+
+lang_connectingC					VERBINDEN...
+lang_pressF10ToCancel				Druk op F10 om te annuleren
+
+lang_goesSpectator					%s\x8 wordt toeschouwer
+lang_joinBlueTeamP					%s\x1 komt bij blauwe team
+lang_joinRedTeamP					%s\x4 komt bij rode team
+
+lang_blueTeamC						BLAUWE TEAM %i
+lang_redTeamC						RODE TEAM %i
+lang_freeForAllC					IEDER VOOR ZICH %i
+lang_spectatorC						TOESCHOUWERS
+
+lang_playerNameC					SPELER NAAM
+lang_scoreC							SCORE
+lang_pingC							PING
+
+lang_laggerC						*LAGGER*
+
+lang_friendlyFire					Beschoten door eigen Team
+
+lang_serverVersion					server versie %01i.%02i.%02i
+lang_clientVersion					cliënt versie %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Verbinding mislukt! \x8 Controleer IP-adres
+lang_back							<- Terug
+
+lang_launch							Begin !
+lang_dedicate						Toegewijd
+
+lang_generalGameOption				Algemene spelopties
+lang_gameNameS						Spelnaam
+lang_gameType						Speltype
+lang_freeForAll						Ieder Voor Zich
+lang_teamDeathmatch					Team Deathmatch
+lang_captureTheFlag					Verover de vlag
+lang_TCPnUDPport					TCP & UDP Poort
+lang_gameLimits						Spellimieten
+lang_scoreLimit						Scorelimiet (0 = Oneindig)
+lang_teamWinLimit					Winlimiet team (0 = Oneindig)
+lang_timeLimit						Tijdslimiets in seconden (0 = Oneindig)
+lang_maxPlayer						Max spelers (1 tot 32)
+lang_spawning						Terugkeren
+lang_timeToSpawn					Tijd tot terugkeer in seconden
+lang_forceRespawn					Forceer terugkeren
+lang_no								\x4Nee
+lang_yes							\x2Ja
+lang_reflectDamage					Kaats schade terug
+lang_maps							Kaarten
+lang_includedMaps					Bijgevoegde kaarten
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Spelontwerper
+lang_programmers					Programmeurs
+lang_soundDesigners					Componisten
+lang_musics							Muziek
+lang_thanksTo						Met dank aan
+lang_betaTesters					Beta Testers
+lang_buyAlbum						Probeer hun nieuwe album "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Locaal Netwerk
+lang_refreshList					Vernieuw Lijst
+lang_players						Spelers
+lang_mapName						Kaartnaam
+lang_join							Kies !
+lang_IPAdress						IP Adres
+lang_canRefreshIn					Kan verniewen over %i s
+lang_nbGamesRefreshed				%i van %i
+lang_noGameFound					Geen spellen gevonden. Probeer de lijst te vernieuwen.
+lang_problemConnectingToMaster		Probleem bij verbinden met de master
+
+lang_resumeCurrentGame				Terug naar huidige spel
+lang_joinGame						Kies spel
+lang_createServer					Maak server
+lang_options						Opties
+lang_credits						Makers
+lang_quit							Afsluiten
+
+lang_noGameRunning					Er is op het moment geen spel bezig
+
+lang_selectAtLeastOneMap			Je moet minstens 1 kaart selecteren
+
+lang_apply							<- Toepassen
+lang_cancel							Annuleren
+lang_someOptionRequireRestart		Bij bepaalde opties moet het spel opnieuw 
+opgestart worden
+lang_clientOptions					Cliënt Opties
+lang_playerName						Spelernaam
+lang_inGameMusic					Muziek
+lang_renderingOptions				Video Opties
+lang_showStats						Toon FPS/Deeltjes aantal
+lang_fullscreen						Volledig scherm
+lang_screenResolution				Scherm resolutie
+lang_colorDepth						Kleurdiepte
+lang_bits							bits
+lang_wallShadowQuality				Schaduwkwaliteit muren
+lang_noShadows						Geen Schaduws
+lang_hardEdges						Harde Randen
+lang_softEdges						Zachte Randen
+lang_baboShadow						Babo Schaduw
+lang_projectileShadow				Projectiel Schaduw
+lang_particleLighting				Deeltjes Belichting
+lang_particleSorting				Deeltjes Sorteren
+lang_terrainSplatter				Terrein Beschilderen
+lang_showCasing						Toon Hulzen
+lang_groundMarkNBlood				Bloed en Tekens op Grond
+lang_soundOptions					Audio Opties
+lang_mixRate						Mix Snelheid
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max Software Kanalen
+lang_masterVolume					Hoofd Volume
+lang_keyOptions						Toets Opties
+lang_moveUp							Beweeg Vooruit
+lang_moveDown						Beweeg Achteruit
+lang_moveRight						Beweeg naar Rechts
+lang_moveLeft						Beweeg naar Links
+lang_shoot							Schiet
+lang_throwGrenade					Gooi Granaat
+lang_throwCocktailMolotov			Gooi Molotov-Cocktail
+lang_use							Gebruik
+lang_chatToAll						Spreek tegen Iedereen
+lang_chatToTeam						Spreek tegen Team
+lang_showScoreBoard					Toon Scorebord
+lang_toggleMenu						Toggle Menu
+
+lang_areYouSureYouWantToQuit		Weet je zeker dat je af wilt sluiten?
+lang_yesQ							Ja
+lang_noQ							Nee
+
+lang_serverHasClosedTheConnection	De server heeft de verbinding verbroken.
+
+lang_language						Taal
+lang_incorrectName					Je spelernaam moet minstens 2 letters zijn\nen mag niet "Unnamed Babo" zijn.\nProbeer het opnieuw.
+
+END

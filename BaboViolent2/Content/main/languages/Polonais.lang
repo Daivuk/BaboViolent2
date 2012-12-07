@@ -1,0 +1,184 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dual Machine Gun
+lang_subMachineGun					Sub Machine Gun
+lang_changGun						Chain Gun
+lang_shotgun						Shotgun
+lang_sniper							Sniper
+lang_bazooka						Bazooka
+lang_grenade						Grenade
+lang_flame							Flame
+
+lang_autoAssignTeam					Auto-assign
+lang_joinBlueTeam					Juntar à Equipa Azul
+lang_joinRedTeam					Juntar à Equipa Vermelha
+lang_spectator						Espectador
+lang_mainMenu						Menu Principal
+lang_disconnect						Desconectar
+
+lang_serverDisconnected				Desconectado
+
+lang_dead							Morto
+lang_team							Equipa
+
+lang_joinedTheGame					%s juntou-se ao jogo
+lang_playerDisconnected				%s disconectou-se
+lang_player							Jogador
+lang_playerChangedHisNameFor		Jogador %s mudou o nome para %s
+lang_returnBlueFlag					%s reconquistou a bandeira azul
+lang_returnRedFlag					%s reconquistou a bandeira vermelha
+lang_tookBlueFlag					%s capturou a bandeira azul
+lang_tookRedFlag					%s capturou a bandeira vermelha
+lang_redScore						Equipa Vermelha marca!
+lang_blueScore						Equipa Azul marca!
+
+lang_reloading						Reloading
+
+lang_spawnIn						Vai aparecer em %i:%02i
+lang_pressToRespawn					Pressiona tecla usar [%s] para reaparecer
+
+lang_blueTeamWin					GANHA EQUIPA AZUL
+lang_redTeamWin						GANHA EQUIPA VERMELHA
+lang_roundDraw						EMPATE
+lang_changingMap					A MUDAR O MAPA
+
+lang_deathmatchC					DEATHMATCH
+lang_deathmatchD					O jogador com maior pontuação ganha!
+lang_teamDeathmatchC				EQUIPA DEATHMATCH
+lang_teamDeathmatchD				A equipa com mais pontos ganha!
+lang_captureTheFlagC				CAPTURAR A BANDEIRA
+lang_captureTheFlagD				Captura a bandeira inimiga e tra-la para a tua base!
+lang_counterBaboristC				COUNTER BABORIST
+lang_counterBaboristD				VERMELHOS: posiciona o explosivo no sitio da bomba.
+Azuis: defende o sitio da bomba
+lang_connectingC					A CoNECTAR
+lang_pressF10ToCancel				Pressiona f10 para cancelar
+
+lang_goesSpectator					%s\x8 fica espectador
+lang_joinBlueTeam					%s\x1 junta-se à equipa azul
+lang_joinRedTeam					%s\x4 junta-se à equipa vermelha
+
+lang_blueTeamC						EQUIPA AZUL %i
+lang_redTeamC						EQUIPA VERMELHA %i
+lang_freeForAllC					LIVRE PARA TODOS %i
+lang_spectatorC						ESPECTADORES
+
+lang_playerNameC					NOME DOS JOGADORES
+lang_scoreC							SCORE
+lang_pingC							PING
+
+lang_laggerC						*LAGGER*
+
+lang_friendlyFire					Friendly Fire
+
+lang_serverVersion					server version %01i.%02i.%02i
+lang_clientVersion					client version %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Conexão Falhou! \x8 Verifica Endereço IP 
+lang_back							<- Voltou
+
+lang_launch							Lançar !
+lang_dedicate						Dedicar
+
+lang_generalGameOption				Opções Gerais
+lang_gameNameS						Nome do Jogo
+lang_gameType						Tipo de jogo
+lang_freeForAll						Livre para todos
+lang_teamDeathmatch					Team Deathmatch
+lang_captureTheFlag					Capturar a Bandeira
+lang_TCPnUDPport					TCP & UDP Port
+lang_gameLimits						Limites do Jogo
+lang_scoreLimit						Limite de Pontuação (0 = Ilimitadas)
+lang_teamWinLimit					Limite de vitórias da Equipa (0 = Ilimitadas)
+lang_timeLimit						Tempo limite em Segundos (0 = Ilimitadas)
+lang_maxPlayer						Máximo de Jogadores (1 to 32)
+lang_spawning						Re-aparecer
+lang_timeToSpawn					Tempo para voltar em Segundos
+lang_forceRespawn					Forçar Regresso
+lang_no								\x4Não
+lang_yes							\x2Sim
+lang_reflectDamage					Reflectir Dano
+lang_maps							Mapas
+lang_includedMaps					Incluir Mapas
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Designer do Jogo
+lang_programmers					Programadores
+lang_soundDesigners					Técnicos de Som
+lang_musics							Músicas
+lang_thanksTo						Agradecimentos
+lang_betaTesters					Beta Testers
+lang_buyAlbum						Compra o seu último album "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Rede Locar
+lang_refreshList					Renovar Lista
+lang_players						Jogadores
+lang_mapName						Nome do Mapa
+lang_join							Juntar !
+lang_IPAdress						IP Address
+lang_canRefreshIn					Podes refrescar em %i seg
+lang_nbGamesRefreshed				%i de %i
+lang_noGameFound					Nenhum jogo encontrado. Tenta outra vez.
+lang_problemConnectingToMaster		Problemas a conectar ao master.
+
+lang_resumeCurrentGame				Voltar ao jogo
+lang_joinGame						Conectar 
+lang_createServer					Criar server 
+lang_options						Opçoes 
+lang_credits						Créditos 
+lang_quit							Sair
+
+lang_noGameRunning					Não existe nenhum jogo a correr de momento
+
+lang_selectAtLeastOneMap			Tens que seleccionar pelo menos um mapa
+
+lang_apply							<- Aplicar
+lang_cancel							Cancelar
+lang_someOptionRequireRestart		Algumas opções necessitam que reinicies o jogo
+lang_clientOptions					Opções do Cliente
+lang_playerName						Nome do Jogador
+lang_inGameMusic					Música no Jogo
+lang_renderingOptions				Opções de Resolução
+lang_showStats						Mostrar Contador de FPS/Particle
+lang_fullscreen						Ecrã Inteiro
+lang_screenResolution				Resolução do Ecrã
+lang_colorDepth						Profundidade das Cores
+lang_bits							bits
+lang_wallShadowQuality				Qualidade da Sombra nas Paredes
+lang_noShadows						Sem Sombras
+lang_hardEdges						Limites Fortes
+lang_softEdges						Limites Ligeiros
+lang_baboShadow						Sombra Babo
+lang_projectileShadow				Sombra dos Projecteis
+lang_particleLighting				Luz das Partículas
+lang_particleSorting				Sorting das Partículas
+lang_terrainSplatter				Splatering do Terreno
+lang_showCasing						Mostrar Casing
+lang_groundMarkNBlood				Marcas no Chão e Sangue
+lang_soundOptions					Opções de Som
+lang_mixRate						Mix Rate
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max Software Channels
+lang_masterVolume					Master Volume
+lang_keyOptions						Opções Chave
+lang_moveUp							Mover para cima
+lang_moveDown						Mover para Baixo
+lang_moveRight						Mover para a Direita
+lang_moveLeft						Mover para a ESquerda
+lang_shoot							Disparar
+lang_throwGrenade					Atirar Granada
+lang_throwCocktailMolotov			Atirar Cocktail Molotov
+lang_use							Usar
+lang_chatToAll						Falar para todos
+lang_chatToTeam						Falar à equipa
+lang_showScoreBoard					Mostrar Score
+lang_toggleMenu						Toggle Menu
+
+lang_areYouSureYouWantToQuit		Tens a certeza que queres sair?
+lang_yesQ							Sim
+lang_noQ							Não
+
+lang_serverHasClosedTheConnection	O servidor fechou a ligação
+
+END

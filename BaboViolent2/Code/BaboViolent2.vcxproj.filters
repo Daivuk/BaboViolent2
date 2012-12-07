@@ -36,6 +36,45 @@
     <Filter Include="External">
       <UniqueIdentifier>{b69030f2-cc1e-4e9e-9174-10708d14ceac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{5ad997f9-4a56-4931-bf04-a73859b8cea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Babonet">
+      <UniqueIdentifier>{42ae88d1-ac3e-4e00-a0e8-5845334f2cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven">
+      <UniqueIdentifier>{5e97cd30-56ec-489e-bf9a-13282b295342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\dko">
+      <UniqueIdentifier>{73283e47-ae0d-420a-ac53-9ab2df8f4607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkgl">
+      <UniqueIdentifier>{841cacbb-d444-4cdb-9126-c67b00c55571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkw">
+      <UniqueIdentifier>{63a4b14d-2f49-4d00-a8bd-9c9a95779a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dksvar">
+      <UniqueIdentifier>{790642c9-ae19-4829-b430-c6ae0a8f0818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dki">
+      <UniqueIdentifier>{04fdbebd-aacd-43f3-92e0-55e209a31869}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkt">
+      <UniqueIdentifier>{30f64d8e-fe95-4c52-97aa-5c363006e5c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkf">
+      <UniqueIdentifier>{241da105-2379-4a37-8fdf-3ad0878cd174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkp">
+      <UniqueIdentifier>{d241ea9b-80b4-4aec-abd6-9a1f225fc6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dkc">
+      <UniqueIdentifier>{9d4596a0-ddb4-48a4-af07-33675deb1abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Zeven\dks">
+      <UniqueIdentifier>{4440ff26-9545-444e-9358-5c8925a106cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AccountManager.cpp">
@@ -308,6 +347,105 @@
     <ClCompile Include="tinyxmlparser.cpp">
       <Filter>External</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cClient.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cConnection.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cDNSquery.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cPeer.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cPeer2Peer.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cUDPpacket.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cIncConnection.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\baboNet.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cServer.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\cPacket.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\md5class.cpp">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\babonet\Code\md5c.c">
+      <Filter>Engine\Babonet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\CdkoModel.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\CFace.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\COctree.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\dko.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\eHierarchic.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\ePTexture.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\CdkoAnimation.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\CdkoMaterial.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\dko\Code\CdkoMesh.cpp">
+      <Filter>Engine\dko</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkgl.cpp">
+      <Filter>Engine\Zeven\dkgl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkw.cpp">
+      <Filter>Engine\Zeven\dkw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dksvar.cpp">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\CSystemVariable.cpp">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dki.cpp">
+      <Filter>Engine\Zeven\dki</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkt.cpp">
+      <Filter>Engine\Zeven\dkt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkf.cpp">
+      <Filter>Engine\Zeven\dkf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\CFont.cpp">
+      <Filter>Engine\Zeven\dkf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkp.cpp">
+      <Filter>Engine\Zeven\dkp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\CParticle.cpp">
+      <Filter>Engine\Zeven\dkp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dkc.cpp">
+      <Filter>Engine\Zeven\dkc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\DukZeven\Code\dks.cpp">
+      <Filter>Engine\Zeven\dks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AccountManager.h">
@@ -546,6 +684,144 @@
     </ClInclude>
     <ClInclude Include="tinyxml.h">
       <Filter>External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cClient.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cConnection.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\global.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cDNSquery.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cPeer.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cPeer2Peer.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cUDPpacket.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cIncConnection.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\baboNet.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cServer.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\cPacket.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\babonet\Code\md5class.h">
+      <Filter>Engine\Babonet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\inc\platform_types.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CdkoMesh.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CdkoModel.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CFace.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CHUNKINF.H">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\COctree.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\dko.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\dkoInner.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\eHierarchic.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\ePTexture.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CdkoAnimation.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\dko\Code\CdkoMaterial.h">
+      <Filter>Engine\dko</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkgl.h">
+      <Filter>Engine\Zeven\dkgl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkgli.h">
+      <Filter>Engine\Zeven\dkgl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkw.h">
+      <Filter>Engine\Zeven\dkw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkwi.h">
+      <Filter>Engine\Zeven\dkw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dksvar.h">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dksvardef.h">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dksvari.h">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\CSystemVariable.h">
+      <Filter>Engine\Zeven\dksvar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dki.h">
+      <Filter>Engine\Zeven\dki</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkii.h">
+      <Filter>Engine\Zeven\dki</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkt.h">
+      <Filter>Engine\Zeven\dkt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkti.h">
+      <Filter>Engine\Zeven\dkt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkf.h">
+      <Filter>Engine\Zeven\dkf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkfi.h">
+      <Filter>Engine\Zeven\dkf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\CFont.h">
+      <Filter>Engine\Zeven\dkf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkp.h">
+      <Filter>Engine\Zeven\dkp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkpi.h">
+      <Filter>Engine\Zeven\dkp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\CParticle.h">
+      <Filter>Engine\Zeven\dkp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkc.h">
+      <Filter>Engine\Zeven\dkc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dkci.h">
+      <Filter>Engine\Zeven\dkc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dks.h">
+      <Filter>Engine\Zeven\dks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\DukZeven\Code\dksi.h">
+      <Filter>Engine\Zeven\dks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,187 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Double Mitrailleuse
+lang_subMachineGun					Fusil Mitrailleur
+lang_changGun						Fusil à Chaine
+lang_shotgun						Fusil de Chasse
+lang_sniper							Carabine d'élite
+lang_bazooka						Bazooka
+lang_grenade						Grenade
+lang_flame							Feu
+
+lang_autoAssignTeam					Équipe Automatique
+lang_joinBlueTeam					Rejoindre l'équipe bleu
+lang_joinRedTeam					Rejoindre l'équipe rouge
+lang_spectator						Spectateur
+lang_mainMenu						Menu principal
+lang_disconnect						Déconnecter
+
+lang_serverDisconnected				Le serveur a déconnecté
+
+lang_dead							Mort
+lang_team							Équipe
+
+lang_joinedTheGame					%s\x8 a rejoint la partie
+lang_playerDisconnected				%s\x8 s'est déconnecté
+lang_player							Joueur
+lang_playerChangedHisNameFor		Le joueur %s\x8 a changé son nom pour %s
+lang_returnBlueFlag					\x1%s\x8 a retourné le drapeau bleu
+lang_returnRedFlag					\x4%s\x8 a retourné le drapeau rouge
+lang_tookBlueFlag					\x4%s\x8 a capturé le drapeau bleu
+lang_tookRedFlag					\x1%s\x8 a capturé le drapeau rouge
+lang_redScore						L'équipe rouge marque!
+lang_blueScore						L'équipe bleu marque!
+
+lang_reloading						Rechargement
+
+lang_spawnIn						Réapparait dans %i:%02i
+lang_pressToRespawn					Appuyez sur [%s] pour réapparaitre
+
+lang_blueTeamWin					L'ÉQUIPE BLEU REMPORTE LA PARTIE
+lang_redTeamWin						L'ÉQUIPE ROUGE REMPORTE LA PARTIE
+lang_roundDraw						ÉGALITÉ
+lang_changingMap					CHANGEMENT DE CARTE
+
+lang_deathmatchC					MATCH À MORT
+lang_deathmatchD					Le joueur avec le plus de points remportera la partie.
+lang_teamDeathmatchC				MATCH À MORT EN ÉQUIPE
+lang_teamDeathmatchD				L'équipe avec le plus de points remportera la partie.
+lang_captureTheFlagC				CAPTUREZ LE DRAPEAU
+lang_captureTheFlagD				Capturez le drapeau ennemi et rapportez-le à votre base.
+lang_counterBaboristC				ANTI-BABORIST
+lang_counterBaboristD				Rouge : Posez les explosifs. Bleu : Défendez les sites.
+
+lang_connectingC					CONNECTION
+lang_pressF10ToCancel				Appuyez F10 pour annuler
+
+lang_goesSpectator					%s\x8 devient spectateur
+lang_joinBlueTeamP					%s\x1 rejoint l'équipe des bleus.
+lang_joinRedTeamP					%s\x4 rejoint l'équipe des rouges.
+
+lang_blueTeamC						ÉQUIPE BLEUE %i
+lang_redTeamC						ÉQUIPE ROUGE %i
+lang_freeForAllC					TOUS POUR UN %i
+lang_spectatorC						SPECTATORS
+
+lang_playerNameC					JOUEURS
+lang_scoreC							POINTAGES
+lang_pingC							PING
+
+lang_laggerC						*LAGUEUR*
+
+lang_friendlyFire					Tire ami
+
+lang_serverVersion					version du serveur %01i.%02i.%02i
+lang_clientVersion					version du client %01i.%02i.%02i
+
+lang_connectionFailed				\x4 La connection a échoué! \x8 Vérifiez l'adresse IP
+lang_back							<- Retour
+
+lang_launch							Démarrer !
+lang_dedicate						Dédier
+
+lang_generalGameOption				Options de jeu général
+lang_gameNameS						Nom du serveur
+lang_gameType						Type de jeu
+lang_freeForAll						Match à mort
+lang_teamDeathmatch					Match à mort en équipe
+lang_captureTheFlag					Capturer le dreapeau
+lang_TCPnUDPport					Port TCP et UDP
+lang_gameLimits						Limites de jeu
+lang_scoreLimit						Limite de points (0 = Illimité)
+lang_teamWinLimit					Limite de capture (0 = Illimité)
+lang_timeLimit						Limite de temps en secondes (0 = Illimité)
+lang_maxPlayer						Nombre de joueur maximal (1 to 32)
+lang_spawning						Apparaître
+lang_timeToSpawn					Intervalle de réapparition en secondes
+lang_forceRespawn					Forcer la réapparition
+lang_no								\x4Non
+lang_yes							\x2Oui
+lang_reflectDamage					Dommages réfléchis
+lang_maps							Cartes
+lang_includedMaps					Cartes incluses
+
+lang_RndLabsTeam					L'équipe de RndLabs
+lang_gameDesigner					Designer de jeu
+lang_programmers					Programeurs
+lang_soundDesigners					Designers de son
+lang_musics							Musiques
+lang_thanksTo						Merci à
+lang_betaTesters					Testeurs Beta
+lang_buyAlbum						Jetez un coup d'oeil à leur nouvel album "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Réseau local
+lang_refreshList					Rafraichir la liste
+lang_players						Joueurs
+lang_mapName						Carte
+lang_join							Rejoindre!
+lang_IPAdress						Adresse IP
+lang_canRefreshIn					Peut rafraîchir dans %i secondes
+lang_nbGamesRefreshed				%i de %i
+lang_noGameFound					Aucune partie trouvée. Rafraîchissez à nouveau
+lang_problemConnectingToMaster		Impossible de se connecter au serveur maître.
+
+lang_resumeCurrentGame				Retour à la partie en cours
+lang_joinGame						Rejoindre une partie
+lang_createServer					Créer un serveur
+lang_options						Options
+lang_credits						Génériques
+lang_quit							Quitter
+
+lang_noGameRunning					Il n'y a aucune partie en cours
+
+lang_selectAtLeastOneMap			Vous devez sélectionner au moins une carte
+
+lang_apply							<- Appliquer
+lang_cancel							Annuler
+lang_someOptionRequireRestart		Certaines options nécéssitent un relancement du jeu
+lang_clientOptions					Options client
+lang_playerName						Nom du joueur
+lang_inGameMusic					Musique dans le jeu
+lang_renderingOptions				Option de rendu
+lang_showStats						Afficher les statistiques
+lang_fullscreen						Plein-écran
+lang_screenResolution				Résolution d'écran
+lang_colorDepth						Profondeur des couleurs
+lang_bits							bits
+lang_wallShadowQuality				Ombrage des murs
+lang_noShadows						Aucune ombrages
+lang_hardEdges						Joint précis
+lang_softEdges						Joint dégradé
+lang_baboShadow						Ombrage babo
+lang_projectileShadow				Ombrage des projectiles
+lang_particleLighting				Éclairage des particules
+lang_particleSorting				Tri des particules
+lang_terrainSplatter				Terrain haute qualité
+lang_showCasing						Douilles
+lang_groundMarkNBlood				Marques sur le sol
+lang_soundOptions					Options sonore
+lang_mixRate						Taux de mélange
+lang_hertz							Hz
+lang_maxSoftwareChannels			Canaux logiciels maximum
+lang_masterVolume					Volume principal
+lang_keyOptions						Options des touches
+lang_moveUp							Bouger haut
+lang_moveDown						Bouger bas
+lang_moveRight						Bouger droite
+lang_moveLeft						Bouger gauche
+lang_shoot							Tirer
+lang_throwGrenade					Lancer grenade
+lang_throwCocktailMolotov			Lancer Cocktail Molotov
+lang_use							Utiliser
+lang_chatToAll						Parler à tous
+lang_chatToTeam						Parler à l'équipe
+lang_showScoreBoard					Afficher les pointages
+lang_toggleMenu						Basculer le Menu
+
+lang_areYouSureYouWantToQuit		Etes-vous sur de vouloir quitter?
+lang_yesQ							Oui
+lang_noQ							Non
+
+lang_serverHasClosedTheConnection	Le serveur a fermé la connection
+
+lang_language						Langue
+lang_incorrectName					Votre nom doit contenir au moins 2 caractères\net ne doit pas être "Unnamed Babo".\nVeuillez le changer maintenant avant de jouer.
+
+END

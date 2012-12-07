@@ -722,8 +722,8 @@ bool			dkoRayIntersection(unsigned int modelID, float *mp1, float *mp2, float *i
 		{
 			CVector mintersection;
 			CVector mnormal;
-			CVector p1(mp1);
-			CVector p2(mp2);
+			CVector p1(mp1[0], mp1[1], mp1[2]);
+			CVector p2(mp2[0], mp2[1], mp2[2]);
 			float dis = distanceFast(p1, p2);
 
 			// Voil�on est pret, on test � dans le octree
@@ -1211,8 +1211,8 @@ bool			dkoSphereIntersection(unsigned int modelID, float *mp1, float *mp2, float
 		{
 			CVector mintersection;
 			CVector mnormal;
-			CVector p1(mp1);
-			CVector p2(mp2);
+			CVector p1(mp1[0], mp1[1], mp1[2]);
+			CVector p2(mp2[0], mp2[1], mp2[2]);
 			float dis = distanceFast(p1, p2);
 
 			// Voil�on est pret, on test � dans le octree

@@ -25,10 +25,10 @@
 
 
 #ifdef CONSOLE
-	#pragma comment (lib, "dkc.lib")
-	#pragma comment (lib, "dksvar.lib")
-	#pragma comment (lib, "baboNet.lib")
-	#pragma comment (lib, "dkolight.lib")
+//	#pragma comment (lib, "dkc.lib")
+//	#pragma comment (lib, "dksvar.lib")
+//	#pragma comment (lib, "baboNet.lib")
+//	#pragma comment (lib, "dkolight.lib")
 
 	#include "dko.h"
 	#include "dkc.h"
@@ -40,18 +40,18 @@
 	#include "CMatrix.h"
 	#include "CString.h"
 #else
-#ifdef _DX_
-	#pragma comment (lib, "dkw.lib")
-	#pragma comment (lib, "dki.lib")
-	#pragma comment (lib, "dkgl_dx.lib")
-	#pragma comment (lib, "dkt_dx.lib")
-	#pragma comment (lib, "dkf_dx.lib")
-	#pragma comment (lib, "dko_dx.lib")
-	#pragma comment (lib, "dkp_dx.lib")
-	#pragma comment (lib, "dks.lib")
-	#pragma comment (lib, "dkc.lib")
-	#pragma comment (lib, "dksvar.lib")
-	#pragma comment (lib, "baboNet.lib")
+#ifdef _DX_ // No intention of continuing on DX. we should switch to OGL 2.0 instead
+	//#pragma comment (lib, "dkw.lib")
+	//#pragma comment (lib, "dki.lib")
+	//#pragma comment (lib, "dkgl_dx.lib")
+	//#pragma comment (lib, "dkt_dx.lib")
+	//#pragma comment (lib, "dkf_dx.lib")
+	//#pragma comment (lib, "dko_dx.lib")
+	//#pragma comment (lib, "dkp_dx.lib")
+	//#pragma comment (lib, "dks.lib")
+	//#pragma comment (lib, "dkc.lib")
+	//#pragma comment (lib, "dksvar.lib")
+	//#pragma comment (lib, "baboNet.lib")
 
 	#include "dkc.h"
 	#include "dkw.h"
@@ -70,17 +70,18 @@
 	#include "CMatrix.h"
 	#include "CString.h"
 #else
-	#pragma comment (lib, "dkw.lib")
-	#pragma comment (lib, "dki.lib")
-	#pragma comment (lib, "dkgl.lib")
-	#pragma comment (lib, "dkt.lib")
-	#pragma comment (lib, "dkf.lib")
-	#pragma comment (lib, "dko.lib")
-	#pragma comment (lib, "dkp.lib")
-	#pragma comment (lib, "dks.lib")
-	#pragma comment (lib, "dkc.lib")
-	#pragma comment (lib, "dksvar.lib")
-	#pragma comment (lib, "baboNet.lib")
+	// [dsl] No more pragma comment, lets include them in the game directly!
+//	#pragma comment (lib, "dkw.lib") // No more pragma comment, lets include them in the engine directly!
+//	#pragma comment (lib, "dki.lib")
+//	#pragma comment (lib, "dkgl.lib")
+//	#pragma comment (lib, "dkt.lib")
+//	#pragma comment (lib, "dkf.lib")
+//	#pragma comment (lib, "dko.lib")
+//	#pragma comment (lib, "dkp.lib")
+//	#pragma comment (lib, "dks.lib")
+//	#pragma comment (lib, "dkc.lib")
+//	#pragma comment (lib, "dksvar.lib")
+//	#pragma comment (lib, "baboNet.lib")
 
 	#include "dkc.h"
 	#include "dkw.h"

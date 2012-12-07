@@ -1,0 +1,378 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dupla géppuska
+lang_subMachineGun					Géppisztoly
+lang_changGun						Gépágyú
+lang_shotgun						Shotgun
+lang_sniper							Mesterlövészpuska
+lang_bazooka						Páncélököl
+lang_grenade						Grenade
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dupla géppuska
+lang_subMachineGun					Géppisztoly
+lang_changGun						Gépágyú
+lang_shotgun						Shotgun
+lang_sniper							Mesterlövészpuska
+lang_bazooka						Páncélököl
+lang_grenade						Gránát
+lang_flame							Lángszóró
+
+lang_autoAssignTeam					Automatikus csapatbeosztás
+lang_joinBlueTeam					Csatlakozás a kék csapathoz
+lang_joinRedTeam					Csatlakozás a piros csapathoz
+lang_spectator						Nézô
+lang_mainMenu						Fô menü
+lang_disconnect						Kiszállás
+
+lang_serverDisconnected				Szerver lekapcsolva
+
+lang_dead							Halott
+lang_team							Csapat
+
+lang_joinedTheGame					%s\x8 csatlakozott a játékhoz
+lang_playerDisconnected				%s\x8 kiszállt
+lang_player							Játékos
+lang_playerChangedHisNameFor		%s\x8 nevl játékos megváltoztatta nevét: %s
+lang_returnBlueFlag					\x1%s\x8 visszatért a kék zászlóval
+lang_returnRedFlag					\x4%s\x8 visszatért a piros zászlóval
+lang_tookBlueFlag					\x4%s\x8 megszerezte a kék zászlót
+lang_tookRedFlag					\x1%s\x8 megszerezte a piros zászlót
+lang_redScore						A piros csapat pontot szerez!
+lang_blueScore						A kék csapat pontot szerez!
+
+lang_reloading						Ujratöltés
+
+lang_spawnIn						Ujjászületésig %i:%02i van hátra
+lang_pressToRespawn					Nyomj [%s]-t az újjászületéshez
+
+lang_blueTeamWin					KÉK CSAPAT NYERT
+lang_redTeamWin						PIROS CSAPAT NYERT
+lang_roundDraw						DÖNTETLEN
+lang_changingMap					TÉRKÉP VáLTáS
+
+lang_deathmatchC					DEATHMATCH
+lang_deathmatchD					A legtöbb pontot elérô játékos nyer!
+lang_teamDeathmatchC				TEAM DEATHMATCH
+lang_teamDeathmatchD				A legtöbb pontot elérô csapat nyer!
+lang_captureTheFlagC				CAPTURE THE FLAG
+lang_captureTheFlagD				Szerezd meg az ellenfél zászlóját és vidd a tiédhez!
+lang_counterBaboristC				COUNTER BABORIST
+lang_counterBaboristD				Piros : juttasd a bombát a robbantási területre. Kék :
+védd meg a robbantási területet.
+
+lang_connectingC					CSATLAKOZáS
+lang_pressF10ToCancel				Nyomj F10-et a megszakításhoz.
+
+lang_goesSpectator					%s\x8 nézô lett
+lang_joinBlueTeamP					%s\x1 csatlakozott a kék csapathoz
+lang_joinRedTeamP					%s\x4 csatlakozott a piros csapathoz
+
+lang_blueTeamC						KÉK CSAPAT %i
+lang_redTeamC						PIROS CSAPAT %i
+lang_freeForAllC					MINDENKINEK SZABAD %i
+lang_spectatorC						NÉZÖK
+
+lang_playerNameC					JáTÉKOS NEVE
+lang_scoreC							PONTSZáM
+lang_pingC							PING
+
+lang_laggerC						*LAGGER*
+
+lang_friendlyFire					Barátlövés
+
+lang_serverVersion					szerver verzió %01i.%02i.%02i
+lang_clientVersion					kliens verzió %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Csatlakozás nem sikerült! \x8 Ellenôrizd az IP címet
+lang_back							<- Vissza
+
+lang_launch							Indítás !
+lang_dedicate						Hozzárendelés
+
+lang_generalGameOption				általános játékopciók
+lang_gameNameS						Játék neve
+lang_gameType						Játék típusa
+lang_freeForAll						Mindenkinek szabad
+lang_teamDeathmatch					Team Deathmatch
+lang_captureTheFlag					Capture the Flag
+lang_TCPnUDPport					TCP & UDP Port
+lang_gameLimits						Játék határok
+lang_scoreLimit						Ponthatár (0 = nincs határ)
+lang_teamWinLimit					Csapat nyerés-szám határ (0 = nincs határ)
+lang_timeLimit						Idôkorlát másodpercben (0 = nincs határ)
+lang_maxPlayer						Max játékosok (1 to 32)
+lang_spawning						Ujjászületés
+lang_timeToSpawn					Idô az újjaszületésig másodpercben
+lang_forceRespawn					Ujjászületés azonnal
+lang_no								\x4Nem
+lang_yes							\x2Igen
+lang_reflectDamage					Sérülés elhárítása
+lang_maps							Térképek
+lang_includedMaps					Felvett térképek
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Játék Tervezô
+lang_programmers					Programozók
+lang_soundDesigners					Hangok
+lang_musics							Zene
+lang_thanksTo						Köszönetek
+lang_betaTesters					Béta Tesztelôk
+lang_buyAlbum						Hallgasd meg az új albumukat: "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Helyi hálózat
+lang_refreshList					Lista frissítése
+lang_players						Játékosok
+lang_mapName						Térkép neve
+lang_join							Csatlakozás !
+lang_IPAdress						IP cím
+lang_canRefreshIn					Frissítésig %i sec van hátra
+lang_nbGamesRefreshed				%i a %i -ból
+lang_noGameFound					Nem találtam játékot. Próbálj újra frissíteni.
+lang_problemConnectingToMaster		Probléma a masterhez való csatlakozáskor.
+
+lang_resumeCurrentGame				Visszatérés a jelenlegi játékba
+lang_joinGame						Csatlakozás játékba
+lang_createServer					Szerver létrehozása
+lang_options						Opciók
+lang_credits						Készítôk
+lang_quit							Kilépés
+
+lang_noGameRunning					Jelenleg nincs futó játék
+
+lang_selectAtLeastOneMap			Legalább egy térképet ki kell választani
+
+lang_apply							<- OK
+lang_cancel							Mégse
+lang_someOptionRequireRestart		Néhány opció érvénybe lépéséhez újra kell indítani a játékot
+lang_clientOptions					Kliens Opciók
+lang_playerName						Játékos neve
+lang_inGameMusic					Zene
+lang_renderingOptions				Renderelési Opciók
+lang_showStats						Mutassa az FPS/Particle számlálót
+lang_fullscreen						Teljes képernyô
+lang_screenResolution				Képernyôfelbontás
+lang_colorDepth						Színmélység
+lang_bits							Bitek
+lang_wallShadowQuality				Fal árnyék minôsége
+lang_noShadows						Nincsenek árnyékok
+lang_hardEdges						Durva élek
+lang_softEdges						Elmosott élek
+lang_baboShadow						Babo árnyéka
+lang_projectileShadow				Lövedék árnyéka
+lang_particleLighting				Particle Lighting
+lang_particleSorting				Particle Sorting
+lang_terrainSplatter				Terrain Splatering
+lang_showCasing						Show Casing
+lang_groundMarkNBlood				Jelzések a talajon és vér
+lang_soundOptions					Hang opciók
+lang_mixRate						Keverési arány
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max Software csatornák
+lang_masterVolume					Fô hangerô
+lang_keyOptions						Billentyl beállítások
+lang_moveUp							Mozgás Fel
+lang_moveDown						Mozgás Le
+lang_moveRight						Mozgás Jobbra
+lang_moveLeft						Mozgás Balra
+lang_shoot							Lövés
+lang_throwGrenade					Gránát dobása
+lang_throwCocktailMolotov			Molotov Cocktail dobása
+lang_use							Használat
+lang_chatToAll						Chat mindenkivel
+lang_chatToTeam						Chat a csapattal
+lang_showScoreBoard					Pontok mutatása
+lang_toggleMenu						Menü váltása
+
+lang_areYouSureYouWantToQuit		Biztos hogy ki akarsz lépni?
+lang_yesQ							Igen
+lang_noQ							Nem
+
+lang_serverHasClosedTheConnection	A szerver bontotta a kapcsolatot
+
+lang_language						Nyelv
+lang_incorrectName					A játékos nevének legalább 2 karakternek kell
+lennie,\nés nem lehet "Unnamed Babo".\nKérlek változtatsd meg.
+
+END
+	Gránát
+lang_flame							Lángszóró
+
+lang_autoAssignTeam					Automatikus csapatbeosztás
+lang_joinBlueTeam					Csatlakozás a kék csapathoz
+lang_joinRedTeam					Csatlakozás a piros csapathoz
+lang_spectator						Nézô
+lang_mainMenu						Fô menü
+lang_disconnect						Kiszállás
+
+lang_serverDisconnected				Szerver lekapcsolva
+
+lang_dead							Halott
+lang_team							Csapat
+
+lang_joinedTheGame					%s csatlakozott a játékhoz
+lang_playerDisconnected				%s kiszállt
+lang_player							Játékos
+lang_playerChangedHisNameFor		%s nevl játékos megváltoztatta nevét: %s
+lang_returnBlueFlag					%s visszatért a kék zászlóval
+lang_returnRedFlag					%s visszatért a piros zászlóval
+lang_tookBlueFlag					%s megszerezte a kék zászlót
+lang_tookRedFlag					%s megszerezte a piros zászlót
+lang_redScore						A piros csapat pontot szerez!
+lang_blueScore						A kék csapat pontot szerez!
+
+lang_reloading						Ujratöltés
+
+lang_spawnIn						Ujjászületésig %i:%02i van hátra
+lang_pressToRespawn					Nyomj [%s]-t az újjászületéshez
+
+lang_blueTeamWin					KÉK CSAPAT NYERT
+lang_redTeamWin						PIROS CSAPAT NYERT
+lang_roundDraw						DÖNTETLEN
+lang_changingMap					TÉRKÉP VáLTáS
+
+lang_deathmatchC					DEATHMATCH
+lang_deathmatchD					A legtöbb pontot elérô játékos nyer!
+lang_teamDeathmatchC				TEAM DEATHMATCH
+lang_teamDeathmatchD				A legtöbb pontot elérô csapat nyer!
+lang_captureTheFlagC				CAPTURE THE FLAG
+lang_captureTheFlagD				Szerezd meg az ellenfél zászlóját és vidd a tiédhez!
+lang_counterBaboristC				COUNTER BABORIST
+lang_counterBaboristD				Piros : juttasd a bombát a robbantási területre. Kék :
+védd meg a robbantási területet.
+
+lang_connectingC					CSATLAKOZáS
+lang_pressF10ToCancel				Nyomj F10-et a megszakításhoz.
+
+lang_goesSpectator					%s\x8 nézô lett
+lang_joinBlueTeamP					%s\x1 csatlakozott a kék csapathoz
+lang_joinRedTeamP					%s\x4 csatlakozott a piros csapathoz
+
+lang_blueTeamC						KÉK CSAPAT %i
+lang_redTeamC						PIROS CSAPAT %i
+lang_freeForAllC					MINDENKINEK SZABAD %i
+lang_spectatorC						NÉZÖK
+
+lang_playerNameC					JáTÉKOS NEVE
+lang_scoreC							PONTSZáM
+lang_pingC							PING
+
+lang_laggerC						*LAGGER*
+
+lang_friendlyFire					Barátlövés
+
+lang_serverVersion					szerver verzió %01i.%02i.%02i
+lang_clientVersion					kliens verzió %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Csatlakozás nem sikerült! \x8 Ellenôrizd az IP címet
+lang_back							<- Vissza
+
+lang_launch							Indítás !
+lang_dedicate						Hozzárendelés
+
+lang_generalGameOption				általános játékopciók
+lang_gameNameS						Játék neve
+lang_gameType						Játék típusa
+lang_freeForAll						Mindenkinek szabad
+lang_teamDeathmatch					Team Deathmatch
+lang_captureTheFlag					Capture the Flag
+lang_TCPnUDPport					TCP & UDP Port
+lang_gameLimits						Játék határok
+lang_scoreLimit						Ponthatár (0 = nincs határ)
+lang_teamWinLimit					Csapat nyerés-szám határ (0 = nincs határ)
+lang_timeLimit						Idôkorlát másodpercben (0 = nincs határ)
+lang_maxPlayer						Max játékosok (1 to 32)
+lang_spawning						Ujjászületés
+lang_timeToSpawn					Idô az újjaszületésig másodpercben
+lang_forceRespawn					Ujjászületés azonnal
+lang_no								\x4Nem
+lang_yes							\x2Igen
+lang_reflectDamage					Sérülés elhárítása
+lang_maps							Térképek
+lang_includedMaps					Felvett térképek
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Játék Tervezô
+lang_programmers					Programozók
+lang_soundDesigners					Hangok
+lang_musics							Zene
+lang_thanksTo						Köszönetek
+lang_betaTesters					Béta Tesztelôk
+lang_buyAlbum						Hallgasd meg az új albumukat: "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Helyi hálózat
+lang_refreshList					Lista frissítése
+lang_players						Játékosok
+lang_mapName						Térkép neve
+lang_join							Csatlakozás !
+lang_IPAdress						IP cím
+lang_canRefreshIn					Frissítésig %i sec van hátra
+lang_nbGamesRefreshed				%i a %i -ból
+lang_noGameFound					Nem találtam játékot. Próbálj újra frissíteni.
+lang_problemConnectingToMaster		Probléma a masterhez való csatlakozáskor.
+
+lang_resumeCurrentGame				Visszatérés a jelenlegi játékba
+lang_joinGame						Csatlakozás játékba
+lang_createServer					Szerver létrehozása
+lang_options						Opciók
+lang_credits						Készítôk
+lang_quit							Kilépés
+
+lang_noGameRunning					Jelenleg nincs futó játék
+
+lang_selectAtLeastOneMap			Legalább egy térképet ki kell választani
+
+lang_apply							<- OK
+lang_cancel							Mégse
+lang_someOptionRequireRestart		Néhány opció érvénybe lépéséhez újra kell indítani a játékot
+lang_clientOptions					Kliens Opciók
+lang_playerName						Játékos neve
+lang_inGameMusic					Zene
+lang_renderingOptions				Renderelési Opciók
+lang_showStats						Mutassa az FPS/Particle számlálót
+lang_fullscreen						Teljes képernyô
+lang_screenResolution				Képernyôfelbontás
+lang_colorDepth						Színmélység
+lang_bits							Bitek
+lang_wallShadowQuality				Fal árnyék minôsége
+lang_noShadows						Nincsenek árnyékok
+lang_hardEdges						Durva élek
+lang_softEdges						Elmosott élek
+lang_baboShadow						Babo árnyéka
+lang_projectileShadow				Lövedék árnyéka
+lang_particleLighting				Particle Lighting
+lang_particleSorting				Particle Sorting
+lang_terrainSplatter				Terrain Splatering
+lang_showCasing						Show Casing
+lang_groundMarkNBlood				Jelzések a talajon és vér
+lang_soundOptions					Hang opciók
+lang_mixRate						Keverési arány
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max Software csatornák
+lang_masterVolume					Fô hangerô
+lang_keyOptions						Billentyl beállítások
+lang_moveUp							Mozgás Fel
+lang_moveDown						Mozgás Le
+lang_moveRight						Mozgás Jobbra
+lang_moveLeft						Mozgás Balra
+lang_shoot							Lövés
+lang_throwGrenade					Gránát dobása
+lang_throwCocktailMolotov			Molotov Cocktail dobása
+lang_use							Használat
+lang_chatToAll						Chat mindenkivel
+lang_chatToTeam						Chat a csapattal
+lang_showScoreBoard					Pontok mutatása
+lang_toggleMenu						Menü váltása
+
+lang_areYouSureYouWantToQuit		Biztos hogy ki akarsz lépni?
+lang_yesQ							Igen
+lang_noQ							Nem
+
+lang_serverHasClosedTheConnection	A szerver bontotta a kapcsolatot
+
+lang_language						Nyelv
+lang_incorrectName					A játékos nevének legalább 2 karakternek kell lennie,\nés nem lehet "Unnamed Babo".\nKérlek változtatsd meg.
+
+END

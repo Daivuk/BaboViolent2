@@ -1,0 +1,188 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dubbla maskingevär
+lang_subMachineGun					Lätt maskingevär
+lang_changGun						Maskingevär
+lang_shotgun						Hagelgevär
+lang_sniper							Krypskyttsgevär
+lang_bazooka						Raketgevär
+lang_grenade						Granat
+lang_flame							Eldkastare
+
+lang_autoAssignTeam					Automatisk lagfördelning
+lang_joinBlueTeam					Gå med det blåa laget
+lang_joinRedTeam					Gå med det röda laget
+lang_spectator						Åskådare
+lang_mainMenu						Huvudmeny
+lang_disconnect						Koppla från
+
+lang_serverDisconnected				Servern kopplade från
+
+lang_dead							Död
+lang_team							Lag
+
+lang_joinedTheGame					%s\x8 hoppade in
+lang_playerDisconnected				%s\x8 kopplade från
+lang_player							Spelare
+lang_playerChangedHisNameFor		Spelare %s\x8 ändrade sitt namn till %s
+lang_returnBlueFlag					\x1%s\x8 återhämtade den blåa flaggan
+lang_returnRedFlag					\x4%s\x8 återhämtade den röda flaggan
+lang_tookBlueFlag					\x4%s\x8 tog den blåa flaggan
+lang_tookRedFlag					\x1%s\x8 tog den röda flaggan
+lang_redScore						Lag röd tog en poäng!
+lang_blueScore						Lag blå tog en poäng!
+
+lang_reloading						Laddar
+
+lang_spawnIn						Återinträde om %i:%02i
+lang_pressToRespawn					Tryck användtangenten [%s] för att återinträda
+
+lang_blueTeamWin					LAG BLÅ VINNER
+lang_redTeamWin						LAG RÖD VINNER
+lang_roundDraw						OAVGJORT
+lang_changingMap					BYTER KARTA
+
+lang_deathmatchC					DÖDSMATCH
+lang_deathmatchD					Spelaren med högst poäng vinner!
+lang_teamDeathmatchC				DÖDSMATCH (LAG)
+lang_teamDeathmatchD				Laget med högst poäng vinner!
+lang_captureTheFlagC				FÅNGA FLAGGAN
+lang_captureTheFlagD				Fånga fiendens flagga, och återvänd med den till din!
+lang_counterBaboristC				MOT-BABORIST
+lang_counterBaboristD				Röd : lägg bomben på bombplatsen. Blå : 
+försvara bombplatsen
+
+lang_connectingC					KOPPLAR
+lang_pressF10ToCancel				Tryck F10 för att avbryta
+
+lang_goesSpectator					%s\x8 åskådar
+lang_joinBlueTeamP					%s\x1 går med det blåa laget
+lang_joinRedTeamP					%s\x4 går med det röda laget
+
+lang_blueTeamC						LAG BLÅ %i
+lang_redTeamC						LAG RÖD %i
+lang_freeForAllC					FRITT FÖR ALLA %i
+lang_spectatorC						ÅSKÅDARE
+
+lang_playerNameC					SPELARENAMN
+lang_scoreC							POÄNG
+lang_pingC							PING
+
+lang_laggerC						*FÖRDRÖJNING*
+
+lang_friendlyFire					Vänskapseld
+
+lang_serverVersion					Serverversion %01i.%02i.%02i
+lang_clientVersion					Klientversion %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Misslyckad uppkoppling! \x8 Kolla IP-adressen
+lang_back							<- Tillbaka
+
+lang_launch							Kör !
+lang_dedicate						Dedikerad
+
+lang_generalGameOption				Allmäna spelinställningar
+lang_gameNameS						Spelnamn
+lang_gameType						Speltyp
+lang_freeForAll						Fritt för alla
+lang_teamDeathmatch					Dödsmatch (lag)
+lang_captureTheFlag					Fånga flaggan
+lang_TCPnUDPport					TCP & UDP-port
+lang_gameLimits						Spelbegränsningar
+lang_scoreLimit						Poänggräns (0 = ingen)
+lang_teamWinLimit					Gräns för lagvinst (0 = ingen)
+lang_timeLimit						Tidsgräns i sekunder (0 = ingen)
+lang_maxPlayer						Max antal spelare (1 till 32)
+lang_spawning						Återinträde
+lang_timeToSpawn					Tid för återinträde i sekunder
+lang_forceRespawn					Tvinga återinträde
+lang_no								\x4Nej
+lang_yes							\x2Ja
+lang_reflectDamage					Spegla skada
+lang_maps							Kartor
+lang_includedMaps					Valda kartor
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Speldesigner
+lang_programmers					Programmerare
+lang_soundDesigners					Ljuddesigners
+lang_musics							Musik
+lang_thanksTo						Tack till
+lang_betaTesters					Betatestare
+lang_buyAlbum						Lyssna på deras nya album "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Lokalt nätverk
+lang_refreshList					Uppdatera lista
+lang_players						Spelare
+lang_mapName						Karta
+lang_join							Gå med !
+lang_IPAdress						IP-adress
+lang_canRefreshIn					Uppdaterar om %i sek
+lang_nbGamesRefreshed				%i av %i
+lang_noGameFound					Inga spel funna. Försök uppdatera igen.
+lang_problemConnectingToMaster		Kunde inte koppla upp mot master:n.
+
+lang_resumeCurrentGame				Återvänd till aktuellt spel
+lang_joinGame						Gå med i spel
+lang_createServer					Skapa server
+lang_options						Inställningar
+lang_credits						Om
+lang_quit							Avsluta
+
+lang_noGameRunning					Det finns inga aktiva spel
+
+lang_selectAtLeastOneMap			Du måste välja åtminstone en karta
+
+lang_apply							<- Verkställ
+lang_cancel							Avbryt
+lang_someOptionRequireRestart		Vissa inställningar kräver en omstart av spelet
+lang_clientOptions					Klientinställningar
+lang_playerName						Spelarenamn
+lang_inGameMusic					Musik i spelet
+lang_renderingOptions				Renderingsinställningar
+lang_showStats						Visa FPS/partikelräknare
+lang_fullscreen						Helskärm
+lang_screenResolution				Skärmupplösning
+lang_colorDepth						Färgdjup
+lang_bits							bitar
+lang_wallShadowQuality				Kvalitet på väggskuggor
+lang_noShadows						Inga skuggor
+lang_hardEdges						Hårda kantor
+lang_softEdges						Mjuka kantor
+lang_baboShadow						Babo-skugga
+lang_projectileShadow				Projektilskugga
+lang_particleLighting				Partikelljus
+lang_particleSorting				Partikelsortering
+lang_terrainSplatter				Nedstänkning av terrängen
+lang_showCasing						Visa omslag
+lang_groundMarkNBlood				Blod- och märken på marken
+lang_soundOptions					Ljudinställningar
+lang_mixRate						Frekvens
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max antal mjukvarukanaler
+lang_masterVolume					Huvudvolym
+lang_keyOptions						Tangentinställningar
+lang_moveUp							Upp
+lang_moveDown						Ner
+lang_moveRight						Höger
+lang_moveLeft						Vänster
+lang_shoot							Skjut
+lang_throwGrenade					Kasta granat
+lang_throwCocktailMolotov			Kasta Molotovcocktail
+lang_use							Använd
+lang_chatToAll						Prata med alla
+lang_chatToTeam						Prata med laget
+lang_showScoreBoard					Visa poängtavla
+lang_toggleMenu						Visa meny
+
+lang_areYouSureYouWantToQuit		Är det säkert att du vill avsluta?
+lang_yesQ							Ja
+lang_noQ							Nej
+
+lang_serverHasClosedTheConnection	Servern har kopplat från uppkopplingen
+
+lang_language						Språk
+lang_incorrectName					Ditt spelarenamn måste innehålla minst två bokstäver\noch bör inte vara "Unnamed Babo".\nVar vänlig och ändra det nu.
+
+END

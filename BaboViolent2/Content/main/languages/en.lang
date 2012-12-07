@@ -1,0 +1,187 @@
+lang_gameName						Babo Violent 2
+
+lang_dualMachineGun					Dual Machine Gun
+lang_subMachineGun					Sub Machine Gun
+lang_changGun						Chain Gun
+lang_shotgun						Shotgun
+lang_sniper							Sniper Rifle
+lang_bazooka						Bazooka
+lang_grenade						Grenade
+lang_flame							Flame
+
+lang_autoAssignTeam					Auto-assign Team
+lang_joinBlueTeam					Join Blue Team
+lang_joinRedTeam					Join Red Team
+lang_spectator						Spectator
+lang_mainMenu						Main Menu
+lang_disconnect						Disconnect
+
+lang_serverDisconnected				Server disconnected
+
+lang_dead							Dead
+lang_team							Team
+
+lang_joinedTheGame					%s\x8 joined the game
+lang_playerDisconnected				%s\x8 disconnected
+lang_player							Player
+lang_playerChangedHisNameFor		Player %s\x8 changed his name for %s
+lang_returnBlueFlag					\x1%s\x8 returned the blue flag
+lang_returnRedFlag					\x4%s\x8 returned the red flag
+lang_tookBlueFlag					\x4%s\x8 took the blue flag
+lang_tookRedFlag					\x1%s\x8 took the red flag
+lang_redScore						Red team scores!
+lang_blueScore						Blue team scores!
+
+lang_reloading						Reloading
+
+lang_spawnIn						Spawn in %i:%02i
+lang_pressToRespawn					Press use key [%s] to respawn
+
+lang_blueTeamWin					BLUE TEAM WINS
+lang_redTeamWin						RED TEAM WINS
+lang_roundDraw						ROUND DRAW
+lang_changingMap					CHANGING MAP
+
+lang_deathmatchC					DEATHMATCH
+lang_deathmatchD					The player with the highest scores wins!
+lang_teamDeathmatchC				TEAM DEATHMATCH
+lang_teamDeathmatchD				The team with the highest scores wins!
+lang_captureTheFlagC				CAPTURE THE FLAG
+lang_captureTheFlagD				Capture the enemy's flag and return it to yours!
+lang_counterBaboristC				COUNTER BABORIST
+lang_counterBaboristD				Red : plank the explosive on the bomb site. Blue : defend the bomb site
+
+lang_connectingC					CONNECTING
+lang_pressF10ToCancel				Press F10 to cancel
+
+lang_goesSpectator					%s\x8 goes spectator
+lang_joinBlueTeamP					%s\x1 joins blue team
+lang_joinRedTeamP					%s\x4 joins red team
+
+lang_blueTeamC						BLUE TEAM
+lang_redTeamC						RED TEAM
+lang_freeForAllC					FREE FOR ALL %i
+lang_spectatorC						SPECTATORS
+
+lang_playerNameC					PLAYER NAME
+lang_scoreC							SCORE
+lang_pingC							PING
+
+lang_laggerC						*LAGGER*
+
+lang_friendlyFire					Friendly Fire
+
+lang_serverVersion					server version %01i.%02i.%02i
+lang_clientVersion					client version %01i.%02i.%02i
+
+lang_connectionFailed				\x4 Connection Failed! \x8 Check IP Address
+lang_back							<- Back
+
+lang_launch							Launch !
+lang_dedicate						Dedicate
+
+lang_generalGameOption				General Game Options
+lang_gameNameS						Game Name
+lang_gameType						Game Type
+lang_freeForAll						Free for All
+lang_teamDeathmatch					Team Deathmatch
+lang_captureTheFlag					Capture the Flag
+lang_TCPnUDPport					TCP & UDP Port
+lang_gameLimits						Game Limits
+lang_scoreLimit						Score Limit (0 = Unlimited)
+lang_teamWinLimit					Team Win Limit (0 = Unlimited)
+lang_timeLimit						Time Limit in Second (0 = Unlimited)
+lang_maxPlayer						Max player (1 to 32)
+lang_spawning						Spawning
+lang_timeToSpawn					Time To Spawn in Second
+lang_forceRespawn					Force Respawn
+lang_no								\x4No
+lang_yes							\x2Yes
+lang_reflectDamage					Reflect Damage
+lang_maps							Maps
+lang_includedMaps					Included Maps
+
+lang_RndLabsTeam					RndLabs Team
+lang_gameDesigner					Game Designer
+lang_programmers					Programmers
+lang_soundDesigners					Sound Designers
+lang_musics							Musics
+lang_thanksTo						Thanks to
+lang_betaTesters					Beta Testers
+lang_buyAlbum						Check out their new album "Sacrament"
+
+lang_internet						Internet
+lang_localNetwork					Local Network
+lang_refreshList					Refresh List
+lang_players						Players
+lang_mapName						Map Name
+lang_join							Join !
+lang_IPAdress						IP Adress
+lang_canRefreshIn					Can refresh in %i sec
+lang_nbGamesRefreshed				%i of %i
+lang_noGameFound					No games found. Try to refresh again.
+lang_problemConnectingToMaster		Problem connecting to master.
+
+lang_resumeCurrentGame				Resume current game
+lang_joinGame						Join game
+lang_createServer					Create server
+lang_options						Options
+lang_credits						Credits
+lang_quit							Quit
+
+lang_noGameRunning					There is no game currently running
+
+lang_selectAtLeastOneMap			You have to select at least one map
+
+lang_apply							<- Apply
+lang_cancel							Cancel
+lang_someOptionRequireRestart		Some options require the game to be restarted
+lang_clientOptions					Client Options
+lang_playerName						Player Name
+lang_inGameMusic					In Game Music
+lang_renderingOptions				Rendering Options
+lang_showStats						Show FPS/Particle Count
+lang_fullscreen						Fullscreen
+lang_screenResolution				Screen Resolution
+lang_colorDepth						Color Depth
+lang_bits							bits
+lang_wallShadowQuality				Wall Shadow Quality
+lang_noShadows						No Shadows
+lang_hardEdges						Hard Edges
+lang_softEdges						Soft Edges
+lang_baboShadow						Babo Shadow
+lang_projectileShadow				Projectile Shadow
+lang_particleLighting				Particle Lighting
+lang_particleSorting				Particle Sorting
+lang_terrainSplatter				Terrain Splatering
+lang_showCasing						Show Casing
+lang_groundMarkNBlood				Ground Mark & Blood
+lang_soundOptions					Sound Options
+lang_mixRate						Mix Rate
+lang_hertz							Hz
+lang_maxSoftwareChannels			Max Software Channels
+lang_masterVolume					Master Volume
+lang_keyOptions						Key Options
+lang_moveUp							Move Up
+lang_moveDown						Move Down
+lang_moveRight						Move Right
+lang_moveLeft						Move Left
+lang_shoot							Shoot
+lang_throwGrenade					Throw Grenade
+lang_throwCocktailMolotov			Throw Cocktail Molotov
+lang_use							Use
+lang_chatToAll						Chat to All
+lang_chatToTeam						Chat to Team
+lang_showScoreBoard					Show Score Board
+lang_toggleMenu						Toggle Menu
+
+lang_areYouSureYouWantToQuit		Are you sure you want to quit?
+lang_yesQ							Yes
+lang_noQ							No
+
+lang_serverHasClosedTheConnection	The server has closed the connection
+
+lang_language						Language
+lang_incorrectName					Your player name must contain at least 2 characters\nand should not be "Unnamed Babo".\nPlease change it now.
+
+END

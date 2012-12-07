@@ -39,10 +39,10 @@ CVector2i::CVector2i(int x, int y)
 	s[1] = y;
 }
 
-CVector2i::CVector2i(int* array)
+CVector2i::CVector2i(int* in_v)
 {
-	s[0] = array[0];
-	s[1] = array[1];
+	s[0] = in_v[0];
+	s[1] = in_v[1];
 }
 
 CVector2i::CVector2i(const CVector2i& vector)
@@ -68,10 +68,10 @@ CVector2f::CVector2f(float x, float y)
 	s[1] = y;
 }
 
-CVector2f::CVector2f(float* array)
+CVector2f::CVector2f(float* in_v)
 {
-	s[0] = array[0];
-	s[1] = array[1];
+	s[0] = in_v[0];
+	s[1] = in_v[1];
 }
 
 CVector2f::CVector2f(const CVector2f& vector)
@@ -99,11 +99,11 @@ CVector3i::CVector3i(int x, int y, int z)
 	s[2] = z;
 }
 
-CVector3i::CVector3i(int* array)
+CVector3i::CVector3i(int* in_v)
 {
-	s[0] = array[0];
-	s[1] = array[1];
-	s[2] = array[2];
+	s[0] = in_v[0];
+	s[1] = in_v[1];
+	s[2] = in_v[2];
 }
 
 CVector3i::CVector3i(const CVector3i& vector)
@@ -132,11 +132,11 @@ CVector3f::CVector3f(float x, float y, float z)
 	s[2] = z;
 }
 
-CVector3f::CVector3f(float* array)
+CVector3f::CVector3f(const float* in_v)
 {
-	s[0] = array[0];
-	s[1] = array[1];
-	s[2] = array[2];
+	s[0] = in_v[0];
+	s[1] = in_v[1];
+	s[2] = in_v[2];
 }
 
 CVector3f::CVector3f(const CVector3f& vector)
@@ -167,12 +167,12 @@ CVector4f::CVector4f(float x, float y, float z, float r)
 	s[3] = r;
 }
 
-CVector4f::CVector4f(float* array)
+CVector4f::CVector4f(const float* in_v)
 {
-	s[0] = array[0];
-	s[1] = array[1];
-	s[2] = array[2];
-	s[3] = array[3];
+	s[0] = in_v[0];
+	s[1] = in_v[1];
+	s[2] = in_v[2];
+	s[3] = in_v[3];
 }
 
 CVector4f::CVector4f(const CVector4f& vector)
