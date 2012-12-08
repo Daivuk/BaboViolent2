@@ -348,7 +348,7 @@ void Console::update(float delay)
 
 		if (m_vPos < ((gameVar.c_huge)?510:310))
 		{
-			m_vPos += delay * 720;
+			m_vPos += delay * 720 * 4;
 			if (m_vPos > ((gameVar.c_huge)?510:310)) m_vPos = (float)((gameVar.c_huge)?510:310);
 		}
 
@@ -505,7 +505,7 @@ void Console::update(float delay)
 		m_currentText->loseFocus();
 		if (m_vPos > 0)
 		{
-			m_vPos -= delay * 720;
+			m_vPos -= delay * 720 * 4;
 			if (m_vPos < 0) m_vPos = 0;
 		}
 
