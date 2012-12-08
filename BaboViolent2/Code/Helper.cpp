@@ -86,7 +86,7 @@ void printLeftText(float x, float y, float size, const CString & text)
 		glGetFloatv(GL_CURRENT_COLOR, curColor);
 		glPushAttrib(GL_CURRENT_BIT);
 			glColor4f(0,0,0, curColor[3]);
-			dkfPrint(size,x+shadowDis,y+shadowDis,0,textColorLess(text).s);
+			dkfPrint(size,x/*+shadowDis*/,y+1,0,textColorLess(text).s);
 		glPopAttrib();
 		glColor4fv(curColor);
 #endif
@@ -251,6 +251,118 @@ void renderTexturedQuadSmooth(int x, int y, int w, int h, unsigned int texture)
 			glTexCoord2i(1,0);
 			glVertex2i(x+w,y+h);
 		glEnd();
+	glPopAttrib();
+#endif
+}
+
+void renderMenuQuad(int x, int y, int w, int h)
+{
+#ifndef _DX_
+	glPushAttrib(GL_CURRENT_BIT);
+
+		//--- Round corner of 5 units
+		CVector4f color4;
+		glGetFloatv(GL_CURRENT_COLOR, color4.s);
+
+	/*	if (gameVar.r_highDetailMenu)
+		{
+			glBegin(GL_QUAD_STRIP);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x,y+5);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x,y+h-5);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+1,y+3);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+1,y+h-3);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+3,y+1);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+3,y+h-1);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+5,y);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+5,y+h);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+w-5,y);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w-5,y+h);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+w-3,y+1);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w-3,y+h-1);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+w-1,y+3);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w-1,y+h-3);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+w,y+5);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w,y+h-5);
+			glEnd();
+		}
+		else
+		{
+		}*/
+		if (gameVar.r_highDetailMenu)
+		{
+			glBegin(GL_QUADS);
+				glColor4f(0, 0, 0, .25f);
+				
+				glVertex2i(x - 1, y);
+				glVertex2i(x - 1, y + h);
+				glVertex2i(x + w, y + h);
+				glVertex2i(x + w, y);
+
+				glVertex2i(x, y - 1);
+				glVertex2i(x, y + h);
+				glVertex2i(x + w, y + h);
+				glVertex2i(x + w, y - 1);
+
+				glVertex2i(x, y);
+				glVertex2i(x, y + h + 1);
+				glVertex2i(x + w, y + h + 1);
+				glVertex2i(x + w, y);
+
+				glVertex2i(x, y);
+				glVertex2i(x, y + h);
+				glVertex2i(x + w + 1, y + h);
+				glVertex2i(x + w + 1, y);
+			glEnd();
+
+			glBegin(GL_QUADS);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x,y);
+				glColor4fv((color4 * 1).s);
+				glVertex2i(x,y+h / 2);
+				glColor4fv((color4 * 1).s);
+				glVertex2i(x+w,y+h / 2);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w,y);
+
+				glColor4fv((color4*.9f).s);
+				glVertex2i(x,y + h / 2);
+				glColor4fv((color4*0.6f).s);
+				glVertex2i(x,y+h);
+				glColor4fv((color4*0.6f).s);
+				glVertex2i(x+w,y+h);
+				glColor4fv((color4*.9f).s);
+				glVertex2i(x+w,y + h / 2);
+			glEnd();
+		}
+		else
+		{
+			glBegin(GL_QUADS);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x,y);
+				glColor4fv((color4 * 0.6f).s);
+				glVertex2i(x,y+h);
+				glColor4fv((color4 * 0.6f).s);
+				glVertex2i(x+w,y+h);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w,y);
+			glEnd();
+		}
 	glPopAttrib();
 #endif
 }

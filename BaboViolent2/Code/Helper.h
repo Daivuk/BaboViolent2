@@ -33,7 +33,8 @@ void printRightText(float x, float y, float size, const CString & text);
 void renderTexturedQuad(int x, int y, int w, int h, unsigned int texture);
 void renderTexturedQuadSmooth(int x, int y, int w, int h, unsigned int texture);
 //void renderMenuQuad(int x, int y, int w, int h);
-inline void renderMenuQuad(int x, int y, int w, int h)
+void renderMenuQuad(int x, int y, int w, int h);
+/*inline void renderMenuQuad(int x, int y, int w, int h)
 {
 #ifndef _DX_
 	glPushAttrib(GL_CURRENT_BIT);
@@ -85,16 +86,25 @@ inline void renderMenuQuad(int x, int y, int w, int h)
 				glColor4fv((color4*1.2f).s);
 				glVertex2i(x,y);
 				glColor4fv((color4*.8f).s);
+				glVertex2i(x,y+h / 2);
+				glColor4fv((color4*.8f).s);
+				glVertex2i(x+w,y+h / 2);
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x+w,y);
+
+				glColor4fv((color4*1.2f).s);
+				glVertex2i(x,y);
+				glColor4fv((color4*.8f).s);
 				glVertex2i(x,y+h);
 				glColor4fv((color4*.8f).s);
 				glVertex2i(x+w,y+h);
 				glColor4fv((color4*1.2f).s);
 				glVertex2i(x+w,y);
 			glEnd();
-		}
+	//	}
 	glPopAttrib();
 #endif
-}
+}*/
 
 #endif
 
