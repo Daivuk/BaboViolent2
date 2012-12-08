@@ -27,7 +27,7 @@
 //
 IntroScreen::IntroScreen()
 {
-	showDelay = 6;
+	showDelay = 3;
 	tex_rndLogo = dktCreateTextureFromFile("main/textures/RnDLabs.tga", DKT_FILTER_LINEAR);
 //	tex_glowLogo = dktCreateTextureFromFile("main/textures/RnDLabsGlow.tga", DKT_FILTER_LINEAR);
 	tex_hgLogo = dktCreateTextureFromFile("main/textures/HeadGames.tga", DKT_FILTER_LINEAR);
@@ -78,7 +78,7 @@ void IntroScreen::render()
 	dkglPushOrtho(1,1);
 		glPushAttrib(GL_ENABLE_BIT | GL_CURRENT_BIT);
 			glEnable(GL_TEXTURE_2D);
-			if (showDelay > 5)
+		/*	if (showDelay > 5)
 			{
 				glBindTexture(GL_TEXTURE_2D, tex_hgLogo);
 				glColor3f(1-(showDelay-5),1-(showDelay-5),1-(showDelay-5));
@@ -94,7 +94,7 @@ void IntroScreen::render()
 				glColor3f(showDelay - 3,showDelay - 3,showDelay - 3);
 			}
 
-			else if (showDelay > 2)
+			else */if (showDelay > 2)
 			{
 				glBindTexture(GL_TEXTURE_2D, tex_rndLogo);
 				glColor3f(1-(showDelay-2),1-(showDelay-2),1-(showDelay-2));

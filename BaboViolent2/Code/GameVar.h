@@ -167,6 +167,9 @@ public:
 	CString sv_joinMessage;
 	bool sv_sendJoinMessage;
 
+	//spawn immunity
+	float sv_spawnImmunityTime;
+
 	//--- For remote control
 	CString zsv_adminUser;
 	CString zsv_adminPass;

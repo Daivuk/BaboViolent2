@@ -203,14 +203,16 @@ void Scene::update(float delay)
 		//	menu->isReady = true;
 		//	ZEVEN_SAFE_DELETE(menuManager.root);
 
-			if (surveySent)
-			{
+			// [dsl] No more survey!
+		/*	if (surveySent)
+			{*/
+				if (gameVar.s_inGameMusic) dksPlayMusic("main/sounds/Menu.ogg", -1);
 				createMenu();
-			}
+		/*	}
 			else
 			{
 				createSurvey();
-			}
+			}*/
 		//	survey = new CSurvey();
 			menuManager.root->visible = true;
 		/*	if (gameVar.s_inGameMusic) dksPlayMusic("main/sounds/Menu.ogg", -1);*/
@@ -372,7 +374,8 @@ void Scene::render()
 			glPushAttrib(GL_ENABLE_BIT | GL_CURRENT_BIT);
 				glEnable(GL_BLEND);
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-				glColor3f(1,1,.6f);
+				glColor3f(1,1,1);
+			//	glColor3f(1,1,.6f);
 				renderTexturedQuad(xM,yM,32,32,tex_menuCursor);
 			glPopAttrib();
 		dkglPopOrtho();
@@ -545,20 +548,23 @@ void Scene::render()
 				{
 					if (client->showMenu)
 					{
-						glColor3f(1,1,.6f);
+						glColor3f(1,1,1);
+					//	glColor3f(1,1,.6f);
 						renderTexturedQuad(xM,yM,32,32,tex_menuCursor);
 					}
 					else
 					{
 						glColor4f(0,0,0,1-alphaScope);
 						renderTexturedQuad(xM-15,yM-15,32,32,tex_crosshair);
-						glColor4f(1,1,.6f,1-alphaScope);
+					//	glColor4f(1,1,.6f,1-alphaScope);
+						glColor4f(1,1,1,1-alphaScope);
 						renderTexturedQuad(xM-16,yM-16,32,32,tex_crosshair);
 					}
 				}
 				else
 				{
-					glColor3f(1,1,.6f);
+					glColor3f(1,1,1);
+				//	glColor3f(1,1,.6f);
 					renderTexturedQuad(xM,yM,32,32,tex_menuCursor);
 				}
 			glPopAttrib();
