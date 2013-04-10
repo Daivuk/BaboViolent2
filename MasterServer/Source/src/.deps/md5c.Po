@@ -1,0 +1,5 @@
+md5c.o md5c.o: md5c.c global.h MD5.h
+
+global.h:
+
+MD5.h:

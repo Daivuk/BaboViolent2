@@ -74,6 +74,10 @@ mt.dep
 *.lastbuildstate
 ProDebug/
 BaboViolent2.vcxproj.filters
+*.so
+*.so.*
+*.o
+
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
 #packages/

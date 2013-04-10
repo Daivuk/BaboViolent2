@@ -90,7 +90,7 @@ bool			dksInit(int mixrate, int maxsoftwarechannels)
 #ifdef USE_FMODEX
     float ds, df, rs;
     bool r = true;
-    char * message = 0;
+    const char * message = 0;
     unsigned int version;
     FMOD_RESULT  result;
 
@@ -105,7 +105,7 @@ bool			dksInit(int mixrate, int maxsoftwarechannels)
     if((result != FMOD_OK) || (version < FMOD_VERSION))
     {
         message = FMOD_ErrorString(result);
-        printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
+		printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
         goto l_abort;
     }
 
@@ -214,7 +214,7 @@ void			dksShutDown()
 
 
 //
-// Pour créer un son
+// Pour crï¿½er un son
 //
 #ifdef USE_FMODEX
 FMOD_SOUND
@@ -232,7 +232,7 @@ FSOUND_SAMPLE
         return 0;
 #endif
 
-	// On check si il n'existe pas déjà en comparant les filename
+	// On check si il n'existe pas dï¿½jï¿½ en comparant les filename
 	for (i=0;i<sounds.size();i++)
 	{
 		CSound * sound = sounds.at(i);
@@ -244,7 +244,7 @@ FSOUND_SAMPLE
 		}
 	}
 
-	// Si on ne l'a pas trouvé un le cré
+	// Si on ne l'a pas trouvï¿½ un le crï¿½
 	if (i == sounds.size())
 	{
 		newSound = new CSound();
@@ -292,7 +292,7 @@ void dksDeleteSound(
 		{
 			sound->loadedXTime--;
 
-			// Si on les a toute pogné, on l'efface
+			// Si on les a toute pognï¿½, on l'efface
 			if (sound->loadedXTime <= 0)
 			{
 				delete sound;
@@ -322,7 +322,7 @@ int dksPlaySound(
     FMOD_RESULT r;
     int channel = -1;
     FMOD_MODE mode;
-    char * message = 0;
+    const char * message = 0;
     CSound * s = 0;
     float vol = (float)volume / 255.0f;
 
@@ -414,7 +414,7 @@ void dksPlay3DSound(
     FMOD_RESULT r;
     FMOD_CHANNEL * ch;
     FMOD_MODE mode;
-    char * message = 0;
+    const char * message = 0;
     std::vector<CSound *>::iterator i;
     CSound * s = 0;
     FMOD_VECTOR pos = {position.s[0], position.s[1], position.s[2]};
@@ -510,7 +510,7 @@ void			dksPlayMusic(char* filename, int mchannel, int volume)
 #ifdef USE_FMODEX
 
     FMOD_RESULT r;
-    char * message = 0;
+    const char * message = 0;
     float vol = (float) volume / 255.0f;
 
     r = FMOD_System_CreateStream(s_system, filename, FMOD_LOOP_NORMAL, 0, & stream_music);
@@ -559,7 +559,7 @@ l_abort:
 
 
 //
-// Arrêter la music
+// Arrï¿½ter la music
 // 
 void			dksStopMusic()
 {
