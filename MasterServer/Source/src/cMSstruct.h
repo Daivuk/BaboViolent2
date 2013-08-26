@@ -1,0 +1,290 @@
+#ifndef _MASTER_STRUCT_H
+#define	_MASTER_STRUCT_H
+
+
+
+//type ID des message
+#define		BV2_ROW			997		//ce que le master retourne pour BV2
+#define		BV2_LIST		999		//un client nous demande la liste des game de BV2
+//#define	STOP_QUERY		1000	//REMOVED, not usefull anymore
+#define		KILL_SERV		1001	//un client nous dit que son serveur est dead, not used anymore
+#define		MASTER_INFO		1002	//packet qui va contenir le nombre denregistrement retourner par la derniere requete
+#define		PLAYER_RESULT	1003	//used to update stats for a player after a game
+#define		PLAYER_REGISTER	1004	//used to registere a new BaboStats player
+#define		REGISTER_RESULT	1005	//used to send the player if the registration was OK
+#define		FINISH_RESULT	1006	//used to tell MasterServer that we have finished sending him baboStats(no packet, just a typeID)
+#define		SERVER_REGISTER	1007	//used to try registering with master server
+
+#define		IM_SERVER	1008	//used to tell master server, we are a server (no struct needed)
+#define		IM_PLAYER	1009	//used to tell master server, we are a player (no struct needed)	
+
+
+#define		CACHE_BAN	1010	// tell the master we are sending him a cache ban, also to send a server requestiong cacheban
+#define		CACHE_BAN_LIST	1011	// tell the master we want the list of cached bans ( with a filter for name if any present )
+#define		CACHE_UNBAN	1012	// tell the master we want to unban someone 
+#define		CACHE_BANNED	1013	// ask the master if the player is banned
+#define		CACHE_ANSWER	1014	// tell the server who ask for a banned player if it is actually banned
+
+#define		ACCOUNT_URL	1015	// tell the accountUrl
+
+#define		SURVEY_SUBMIT	1016	//--- Survey ID
+#define		SURVEY_NEVER	1017	//--- The guy don't want to answer the survey, E.V.E.R
+#define		SURVEY_CONFIRM	1018	//--- Master send confirmation that he received the survey
+
+#define		CACHE_LIST_REMOTE	1019	// tell the master we want the list of cached list of remote server
+#define		CACHE_LIST_PLAYER	1021	// received along with data of cached players
+#define		CACHE_LIST_PLAYER_END	1022	// remote server -> master, no more players in cache
+#define		CACHE_LIST_REQUEST_CANCEL	1023	// client -> master, cancel request
+
+	// Ban structs
+
+	//CACHE_BAN		1010
+	struct stCacheBan
+	{
+		short	ID;
+		char	Nick[32];
+		char	IP[16];
+		char	MAC[20];
+		char	Duration;
+		char	Date[9];
+		char	Pass[8];
+	};
+
+	//CACHE BANLIST
+	struct stCacheList
+	{
+		char Filter[32];	// 32 char max filter, can be '\0' for none
+	};
+
+	//CACHE_LIST_REMOTE
+	struct stCacheListRemote
+	{
+		unsigned long FromID;
+		short ReqNum;		// used to number consecutive cache list requests
+		char Filter[32];	// 32 char max filter, can be '\0' for none
+		char ServerIP[16];
+		char ServerPort[6];
+	};
+
+	//CACHE_UNBAN		1012
+	struct stCacheUnban
+	{
+		short	ID;
+		char	Pass[10];
+	};
+
+	//CACHE_BANNED		1013
+	struct stCacheBanned
+	{
+		short	ID;			// player ID, only used for the server
+		char	IP[16];
+		char	MAC[20];
+	};
+
+	//CACHE_ANSWER		1014
+	struct stCacheAnswer
+	{
+		short	ID;
+		char	Answer;	// 0 = no , 1 = yes
+	};
+
+	struct stCachePlayer
+	{
+		unsigned long FromID;
+		short ReqNum;		// id of request this data belong to
+		short ID;
+		char NickName[32];
+		char IP[16];
+		char macAddr[20];
+	};
+
+	//CACHE_LIST_PLAYER_END
+	struct stCacheListEnd
+	{
+		unsigned long requestFromID;
+	};
+
+
+
+
+//Les struct Baboviolent2
+
+	//this is the struct used to query the current game list
+	//only client version is needed
+	//struct typeID 999
+	struct stBV2list
+	{
+		char	Version[5]; //exemple :  2.02  + '\0'
+	};
+
+	
+
+
+	
+	//struct received by master server after a query
+	//if NbGames == -1 : Wrong version  ... else : Number of games
+	//struct typeID 1002
+	struct stMasterInfo
+	{
+		short		NbGames;
+	};
+
+
+
+
+
+	//Current Game Infos
+	//struct typeID 997		//total bytes : 132
+	struct stBV2row
+	{
+		char			map[17]; // 16 + '\0'				//TEXT
+		char			serverName[64]; // 63 + '\0'			//TEXT
+		char			password[16]; // 15 + '\0'			//TEXT
+		char			ip[16];						//TEXT		lors d'un update vers le master, IP peut etre vide, le master va catcher le IP anyway en pognant le packet
+		unsigned short		port;						//NUMERIC	
+		char			nbPlayer;					//NUMERIC
+		char			maxPlayer;					//NUMERIC
+		unsigned short		flags;						//NUMERIC
+		char			gameType;					//NUMERIC
+		unsigned short		ServerID;					//if server is REGISTERED, put ID here, else, leave to 0
+		char			Version[5];					//version of server
+		char			Priority;					//master server usage only, leave at 0
+		unsigned short		DBVersion;
+		unsigned short		Padding;
+	};
+
+	
+
+
+
+	//After a BaboStats enabled match
+	//use this struct to update the database with each player
+	//only the server uses this
+	//Struct typeID 1003
+	struct stPlayerResult
+	{
+		unsigned short	ServerID;		//UniqueID of the current server (only registered servers have this, 0 otherwise)
+		unsigned long	BaboID;			//Unique ID of the bv2 player (received after the player has connected to the server)
+        	unsigned short	Deaths;			//Number of deaths in this match
+		unsigned short	Frags;			//Number of Frags
+		unsigned long	Medals;			//The player has win any medals ?
+		short		XP;			//Increment or Decrement of current player's XP
+		unsigned short	Molotov;		//number of molotov kills
+		unsigned short	Grenades;		//number of grenade kills
+		unsigned short	Bazooka;		//number of bazooka kills
+		unsigned short	SMG;			//number of SMG kills
+		unsigned short	Shotgun;		//number of shotgun kills
+		unsigned short	Sniper;			//number of sniper kills
+		unsigned short	DMG;			//number of DualMachinegun kills
+		unsigned short	Chaingun;		//number of chaingun kills
+		unsigned short	Photon;			//number of photon rifle kills
+		unsigned short	Nuke;			//number of Nuke kills
+		unsigned short	Knife;			//number of Knife kills
+	};
+
+
+
+
+
+
+	//IF a server is BaboStats enabled, player must register in the option menu, or enter his current infos for stats tracking
+	//use this struct to send what the user entered
+	//Struct typeID 1004
+	struct stPlayerRegister
+	{
+		char	Action;		//Action, 0 = User wants to create new account. 1 = User wants to authentify(account already created)
+		char	Username[16];	//username entered (what will be shown on website)
+		char	Password[16];	//password the user entered
+		//char	cdkey[33];	//not yet
+	};
+
+
+	//If a server wants to be BaboStats Enabled,
+	//it must first query master with username/password on creation
+	//to get unique ID from Master, that he enclosed with every player stats sent
+	//struct type 1007
+	struct stServerRegister
+	{
+		char	Username[16];	//username that we give to official server
+		char	Password[16];	//password the server must enter
+	};
+
+
+
+
+
+
+	//when a player or server registers, the result of Succes of creation/authentification
+	//or failure is returned here
+	//on success, ID is != 0
+	//Struct typeID 1005
+	
+	/* :Result: can be one of these:
+
+		On creation :
+
+		0 :		Evrything is fine, new player creation successfull
+		1 :		Failed, Username already exists
+
+		On re-input (when i'm on another computer, but i entered Username/Password to keep my stats)
+
+		2:		Evrything is fine, username/password exists and are valid
+		3:		Username exists, but password is wrong
+		4:		Username doesn't exist
+
+
+		FOR SERVERS THAT WANTS TO AUTHENTICATE:
+
+		0:		Failure
+		1:		Success
+
+	*/
+	struct stRegisterResult
+	{
+		char	Result;
+		long	ID;			
+	};
+
+
+
+
+
+	//tell the master server your server has closed, only server sends this
+	//struct typeID 1001
+	struct stKillServ
+	{
+		unsigned short Port;
+	};
+
+
+	//--- All information for the survey
+	struct SSurvey
+	{
+		char gender;
+		char age;
+		char continent;
+		char country[80];
+		char gameGenre;
+		char specifiedGenre[80];
+		char hourPlayerGames;
+		char magazine[80];
+		char console;
+
+		char hourPlayingBV2;
+		char kindOfServer;
+		char howYouLearnAboutBabo[80];
+		char whoDoYouPlayWith; //--- bitMask
+		char whatDoYouLike; //--- bitMask
+		char whatDoYouLikeOther[80];
+
+		char whatYouWouldLikeForBV3; //--- bitMask
+		char whatYouWouldLikeForBV3Other[80];
+		char adsAndFree;
+		char payNoAds;
+
+		char email[80];
+	};
+
+
+
+#endif

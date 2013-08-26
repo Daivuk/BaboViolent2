@@ -1,0 +1,8 @@
+md5c.o md5c.o:  \
+ /home/marcd/Desktop/RndLabsSVN/Games/MasterServer/linuxmaster/src/md5c.c \
+  /home/marcd/Desktop/RndLabsSVN/Games/MasterServer/linuxmaster/src/global.h \
+  /home/marcd/Desktop/RndLabsSVN/Games/MasterServer/linuxmaster/src/MD5.h
+
+/home/marcd/Desktop/RndLabsSVN/Games/MasterServer/linuxmaster/src/global.h:
+
+/home/marcd/Desktop/RndLabsSVN/Games/MasterServer/linuxmaster/src/MD5.h:
