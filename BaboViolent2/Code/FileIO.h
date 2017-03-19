@@ -23,7 +23,7 @@
 #include "CString.h"
 #include "CVector.h"
 #include "stdio.h"
-
+#include <stdint.h>
 
 class FileIO
 {
@@ -45,7 +45,7 @@ public:
 	virtual void Open(CString filename, CString how);
 	virtual void Close();
 
-	// Pour écrire normalement dans le fichier
+	// Pour ï¿½crire normalement dans le fichier
 	virtual void putLine(CString line);
 	virtual CString getLine();
 
@@ -60,10 +60,10 @@ public:
 	virtual unsigned char * getUByteArray(int size);
 	virtual int getInt(); // short
 	virtual unsigned int getUInt(); // unsigned short
-	virtual long getLong();
-	virtual long * getLongArray(int size);
-	virtual unsigned long getULong();
-	virtual unsigned long * getULongArray(int size);
+	virtual int32_t getLong();
+	virtual int32_t * getLongArray(int size);
+	virtual uint32_t getULong();
+	virtual uint32_t * getULongArray(int size);
 	virtual float getFloat();
 	virtual float * getFloatArray(int size);
 	virtual double getDouble();
@@ -73,7 +73,7 @@ public:
 	virtual CVector3f getVector3f();
 	virtual CVector4f getVector4f();
 
-	// Les puts, pour écrire en binaire dans le fichier
+	// Les puts, pour ï¿½crire en binaire dans le fichier
 	virtual void put(bool data);
 	virtual void put(char data);
 	virtual void put(char * data, int size);

@@ -22,22 +22,22 @@
 
 
 #include "cMSstruct.h"
-
+#include <stdint.h>
 
 // Quand le client recois un ping, il renvoit un pong
 #define NET_CLSV_PONG 1
 struct net_clsv_pong
 {
-	char playerID; // Le ID du joueur concerné
+	char playerID; // Le ID du joueur concernï¿½
 //	char bidon[31];
 };
 
-// Le client est pret à spawner (apparaitre)
-// Il va envoyer une request au server, et ce dernier va décider OÙ il spawn
+// Le client est pret ï¿½ spawner (apparaitre)
+// Il va envoyer une request au server, et ce dernier va dï¿½cider Oï¿½ il spawn
 #define NET_CLSV_SPAWN_REQUEST 2
 struct net_clsv_spawn_request
 {
-	char playerID; // Le ID du joueur concerné
+	char playerID; // Le ID du joueur concernï¿½
 	char weaponID; // Le ID du gun avec lequel spawner
 	char meleeID;
 
@@ -50,19 +50,19 @@ struct net_clsv_spawn_request
 	unsigned char blueDecal[3];
 };
 
-// Le client tire du fusil (activité commune chez les cocassien)
-// Le server et les clients connaissent le fusil utilisé par le joueur, donc pas besoin de l'envoyer
+// Le client tire du fusil (activitï¿½ commune chez les cocassien)
+// Le server et les clients connaissent le fusil utilisï¿½ par le joueur, donc pas besoin de l'envoyer
 #define NET_CLSV_PLAYER_SHOOT 3
 struct net_clsv_player_shoot
 {
 	char playerID; // Le ID du joueur
 	char weaponID; // Le ID du type de gun
-	char nuzzleID; // le ID du nuzzle du fusil qui l'a tiré
-	short p1[3]; // Le point du début du ray
+	char nuzzleID; // le ID du nuzzle du fusil qui l'a tirï¿½
+	short p1[3]; // Le point du dï¿½but du ray
 	short p2[3]; // Le point de la fin du ray
 };
 
-// La version du server est accepté par le client
+// La version du server est acceptï¿½ par le client
 #define NET_CLSV_GAMEVERSION_ACCEPTED 4
 struct net_clsv_gameversion_accepted
 {
@@ -77,7 +77,7 @@ struct net_clsv_pickup_request
 	char playerID; // Le ID du joueur en question
 };
 
-// On demande au server d'être admin!
+// On demande au server d'ï¿½tre admin!
 #define NET_CLSV_ADMIN_REQUEST 6
 #ifdef _PRO_
 struct net_clsv_admin_request
@@ -103,22 +103,22 @@ struct net_clsv_map_list_request
 	bool all;
 };
 
-// Le server accept une new connection, il envoit à tout le monde le ID du joueur
+// Le server accept une new connection, il envoit ï¿½ tout le monde le ID du joueur
 #define NET_SVCL_NEWPLAYER 101
 struct net_svcl_newplayer
 {
-	char newPlayerID; // Le ID du nouveau Joueur (de 0 à 31)
-	long baboNetID;
+	char newPlayerID; // Le ID du nouveau Joueur (de 0 ï¿½ 31)
+	int32_t baboNetID;
 };
 
 // Le server envoit ses info aux nouveaux clients
-// Suivi de ça, il va lui envoyer la liste de tout les joueurs
-// À partir de ce moment là, le joueur devra recevoir tout les messages du server
-// Pour garder l'état du server à jour
+// Suivi de ï¿½a, il va lui envoyer la liste de tout les joueurs
+// ï¿½ partir de ce moment lï¿½, le joueur devra recevoir tout les messages du server
+// Pour garder l'ï¿½tat du server ï¿½ jour
 #define NET_SVCL_SERVER_INFO 102
 struct net_svcl_server_info
 {
-	long mapSeed; // Le seed de la map, pour le random
+	int32_t mapSeed; // Le seed de la map, pour le random
 	char mapName[16]; // 15 + '\0'
 
 	// Le type de parti
@@ -131,15 +131,15 @@ struct net_svcl_server_info
 	short redWin;
 };
 
-// Le server fou le camp, il le dit à tout le monde (en moins quil plante là)
+// Le server fou le camp, il le dit ï¿½ tout le monde (en moins quil plante lï¿½)
 #define NET_SVCL_SERVER_DISCONNECT 103
 /*struct net_svcl_server_disconnect
 {
-	// Pas grand truc à mettre ici ! Me semble que le message est clair ;)
+	// Pas grand truc ï¿½ mettre ici ! Me semble que le message est clair ;)
 };*/
 
 // Le client fou le camp, le server le sait tout suite, et le shoot au autres 
-// (en moins quil plante là)
+// (en moins quil plante lï¿½)
 #define NET_SVCL_PLAYER_DISCONNECT 104
 struct net_svcl_player_disconnect
 {
@@ -147,12 +147,12 @@ struct net_svcl_player_disconnect
 };
 
 // Le client fou le camp, le server le sait tout suite, et le shoot au autres 
-// (en moins quil plante là)
+// (en moins quil plante lï¿½)
 #define NET_SVCL_PLAYER_ENUM_STATE 105
 struct net_svcl_player_enum_state
 {
 	char playerID; // Le ID du joueur
-	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractères
+	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractï¿½res
 	char teamID; // Son team
 	char status; // Son status
 	short kills;
@@ -165,7 +165,7 @@ struct net_svcl_player_enum_state
 	float dmg;
 	char weaponID; // Le gun qu'il a
 	char playerIP[16];
-	long babonetID;
+	int32_t babonetID;
 
 	// Skin info
 	char skin[7];
@@ -176,15 +176,15 @@ struct net_svcl_player_enum_state
 	unsigned char blueDecal[3];
 };
 
-// Le server envoit un ping à toute les seconde à tout les joueurs
+// Le server envoit un ping ï¿½ toute les seconde ï¿½ tout les joueurs
 #define NET_SVCL_PING 106
 struct net_svcl_ping
 {
-	char playerID; // Le ID du joueur concervé
+	char playerID; // Le ID du joueur concervï¿½
 //	char bidon[31];
 };
 
-// Le server envoit à chaque seconde le ping de toute le monde à tout le monde
+// Le server envoit ï¿½ chaque seconde le ping de toute le monde ï¿½ tout le monde
 #define NET_SVCL_PLAYER_PING 107
 struct net_svcl_player_ping
 {
@@ -192,7 +192,7 @@ struct net_svcl_player_ping
 	short ping; // Son ping avec le server, en miliseconde
 };
 
-// Le server reçois la request de spawner du joueur, et renvoit à TOUT le monde
+// Le server reï¿½ois la request de spawner du joueur, et renvoit ï¿½ TOUT le monde
 // sa position de spawn
 #define NET_SVCL_PLAYER_SPAWN 108
 struct net_svcl_player_spawn
@@ -200,7 +200,7 @@ struct net_svcl_player_spawn
 	char playerID; // Le ID du joueur
 	char weaponID; // Le ID du gun avec lequel spawner
 	char meleeID; // Le ID du melee gun avec lequel spawner
-	short position[3]; // La position où il spawn
+	short position[3]; // La position oï¿½ il spawn
 
 	// Skin info
 	char skin[7];
@@ -211,23 +211,23 @@ struct net_svcl_player_spawn
 	unsigned char blueDecal[3];
 };
 
-// Le server modifie une variable sv_, il va l'envoyer à tout le monde
-// Les sv ce sont les seuls qui affectent le gameplay et que le server garde l'exclusivitée
+// Le server modifie une variable sv_, il va l'envoyer ï¿½ tout le monde
+// Les sv ce sont les seuls qui affectent le gameplay et que le server garde l'exclusivitï¿½e
 #define NET_SVCL_SV_CHANGE 109
 struct net_svcl_sv_change
 {
 	char svChange[79+1]; // 80 c'est assez
 };
 
-// Un client a tiré, le server a effectué la collision et renvoi le résultat aux autres joueurs
+// Un client a tirï¿½, le server a effectuï¿½ la collision et renvoi le rï¿½sultat aux autres joueurs
 #define NET_SVCL_PLAYER_SHOOT 110
 struct net_svcl_player_shoot
 {
-	char playerID; // Le ID du joueur qui l'a tiré
-	char hitPlayerID; // Le ID du joueur qu'on a touché, si -1 on a touché un mur
-	char nuzzleID; // le ID du nuzzle du fusil qui l'a tiré (pour savoir où spawner le feu)
+	char playerID; // Le ID du joueur qui l'a tirï¿½
+	char hitPlayerID; // Le ID du joueur qu'on a touchï¿½, si -1 on a touchï¿½ un mur
+	char nuzzleID; // le ID du nuzzle du fusil qui l'a tirï¿½ (pour savoir oï¿½ spawner le feu)
 	char weaponID; // Le ID du type de gun
-	short p1[3]; // Le point du début du ray
+	short p1[3]; // Le point du dï¿½but du ray
 	short p2[3]; // Le point de la fin du ray (point d'impact)
 	char normal[3]; // La normal de l'impact
 };
@@ -236,20 +236,20 @@ struct net_svcl_player_shoot
 #define NET_SVCL_DELETE_PROJECTILE 111
 struct net_svcl_delete_projectile
 {
-	long projectileID; // Son ID dans le vector
+	int32_t projectileID; // Son ID dans le vector
 };
 
-// La position d'un projectile (uniquement controlé par le server)
+// La position d'un projectile (uniquement controlï¿½ par le server)
 #define NET_SVCL_PROJECTILE_COORD_FRAME 112
 struct net_svcl_projectile_coord_frame
 {
-	long uniqueID; // Le ID unique du projectile
-	short projectileID; // Le ID du projectile concerné
-	long frameID; // Le frame auquel ça a été envoyé (on en a de besoin pour créer des belles interpolations)
+	int32_t uniqueID; // Le ID unique du projectile
+	short projectileID; // Le ID du projectile concernï¿½
+	int32_t frameID; // Le frame auquel ï¿½a a ï¿½tï¿½ envoyï¿½ (on en a de besoin pour crï¿½er des belles interpolations)
 	short position[3]; // Sa position
 	char vel[3]; // Sa velocity
-//	long uniqueProjectileID;
-	// Sa rotation sur l'axe est calculé côté client, vu que c uniquement visuel
+//	int32_t uniqueProjectileID;
+	// Sa rotation sur l'axe est calculï¿½ cï¿½tï¿½ client, vu que c uniquement visuel
 };
 
 // Pour spawner une explosion
@@ -258,19 +258,19 @@ struct net_svcl_explosion
 {
 	float position[3]; // La position de l'explosion dans map
 	float normal[3]; // L'orientation de l'explosion
-	float radius; // Sa puissance !! (ça va aussi faire shaker la vue :P)
+	float radius; // Sa puissance !! (ï¿½a va aussi faire shaker la vue :P)
 	char playerID;
-	// On ne dit pas qui l'a provoqué et tout, c'est le server qui va faire les hits
+	// On ne dit pas qui l'a provoquï¿½ et tout, c'est le server qui va faire les hits
 };
 
-// Si on a touché un joueur l'hors d'une explosion par exemple
+// Si on a touchï¿½ un joueur l'hors d'une explosion par exemple
 #define NET_SVCL_PLAYER_HIT 114
 struct net_svcl_player_hit
 {
-	char playerID; // Le joueur touché
-	char fromID; // De qui ça vient
-	char weaponID; // Le type d'arme utilisé
-	float damage; // ne pas oublier le damage infligé ! ** New, la vie restante **
+	char playerID; // Le joueur touchï¿½
+	char fromID; // De qui ï¿½a vient
+	char weaponID; // Le type d'arme utilisï¿½
+	float damage; // ne pas oublier le damage infligï¿½ ! ** New, la vie restante **
 	char vel[3]; // La velocity qu'on recoit par le coup
 };
 
@@ -288,28 +288,28 @@ struct net_svcl_play_sound
 #define NET_SVCL_GAMEVERSION 116
 struct net_svcl_gameversion
 {
-	unsigned long gameVersion;
+	uint32_t gameVersion;
 };
 
 // Pour synchroniser le temps des horloges du jeu
 #define NET_SVCL_SYNCHRONIZE_TIMER 117
 struct net_svcl_synchronize_timer
 {
-	long frameID;
+	int32_t frameID;
 	float gameTimeLeft;
 	float roundTimeLeft;
 };
 
-// Pour Changer l'état d'un flag
+// Pour Changer l'ï¿½tat d'un flag
 #define NET_SVCL_CHANGE_FLAG_STATE 118
 struct net_svcl_change_flag_state
 {
 	char flagID; // 0 ou 1
-	char newFlagState; // Son nouvel état
-	char playerID; // Le ID du player qui a effectué l'action
+	char newFlagState; // Son nouvel ï¿½tat
+	char playerID; // Le ID du player qui a effectuï¿½ l'action
 };
 
-// Un joueur est mort ou disconnecté, il laisse tomber le flag
+// Un joueur est mort ou disconnectï¿½, il laisse tomber le flag
 // Le server communique alors la position exacte aux autres players
 #define NET_SVCL_DROP_FLAG 119
 struct net_svcl_drop_flag
@@ -332,7 +332,7 @@ struct net_svcl_flag_enum
 struct net_svcl_round_state
 {
 	char newState;
-	char reInit; // Pour restarter le round à neuf ou en parti (trace de sang, vie, etc)
+	char reInit; // Pour restarter le round ï¿½ neuf ou en parti (trace de sang, vie, etc)
 };
 
 // On change le type de game
@@ -350,7 +350,7 @@ struct net_svcl_map_change
 	char gameType; // Le type dla game
 };
 
-// Un joueur ramasse un item, on le dit à tout le monde
+// Un joueur ramasse un item, on le dit ï¿½ tout le monde
 #define NET_SVCL_PICKUP_ITEM 124
 struct net_svcl_pickup_item
 {
@@ -364,7 +364,7 @@ struct net_svcl_pickup_item
 struct net_svcl_flame_stick_to_player
 {
 	short projectileID; // Le ID unique du projectile
-	char playerID; // Le ID du joueur sur qui ça stick
+	char playerID; // Le ID du joueur sur qui ï¿½a stick
 };
 
 // La console envoit les messages console aux admin
@@ -387,7 +387,7 @@ struct net_svcl_update_vote
 	char nbNo;
 };
 
-// Le server shoot le résultat des votes
+// Le server shoot le rï¿½sultat des votes
 #define NET_SVCL_VOTE_RESULT 131
 struct net_svcl_vote_result
 {
@@ -399,7 +399,7 @@ struct net_svcl_msg
 {
 	char msgDest; // where msg should be displayed, 0 - chat
 	char teamID; // -2 - all, -1 - spectators, 1 - blue, 2 - red
-	char message[49+80+1]; // Null terminated string. De 79 + \0 caractères
+	char message[49+80+1]; // Null terminated string. De 79 + \0 caractï¿½res
 };
 
 #define NET_SVCL_PLAYER_UPDATE_STATS 133
@@ -436,18 +436,18 @@ struct net_clsv_svcl_player_info
 {
 	char playerID; // Le ID du joueur
 	char playerIP[16];
-	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractères
+	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractï¿½res
 	char username[21];		// Account username
 	char password[32];		// Account password (MD5)
 	char macAddr[20]; // player's mac adress, mouhouha
 };
 
-// Le client écris un message, l'envoit au server
+// Le client ï¿½cris un message, l'envoit au server
 #define NET_CLSV_SVCL_CHAT 202
 struct net_clsv_svcl_chat
 {
 	char teamID; // -1 for all, >= 0 for team ID
-	char message[49+80+1]; // Null terminated string. De 79 + \0 caractères
+	char message[49+80+1]; // Null terminated string. De 79 + \0 caractï¿½res
 };
 
 // Le client veux changer de team, il le demande d'abords au server
@@ -462,17 +462,17 @@ struct net_clsv_svcl_team_request
 #define NET_CLSV_SVCL_PLAYER_COORD_FRAME 204
 struct net_clsv_svcl_player_coord_frame
 {
-	char playerID; // Le ID du joueur concerné
-	long frameID; // Le frame auquel ça a été envoyé (on en a de besoin pour créer des belles interpolations)
-//	float angle; // Par où il regarde
+	char playerID; // Le ID du joueur concernï¿½
+	int32_t frameID; // Le frame auquel ï¿½a a ï¿½tï¿½ envoyï¿½ (on en a de besoin pour crï¿½er des belles interpolations)
+//	float angle; // Par oï¿½ il regarde
 	short position[3]; // Sa position
 	char vel[3]; // Sa velocity
-	short mousePos[3]; // La position où il vise
-	long babonetID;
+	short mousePos[3]; // La position oï¿½ il vise
+	int32_t babonetID;
 #ifdef _PRO_
 	int camPosZ;
 #endif
-	// Son orientation sera calculé client side, vu que c pas full important c une boule
+	// Son orientation sera calculï¿½ client side, vu que c pas full important c une boule
 };
 
 #ifdef _PRO_
@@ -488,38 +488,38 @@ struct net_svcl_create_minibot
 #define NET_SVCL_MINIBOT_COORD_FRAME 1002
 struct net_svcl_minibot_coord_frame
 {
-	char playerID; // Le ID du joueur concerné
-	long frameID; // Le frame auquel ça a été envoyé (on en a de besoin pour créer des belles interpolations)
-//	float angle; // Par où il regarde
+	char playerID; // Le ID du joueur concernï¿½
+	int32_t frameID; // Le frame auquel ï¿½a a ï¿½tï¿½ envoyï¿½ (on en a de besoin pour crï¿½er des belles interpolations)
+//	float angle; // Par oï¿½ il regarde
 	short position[3]; // Sa position
 	char vel[3]; // Sa velocity
-	short mousePos[3]; // La position où il vise
-	long babonetID; // ?? don't need that
+	short mousePos[3]; // La position oï¿½ il vise
+	int32_t babonetID; // ?? don't need that
 };
 #endif
 
 
 // On change le nom du joueur pendant le round (devra attendre la fin, ou au prochain round)
-// Techniquement ça ne devrait pas être allowé, mais ça va être hot
+// Techniquement ï¿½a ne devrait pas ï¿½tre allowï¿½, mais ï¿½a va ï¿½tre hot
 #define NET_CLSV_SVCL_PLAYER_CHANGE_NAME 205
 struct net_clsv_svcl_player_change_name
 {
 	char playerID; // Le ID du joueur
-	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractères
+	char playerName[31+1]; // Le nom du joueur, 31 + \0 caractï¿½res
 };
 
-// Le player shoot un projectile, on demande au server de créer l'instance
+// Le player shoot un projectile, on demande au server de crï¿½er l'instance
 #define NET_CLSV_SVCL_PLAYER_PROJECTILE 206
 struct net_clsv_svcl_player_projectile
 {
 	char playerID; // Le ID du joueur
-	char weaponID; // Le ID du type de gun qui a shooté le projectile
-	char nuzzleID; // Le ID du nuzzle du fusil qui a l'a tiré
+	char weaponID; // Le ID du type de gun qui a shootï¿½ le projectile
+	char nuzzleID; // Le ID du nuzzle du fusil qui a l'a tirï¿½
 	char projectileType; // Le type du projectile
 	short position[3]; // La position initial du projectile
-	char vel[3]; // La velocitée initial du projectile
-	long uniqueID;
-//	long uniqueProjectileID;
+	char vel[3]; // La velocitï¿½e initial du projectile
+	int32_t uniqueID;
+//	int32_t uniqueProjectileID;
 };
 
 // Le player shoot avec son melee
@@ -542,7 +542,7 @@ struct net_clsv_svcl_vote_request
 struct net_clsv_map_request
 {
 	char mapName[16]; // 15 + '\0'
-	unsigned long uniqueClientID;
+	uint32_t uniqueClientID;
 };
 
 // On request map

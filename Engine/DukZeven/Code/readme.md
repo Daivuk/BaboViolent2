@@ -17,11 +17,10 @@ Requirments:
 	libsdl-net1.2 libsdl-net1.2-dev	mesa-common-dev libglu1-mesa-dev
 ```
 
-Installing FmodEx
+Installing Fmod
 -----------------
-Grab latest Linux version of [FModEx from this page](http://www.fmod.org/fmod-downloads.html)  
-Extract archive and copy libs from `api/lib` to `/usr/lib`  
-Copy includes from `api/inc` to `/usr/local/include/fmodex`  
+Grab latest Linux "Low Level Programmer API" version of [FMod from this page](http://www.fmod.org/download/)
+Extract archive and put it next to repository's root. Ensure that FMOD_HEAD and FMOD_LIB in the Makefile point to right path.
 
 
 Changing build params in eclipse:
@@ -29,7 +28,7 @@ Changing build params in eclipse:
 
 *Includes:*  
 Project porperties -> c/c++ General -> Paths and Symbols  
-on the tab of `Libraries` add the path to the `libfmodex64.so` you had extracted in `api/lib`  
+on the tab of `Libraries` add the path to the correct version of `libfmod.so` you had extracted
 on the tab of `includes`, add two include dirs `../inc` and `../../babonet/Code`  
 for the `linux_types.h` and `LinuxHeaders.h`. Make sure you add the includes as  
 `GNU C++`, not as assembly or C includes.  

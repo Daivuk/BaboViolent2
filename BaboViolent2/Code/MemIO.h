@@ -23,7 +23,7 @@
 #include "CString.h"
 #include "CVector.h"
 #include "FileIO.h"
-
+#include <stdint.h>
 
 class MemIO : public FileIO
 {
@@ -77,10 +77,10 @@ public:
 	unsigned char * getUByteArray(int size);
 	int getInt(); // short
 	unsigned int getUInt(); // unsigned short
-	long getLong();
-	long * getLongArray(int size);
-	unsigned long getULong();
-	unsigned long * getULongArray(int size);
+	int32_t getLong();
+	int32_t * getLongArray(int size);
+	uint32_t getULong();
+	uint32_t * getULongArray(int size);
 	float getFloat();
 	float * getFloatArray(int size);
 	double getDouble();
@@ -90,7 +90,7 @@ public:
 	CVector3f getVector3f();
 	CVector4f getVector4f();
 
-	// Les puts, pour écrire en binaire dans le fichier
+	// Les puts, pour ï¿½crire en binaire dans le fichier
 	void put(unsigned char * data, int size);
 
 	unsigned int getPos() { return m_pos; }

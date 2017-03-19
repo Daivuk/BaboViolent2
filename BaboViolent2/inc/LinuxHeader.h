@@ -25,6 +25,7 @@
 	#include <errno.h>
 	#include <time.h>
 	#include <ctime>
+    #include <stdint.h>
 
 	// --- Floyd Davidson's macro  ---
 	#define inaddrr(x) (*(struct in_addr *) &ifr->x[sizeof sa.sin_port])

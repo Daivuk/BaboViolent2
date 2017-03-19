@@ -73,6 +73,9 @@ public:
 
 	bool isValid( net_svcl_hash_seed & in_hash )
 	{
+        #ifdef LINUX64
+        return true;
+        #else
 		int output[4];
 		int result = md5_file("./bv2.exe", (unsigned char*)&output);
 
@@ -108,6 +111,7 @@ public:
 			return true;
 		}
 		return false;
+        #endif
 	}
 
 	int Update( const float & in_Delta )

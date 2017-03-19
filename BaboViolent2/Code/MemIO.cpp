@@ -102,35 +102,35 @@ unsigned int MemIO::getUInt()
 	return tmp;
 }
 
-long MemIO::getLong()
+int32_t MemIO::getLong()
 {
-	long tmp;
-	memcpy(&tmp,&m_data[m_pos], sizeof(long));
-	m_pos += sizeof(long);
+	int32_t tmp;
+	memcpy(&tmp,&m_data[m_pos], sizeof(tmp));
+	m_pos += sizeof(tmp);
 	return tmp;
 }
 
-long * MemIO::getLongArray(int size)
+int32_t * MemIO::getLongArray(int size)
 {
-	long * tmp = new long [size];
-	memcpy(tmp,&m_data[m_pos], size*sizeof(long));
-	m_pos += size*sizeof(long);
+	int32_t * tmp = new int32_t [size];
+	memcpy(tmp,&m_data[m_pos], size*sizeof(int32_t));
+	m_pos += size*sizeof(int32_t);
 	return tmp;
 }
 
-unsigned long MemIO::getULong()
+uint32_t MemIO::getULong()
 {
-	unsigned long tmp;
-	memcpy(&tmp, &m_data[m_pos], sizeof(unsigned long));
-	m_pos += sizeof(unsigned long);
+	uint32_t tmp;
+	memcpy(&tmp, &m_data[m_pos], sizeof(tmp));
+	m_pos += sizeof(tmp);
 	return tmp;
 }
 
-unsigned long * MemIO::getULongArray(int size)
+uint32_t * MemIO::getULongArray(int size)
 {
-	unsigned long * tmp = new unsigned long [size];
-	memcpy(tmp,&m_data[m_pos], size*sizeof(unsigned long));
-	m_pos += size*sizeof(unsigned long);
+	uint32_t * tmp = new uint32_t [size];
+	memcpy(tmp,&m_data[m_pos], size*sizeof(uint32_t));
+	m_pos += size*sizeof(uint32_t);
 	return tmp;
 }
 
@@ -232,7 +232,7 @@ CVector4f MemIO::getVector4f()
 
 
 //
-// Les puts, pour écrire en binaire dans le fichier
+// Les puts, pour ï¿½crire en binaire dans le fichier
 //
 void MemIO::put(bool data) {}
 
