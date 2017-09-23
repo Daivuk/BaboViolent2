@@ -1,8 +1,10 @@
-INC=-I. -I../inc -I../../babonet/Code -I../../DukZeven/inc
+BABODIR=../../../BaboViolent2
+OUT=libdko.so
+INC=-I. -I../inc -I$(BABODIR)/inc -I../../DukZeven/inc
 LIB=-L ../../DukZeven/Code
 
 rel64: FLAGS= -D LINUX64 -O2 -fPIC
-rel64: all desymb
+rel64: all desymb copy
 
 dbg64: FLAGS= -D LINUX64 -g -fPIC
 dbg64: all
@@ -11,7 +13,7 @@ dbg64: all
 all:	dko.so
 
 dko.so: CVector.o CdkoMaterial.o CdkoMesh.o CdkoModel.o CFace.o COctree.o eHierarchic.o ePTexture.o dko.o
-	g++ $(FLAGS) -shared -Wl,-soname,libdko.so.0.1 -o libdko.so.0.1 $(LIB) -lGL CVector.o CdkoMaterial.o CdkoMesh.o CdkoModel.o CFace.o COctree.o eHierarchic.o ePTexture.o dko.o
+	g++ $(FLAGS) -shared -Wl,-soname,$(OUT) -o $(OUT) $(LIB) -lGL CVector.o CdkoMaterial.o CdkoMesh.o CdkoModel.o CFace.o COctree.o eHierarchic.o ePTexture.o dko.o
 
 CVector.o: CVector.cpp CVector.h
 	g++ $(FLAGS) -o CVector.o -c CVector.cpp $(INC)
@@ -33,11 +35,13 @@ dko.o: dkoInner.h CdkoMesh.h dko.cpp
 	g++ $(FLAGS) -o dko.o -c dko.cpp $(INC)
 
 desymb:
-	strip -s *.so.0.1
+	strip -s *.so
 
 clean:
-	rm *.o *.so.0.1
+	rm -f *.o *.so
 
 install:
 	sh install.sh
 
+copy:
+	mv $(OUT) $(BABODIR)/Content/

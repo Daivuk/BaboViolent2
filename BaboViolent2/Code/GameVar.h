@@ -290,7 +290,7 @@ public:
 	int ro_nbParticle;
 	CVector3f ro_hitPoint;
 
-	// Si on est en debug !!! très important
+	// Si on est en debug !!! trï¿½s important
 	bool c_debug;
 	bool c_huge;
 	bool d_showPath;
@@ -300,7 +300,7 @@ public:
 
 
 #ifndef CONSOLE
-	// On va toute pré-loader nos models icite
+	// On va toute prï¿½-loader nos models icite
 	unsigned int dko_rocket;
 	unsigned int dko_grenade;
 	unsigned int dko_douille;
@@ -342,7 +342,7 @@ public:
 	FSOUND_SAMPLE * sfx_overHeat;
 	FSOUND_SAMPLE * sfx_photonStart;
 
-	// LES STRING DIFFÉRENT POUR CHAQUE LANGUE
+	// LES STRING DIFFï¿½RENT POUR CHAQUE LANGUE
 	CString lang_gameName;
 
 	CString lang_dualMachineGun;
@@ -561,12 +561,12 @@ public:
 	void deleteModels();
 
 	// Pour envoyer les variables servers au autres tayouin
-	void sendSVVar(unsigned long babonetID);
+	void sendSVVar(UINT4 babonetID);
 	// send server var to a peer(remote admin)
-	void sendSVVar(long peerId);
-	void sendOne(char * varName, unsigned long babonetID);
+	void sendSVVar(INT4 peerId);
+	void sendOne(char * varName, UINT4 babonetID);
 	// send one var to a peer( remote admin )
-	void sendOne(char * varName, long peerId);
+	void sendOne(char * varName, INT4 peerId);
 #ifndef CONSOLE
 	bool languageLoaded;
 	// Pour loader les lang_ var

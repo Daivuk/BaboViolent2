@@ -24,6 +24,9 @@
 #ifndef CONSOLE
 #include "CLobby.h"
 #endif
+#ifdef LINUX64
+#include <openssl/md5.h>
+#endif
 
 CMaster* master = 0;
 bool surveyReceived = false;
@@ -282,7 +285,7 @@ void CMaster::update(float in_delay)
 void CMaster::ReceivePeersPacket()
 {
 	char *buf=0;
-	long peerID;
+	INT4 peerID;
 	int typeID;
 
 	while( buf = bb_peerReceive( &peerID, &typeID ))
@@ -1119,7 +1122,7 @@ bool AccountManagerClient::createAccount(char* login, char* password, char* nick
 		return false;
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	stAccount ac;
@@ -1139,7 +1142,7 @@ bool AccountManagerClient::deleteAccount(int userID, char* password)
 		return false;
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	stDeleteAccount da;
@@ -1157,7 +1160,7 @@ bool AccountManagerClient::updateAccount(char* login, char* password, char* nick
 		return false;
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	stAccount ac;
@@ -1179,10 +1182,10 @@ bool AccountManagerClient::changePassword(int userID, char* oldPass, char* newPa
 	memset(&cp, 0, sizeof(stChangePassword));
 
 	unsigned char outputOld[32];
-	md5((unsigned char*)oldPass, strlen(oldPass), outputOld);
+	MD5((unsigned char*)oldPass, strlen(oldPass), outputOld);
 	master->HashPass((char*)outputOld);
 	unsigned char outputNew[32];
-	md5((unsigned char*)newPass, strlen(newPass), outputNew);
+	MD5((unsigned char*)newPass, strlen(newPass), outputNew);
 	master->HashPass((char*)outputNew);
 
 	cp.UserID = userID;
@@ -1210,7 +1213,7 @@ bool AccountManagerClient::loginAccount(char* login, char* password)
 		return false;
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	stLoginLogout da;
@@ -1227,7 +1230,7 @@ bool AccountManagerClient::logoutAccount(char* login, char* password)
 		return false;
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	stLoginLogout da;
@@ -1247,7 +1250,7 @@ bool AccountManagerClient::userStatusUpdate(int userID, char* password, char* se
 	memset(&su, 0, sizeof(stUserStatusUpdate));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	su.UserID = userID;
@@ -1269,7 +1272,7 @@ bool AccountManagerClient::registerClan(int userID, char* password, char* name, 
 	memset(&data, 0, sizeof(stRegisterClan));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1292,7 +1295,7 @@ bool AccountManagerClient::removeClan(int userID, char* password)
 	memset(&data, 0, sizeof(stRemoveClan));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1310,7 +1313,7 @@ bool AccountManagerClient::changeClanPermissions(int userID, char* password, int
 	memset(&data, 0, sizeof(stChangeClanPermissions));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1330,7 +1333,7 @@ bool AccountManagerClient::joinClanRequest(int userID, char* password, int userI
 	memset(&data, 0, sizeof(stJoinClanRequest));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1349,7 +1352,7 @@ bool AccountManagerClient::joinClanAccept(int userID, char* password, int userID
 	memset(&data, 0, sizeof(stJoinClanAccept));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1368,7 +1371,7 @@ bool AccountManagerClient::leaveClan(int userID, char* password)
 	memset(&data, 0, sizeof(stLeaveClan));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1386,7 +1389,7 @@ bool AccountManagerClient::requestFriend(int userID, char* password, int userIDD
 	memset(&data, 0, sizeof(stFriendOp));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1406,7 +1409,7 @@ bool AccountManagerClient::acceptFriend(int userID, char* password, int userIDDe
 	memset(&data, 0, sizeof(stFriendOp));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1426,7 +1429,7 @@ bool AccountManagerClient::removeFriend(int userID, char* password, int userIDDe
 	memset(&data, 0, sizeof(stFriendOp));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;
@@ -1445,7 +1448,7 @@ bool AccountManagerClient::moveFriend(int userID, char* password, int userIDDest
 	memset(&data, 0, sizeof(stFriendOp));
 
 	unsigned char output[16];
-	md5((unsigned char*)password, strlen(password), output);
+	MD5((unsigned char*)password, strlen(password), output);
 	master->HashPass((char*)output);
 
 	data.UserID = userID;

@@ -808,7 +808,7 @@ GameVar::~GameVar()
 //
 // Pour envoyer les variables servers au autres tayouin
 //
-void GameVar::sendSVVar(unsigned long babonetID)
+void GameVar::sendSVVar(UINT4 babonetID)
 {
 	sendOne("sv_friendlyFire", babonetID);
 	sendOne("sv_reflectedDamage", babonetID);
@@ -888,7 +888,7 @@ void GameVar::sendSVVar(unsigned long babonetID)
 	sendOne("sv_enableVote", babonetID);
 }
 
-void GameVar::sendSVVar(long peerId)
+void GameVar::sendSVVar(INT4 peerId)
 {
 	sendOne("sv_friendlyFire", peerId);
 	sendOne("sv_reflectedDamage", peerId);
@@ -971,7 +971,7 @@ void GameVar::sendSVVar(long peerId)
 	sendOne("sv_enableVote", peerId);
 }
 
-void GameVar::sendOne(char * varName, long peerId)
+void GameVar::sendOne(char * varName, INT4 peerId)
 {
 	CString varCom;
 	dksvarGetFormatedVar(varName, &varCom);
@@ -983,7 +983,7 @@ void GameVar::sendOne(char * varName, long peerId)
 	bb_peerSend(peerId,(char*)&ra_var,RA_VAR,sizeof(net_ra_var),true);
 }
 
-void GameVar::sendOne(char * varName, unsigned long babonetID)
+void GameVar::sendOne(char * varName, UINT4 babonetID)
 {
 	CString varCom;
 	dksvarGetFormatedVar(varName, &varCom);

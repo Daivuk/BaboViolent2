@@ -258,7 +258,7 @@ public:
 	char playerIP[16];
 
 	// La babonetID
-	unsigned long babonetID;
+	UINT4 babonetID;
 
 	// Le ID dans le jeu
 	char playerID;

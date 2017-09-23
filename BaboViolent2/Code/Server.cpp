@@ -29,6 +29,7 @@
 	#include <direct.h>
 #else
 	#include <dirent.h>
+    #include <unistd.h>
 #endif
 
 
@@ -1005,7 +1006,7 @@ void Server::update(float delay)
 		// On recv les messages
 		char * buffer;
 		int messageID;
-		unsigned long babonetID;
+		UINT4 babonetID;
 		while (buffer = bb_serverReceive(babonetID, messageID))
 		{
 			// On g�e les messages re�the 
@@ -1353,32 +1354,34 @@ void Server::update(float delay)
 		}
 
 		// Open map
-		CString filename("main/maps/%s.bvm", mapTransfers[i].mapName.s);
-		FILE* fic = fopen(filename.s, "rb");
+        if (mapTransfers[i].mapName != "") {
+            CString filename("main/maps/%s.bvm", mapTransfers[i].mapName.s);
+            FILE* fic = fopen(filename.s, "rb");
 
-		if (fic)
-		{
-			net_svcl_map_chunk chunk;
+            if (fic)
+            {
+                net_svcl_map_chunk chunk;
 
-			// Read in a chunk
-			fseek(fic, 250 * mapTransfers[i].chunkNum, SEEK_SET);
-			chunk.size = (unsigned short)fread(chunk.data, 1, 250, fic);
+                // Read in a chunk
+                fseek(fic, 250 * mapTransfers[i].chunkNum, SEEK_SET);
+                chunk.size = (unsigned short)fread(chunk.data, 1, 250, fic);
 
-			// Send chunk
-			bb_serverSend((char*)&chunk, sizeof(net_svcl_map_chunk), NET_SVCL_MAP_CHUNK, mapTransfers[i].uniqueClientID);
+                // Send chunk
+                bb_serverSend((char*)&chunk, sizeof(net_svcl_map_chunk), NET_SVCL_MAP_CHUNK, mapTransfers[i].uniqueClientID);
 
-			// Accumulate bytes sent
-			bytesSent += 250;
+                // Accumulate bytes sent
+                bytesSent += 250;
 
-			// If some data was sent, keep this transfer
-			if(chunk.size != 0) 
-			{
-				mapTransfers[i].chunkNum++;
-				temp.push_back(mapTransfers[i]);
-			}
-		}
+                // If some data was sent, keep this transfer
+                if(chunk.size != 0) 
+                {
+                    mapTransfers[i].chunkNum++;
+                    temp.push_back(mapTransfers[i]);
+                }
+            }
 
-		fclose(fic);
+            fclose(fic);
+        }
 	}
 
 	// Replace old transfer list

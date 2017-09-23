@@ -17,7 +17,7 @@
 */
 
 #include "FileIO.h"
-
+#include <stdint.h>
 
 
 //
@@ -59,7 +59,7 @@ void FileIO::Close()
 
 
 //
-// Pour écrire normalement dans le fichier
+// Pour ï¿½crire normalement dans le fichier
 //
 void FileIO::putLine(CString line)
 {
@@ -125,31 +125,31 @@ unsigned int FileIO::getUInt()
 	return tmp;
 }
 
-long FileIO::getLong()
+int32_t FileIO::getLong()
 {
-	long tmp;
-	fread(&tmp, 1, sizeof(long), m_file);
+	int32_t tmp;
+	fread(&tmp, sizeof(tmp), 1, m_file);
 	return tmp;
 }
 
-long * FileIO::getLongArray(int size)
+int32_t * FileIO::getLongArray(int size)
 {
-	long * tmp = new long [size];
-	fread(tmp, 1, sizeof(long)*size, m_file);
+	int32_t * tmp = new int32_t [size];
+	fread(tmp, sizeof(int32_t), size, m_file);
 	return tmp;
 }
 
-unsigned long FileIO::getULong()
+uint32_t FileIO::getULong()
 {
-	unsigned long tmp;
-	fread(&tmp, 1, sizeof(unsigned long), m_file);
+	uint32_t tmp;
+	fread(&tmp, sizeof(tmp), 1, m_file);
 	return tmp;
 }
 
-unsigned long * FileIO::getULongArray(int size)
+uint32_t * FileIO::getULongArray(int size)
 {
-	unsigned long * tmp = new unsigned long [size];
-	fread(tmp, 1, sizeof(unsigned long)*size, m_file);
+	uint32_t * tmp = new uint32_t [size];
+	fread(tmp, sizeof(uint32_t), size, m_file);
 	return tmp;
 }
 
@@ -247,7 +247,7 @@ CVector4f FileIO::getVector4f()
 
 
 //
-// Les puts, pour écrire en binaire dans le fichier
+// Les puts, pour ï¿½crire en binaire dans le fichier
 //
 void FileIO::put(bool data)
 {
@@ -289,7 +289,7 @@ void FileIO::put(unsigned int data)
 
 void FileIO::put(long data)
 {
-	fwrite(&data, 1, sizeof(long), m_file);
+	fwrite(&data, sizeof(data), 1, m_file);
 }
 
 void FileIO::put(long * data, int size)
@@ -334,8 +334,8 @@ void FileIO::put(CString data)
 
 void FileIO::putFixedString(CString data)
 {
-	// Ici c'est compliqué, mais c'est de la faute à CSharp, qui compresse la grosseur du string wtf lol
-	// Faut faire l'inverse de sque jai trouvé plus haut
+	// Ici c'est compliquï¿½, mais c'est de la faute ï¿½ CSharp, qui compresse la grosseur du string wtf lol
+	// Faut faire l'inverse de sque jai trouvï¿½ plus haut
 	struct typ_prefixByte
 	{
 		unsigned int len : 7;

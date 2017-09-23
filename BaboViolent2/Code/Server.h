@@ -23,6 +23,10 @@
 #include "Game.h"
 #include <map>
 
+#ifndef WIN32
+	#include "platform_types.h"
+    #include <string>
+#endif
 #ifdef _PRO_
 	#include "ChecksumQuery.h"
 	#include <vector>
@@ -54,7 +58,7 @@ struct invalidChecksumEntity
 class Server
 {
 public:
-	// Le jeu controllé
+	// Le jeu controllï¿½
 	Game * game;
 
 #ifndef CONSOLE
@@ -79,7 +83,7 @@ public:
 	float changeMapDelay;
 	CString nextMap;
 
-	// La liste des maps à jouer
+	// La liste des maps ï¿½ jouer
 	std::vector<CString> mapList;
 
 	//A list of all maps + their sizes;
@@ -159,7 +163,7 @@ public:
 	void render();
 #endif
 
-	// On a reçu un message yéé !
+	// On a reï¿½u un message yï¿½ï¿½ !
 	void recvPacket(char * buffer, int typeID, unsigned long bbnetID);
 
 	// Pour modifier une variable remotly
@@ -168,7 +172,7 @@ public:
 	// Send player list to a remote admin
 	void SendPlayerList( long in_peerId );
 
-	// Pour aller chercher la prochaine map à loader
+	// Pour aller chercher la prochaine map ï¿½ loader
 	CString queryNextMap();
 
 	// Auto balance
@@ -213,7 +217,7 @@ private:
 			timeToKick = _timeToKick;
 		}
 
-		unsigned long babonetID;
+		UINT4 babonetID;
 		int playerID;
 		float timeToKick;
 	};
