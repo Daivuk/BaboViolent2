@@ -44,6 +44,7 @@ local.properties
 # Build results
 [Dd]ebug/
 [Rr]elease/
+ConsoleRelease/
 *_i.c
 *_p.c
 *.ilk
@@ -77,6 +78,7 @@ BaboViolent2.vcxproj.filters
 *.so
 *.so.*
 *.o
+*.exp
 
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
@@ -177,3 +179,4 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+BaboViolent2/Content/main/banlist

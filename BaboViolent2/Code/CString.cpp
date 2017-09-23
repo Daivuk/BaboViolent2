@@ -661,6 +661,20 @@ void CString::loadFromFile(FILE *fic)
 }
 
 
+bool CString::isNullOrEmpty()
+{
+	if (isNull())
+		return true;
+
+	for (int i = 0, len_ = len(); i < len_; i++)
+	{
+		if (s[i] != ' ' && s[i] != '\0')
+			return false;
+	}
+
+	return true;
+}
+
 
 //
 // Op�ateur sur des char*

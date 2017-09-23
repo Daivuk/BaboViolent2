@@ -60,26 +60,11 @@ Server::Server(Game * pGame): maxTimeOverMaxPing(5.0f)//, maxIdleTime(180.0f)
 		CachedPlayers[i].IP[0] = '\0';
 	}
 
-	// Load banlist
-	std::ifstream file("main/banlist", std::ios::binary);
-	char name[32], ip[16];
+	LoadBanList();
+	LoadAdminList();
 
-	while(file.is_open() && !file.eof())
-	{
-		file.read(name, sizeof(char)*32);
-		file.read(ip, sizeof(char)*16);
-
-		// Will not hit eof until after first read
-		if(file.eof()) break;
-
-		// Add to ban list
-		banList.push_back( std::pair<CString,CString>(name, ip) );
-
-	}
 	//reportUploadURLs.push_back("http://localhost/index.php");
 }
-
-
 
 #include "CMaster.h"
 //
@@ -449,13 +434,14 @@ void Server::updateNet(float delay, bool send)
 		console->add(CString("\x3> A client has connected. Client ID : %i", clientID), true);
 
 		// Check against ban list
-		for(std::size_t i = 0; i < banList.size(); ++i)
+		for (size_t i = 0, L = banList.size(); i < L; ++i)
 		{
-			if(banList[i].second == IPDuGars)
+			auto bannedIp = std::get<1>(banList[i]);
+			if( bannedIp == IPDuGars)
 			{
 				bb_serverDisconnectClient(clientID);
 				console->add(CString("\x3> Disconnecting banned client, %s. IP: %s",
-								banList[i].first.s, banList[i].second.s), true);
+					std::get<0>(banList[i]).s, bannedIp.s), true);
 				return;
 			}
 		}
@@ -607,6 +593,16 @@ void Server::update(float delay)
 						{
 							game->players[id]->userID = userID;
 							console->add(CString("[Auth] %s authenticated with id %i", game->players[id]->name.s, userID), true);
+
+							
+							if (isPlayerAnAdmin(userID))
+							{
+								game->players[id]->isAdmin = true;
+								bb_serverSend(0, 0, NET_SVCL_ADMIN_ACCEPTED, game->players[id]->babonetID);
+								updateAdminsNickName(userID, game->players[id]->ladderName, game->players[id]->name);
+							}
+
+
 							/*PlayerStats* ps = getStatsFromCache(game->players[id]->userID);
 							if (ps != 0)
 							{
@@ -631,6 +627,7 @@ void Server::update(float delay)
 						else
 						{
 							console->add(CString("[Auth] %s failed authentication", game->players[id]->name.s), true);
+							game->players[id]->ladderName = "";
 							//// If this is a match server, kick unauthorized players
 							//bb_serverDisconnectClient(game->players[id]->babonetID);
 							//ZEVEN_SAFE_DELETE(game->players[id]);
@@ -1834,6 +1831,140 @@ void Server::SendPlayerList( long in_peerId )
 		}
 	}
 
+}
+
+void Server::LoadBanList()
+{
+	// Load banlist
+	std::ifstream file("main/banlist", std::ios::binary);
+	char name[32], ip[16], admin[32], reason[64], time[20];
+
+	while(file.is_open() && !file.eof())
+	{
+		file.read(name, sizeof(char)*32);
+		file.read(ip, sizeof(char)* 16);
+		file.read(admin, sizeof(char)* 32);
+		file.read(reason, sizeof(char)* 64);
+		file.read(time, sizeof(char)* 20);
+
+		// Will not hit eof until after first read
+		if (file.eof()) break;
+
+		// Add to ban list
+		auto tuple = std::make_tuple(CString(name), CString(ip), CString(admin), CString(reason), CString(time));
+		banList.push_back(tuple);
+
+	}
+}
+
+void Server::LoadAdminList()
+{
+	std::ifstream file("main/adminlist", std::ios::binary);
+	int ladderId;
+	char ladderName[32], playingName[32], whoAdded[32], time[20];
+
+	while(file.is_open() && !file.eof())
+	{
+		file.read((char*)&ladderId, sizeof(int));
+		file.read(ladderName, sizeof(char)* 32);
+		file.read(playingName, sizeof(char)* 32);
+		file.read(whoAdded, sizeof(char)* 32);
+		file.read(time, sizeof(char)* 20);
+
+		// Will not hit eof until after first read
+		if (file.eof()) break;
+
+		// Add to ban list
+		Server::AdminListEntry admin = {ladderId, ladderName, playingName, whoAdded, time};
+		adminList.push_back(admin);
+	}
+}
+
+
+void Server::removeAdmin(int ladderId)
+{
+	bool erased = false;
+
+	for (int i = 0, L = adminList.size(); i < L; i++)
+	{
+		if (adminList[i].ladderId == ladderId)
+		{
+			adminList.erase(adminList.begin() + i);
+			erased = true;
+			break;
+		}
+	}
+
+	if (erased)
+		syncAdminListToFile();
+}
+
+
+void Server::addAdmin(int ladderId, CString addedByName)
+{
+
+	if (isPlayerAnAdmin(ladderId))
+		return;
+
+
+	time_t     t = time(0);
+	struct tm * now = localtime(&t);
+	CString time = CString("%02i/%02i/%03i %02i:%02i:%02i", now->tm_mday, now->tm_mon, now->tm_year, now->tm_hour, now->tm_min, now->tm_sec);
+
+	CString ladderName = "?";
+	CString playingName = "?";
+
+	addedByName.resize(32);
+	time.resize(20);
+
+
+	Server::AdminListEntry admin = { ladderId, ladderName, playingName, addedByName, time };
+	adminList.push_back(admin);
+	syncAdminListToFile();
+}
+
+bool Server::isPlayerAnAdmin(int & ladderId)
+{
+	for (int i = 0, L = adminList.size(); i < L; i++)
+	{
+		if (adminList[i].ladderId == ladderId)
+			return true;
+	}
+
+	return false;
+}
+
+void Server::updateAdminsNickName(int & ladderId, CString ladderName, CString gameNickName)
+{
+	bool changed = false;
+
+	for (int i = 0, L = adminList.size(); i < L; i++)
+	{
+		if (adminList[i].ladderId == ladderId)
+		{
+			adminList[i].ladderAccountName = ladderName;
+			adminList[i].playingName = gameNickName;
+			changed = true;
+			break;
+		}
+	}
+
+	if (changed)
+		syncAdminListToFile();
+}
+
+void Server::syncAdminListToFile()
+{
+	std::ofstream file("main/adminlist", std::ios::trunc | std::ios::binary);
+
+	for (int i = 0, L = adminList.size(); i < L; i++)
+	{
+		file.write((char*)&adminList[i].ladderId, sizeof(int));
+		file.write(adminList[i].ladderAccountName.s, sizeof(char)* 32);
+		file.write(adminList[i].playingName.s, sizeof(char)* 32);
+		file.write(adminList[i].addedToTheListBy.s, sizeof(char)* 32);
+		file.write(adminList[i].addingDate.s, sizeof(char)* 20);
+	}
 }
 
 #ifndef CONSOLE

@@ -85,8 +85,20 @@ public:
 	//A list of all maps + their sizes;
 	std::vector<mapInfo> mapInfoList;
 
-	// Ban list, name & IP
-	std::vector< std::pair<CString,CString> > banList;
+	// Ban list, nickname, IP, adminName, reason, date
+	std::vector< std::tuple<CString, CString, CString, CString, CString> > banList;
+
+	struct AdminListEntry
+	{
+		int ladderId;
+		CString ladderAccountName;
+		CString playingName;
+		CString addedToTheListBy;
+		CString addingDate;
+	};
+
+	// Admin list
+	std::vector< AdminListEntry > adminList;
 
 	// 50 Cached players in ram only , so we can ban them eventually
 	int			 CachedIndex; // what index are we going to use for next client
@@ -99,6 +111,8 @@ public:
 		CString	mapName;
 		int		chunkNum;
 	};
+
+
 	std::vector<SMapTransfer> mapTransfers;
 
 	// List of commands that can be used with vote
@@ -186,6 +200,10 @@ public:
 		return statsCache;
 	}
 
+
+	void Server::addAdmin(int ladderId, CString addedByName);
+	void Server::removeAdmin(int ladderId);
+
 private:
 	void cacheStats(const Player* player);
 
@@ -224,6 +242,13 @@ private:
 	DelayedKicksMap delayedKicks;
 
 	void addDelayedKick(unsigned long _babonetID, int _playerID, float _timeToKick);
+
+
+	void Server::LoadBanList();
+	void Server::LoadAdminList();
+	bool Server::isPlayerAnAdmin(int & ladderId);
+	void Server::syncAdminListToFile();
+	void Server::updateAdminsNickName(int & ladderId, CString ladderName, CString gameNickName);
 };
 
 

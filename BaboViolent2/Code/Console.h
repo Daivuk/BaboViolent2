@@ -34,6 +34,7 @@
 #ifndef CONSOLE
 #define CONSOLE_MAX_RECOGNITION_VAR 10
 #endif
+#include <Player.h>
 
 
 class Console
@@ -116,6 +117,10 @@ public:
 
 	// Pour initialiser la console
 	void init();
+
+	// Moves a player to a certain team
+	void movePlayerToTeam(int playerID, int teamID);
+
 #ifndef CONSOLE
 	// Pour savoir si la console est active ou non, si cest le cas, on block les inputs ailleur
 	bool isActive() {return m_isActive;}
@@ -136,8 +141,12 @@ public:
 
 	void SetDisplayEvents(bool b);
 
+	int Console::FindPlayerIndexByPartialNickname(CString partOfName);
+
 private:
 	const std::vector<CString>& GetActiveMessages();
+	CString Console::getPlayersNameByBabobNetId(unsigned long babonetID);
+	void Console::sendConsoleMessageToPlayers(CString message, unsigned long bbnetID = 0); // bbnetID = 0 means all clients
 };
 
 

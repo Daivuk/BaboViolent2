@@ -271,6 +271,7 @@ public:
 
 	// Account ID
 	int userID;
+	CString ladderName;
 
 	float protection;
 

@@ -590,6 +590,10 @@ public:
 			remaining = 30; // 30 sec to vote
 			votingInProgress = true;
 		}
+		void cancel()
+		{
+			votingInProgress = false;
+		}
 		bool update(float delay)
 		{
 			if (votingInProgress)

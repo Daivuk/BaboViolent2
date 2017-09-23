@@ -16,6 +16,7 @@
 	BaboViolent 2 source code. If not, see http://www.gnu.org/licenses/.
 */
 
+
 #include "Scene.h"
 #include "Console.h"
 #ifndef CONSOLE
@@ -23,7 +24,7 @@
 #include "CStatus.h"
 #endif
 #include <fstream>
-
+#include <time.h>
 
 //extern unsigned long masterServerID;
 
@@ -248,7 +249,7 @@ void Scene::kick(int ID)
 	}
 }
 
-void Scene::ban(CString playerName)
+void Scene::ban(CString playerName, CString reason, CString banningAdmin)
 {
 	if (server)
 	{
@@ -259,30 +260,23 @@ void Scene::ban(CString playerName)
 			{
 				if (textColorLess(server->game->players[i]->name) == textColorLess(playerName))
 				{
-					ban(server->game->players[i]->playerID);
+					ban(server->game->players[i]->playerID, reason, banningAdmin);
 				}
 			}
 		}
 	}
 }
 
-void Scene::ban(int ID)
+void Scene::ban(int ID, CString reason, CString banningAdmin)
 {
-	if (server)
-		if (server->game)
-			if (server->game->players[ID])
+	if (server && server->game && server->game->players[ID])
 	{
 
 		if( master ) master->RA_DisconnectedPlayer( textColorLess(server->game->players[ID]->name).s, server->game->players[ID]->playerIP, (long)server->game->players[ID]->playerID );
 		bb_serverDisconnectClient(server->game->players[ID]->babonetID);
-		server->banList.push_back(std::pair<CString,CString>(server->game->players[ID]->name,server->game->players[ID]->playerIP) );
-		
-		std::ofstream file("main/banlist", std::ios::app | std::ios::binary);
-		CString name = server->game->players[ID]->name;
-		name.resize(32);
-		file.write(name.s, sizeof(char)*32);
-		file.write(server->game->players[ID]->playerIP, sizeof(char)*16);
 
+		addToBanList(server->game->players[ID]->name, server->game->players[ID]->playerIP, reason, banningAdmin);
+		
 		console->add(CString("\x3> Disconnecting client %s (%s), banned by server", server->game->players[ID]->name.s, server->game->players[ID]->playerIP), true);
 		ZEVEN_SAFE_DELETE(server->game->players[ID]);
 		net_svcl_player_disconnect playerDisconnect;
@@ -291,19 +285,9 @@ void Scene::ban(int ID)
 	}
 }
 
-void Scene::banIP(CString playerIP)
+void Scene::banIP(CString playerIP, CString reason, CString banningAdmin)
 {
-	if (server)
-	{
-		CString playerName("MANUAL-IP-BAN");
-		server->banList.push_back(std::pair<CString,CString>(playerName,playerIP) );
-
-		std::ofstream file("main/banlist", std::ios::app | std::ios::binary);
-		playerName.resize(32);
-		playerIP.resize(16);
-		file.write(playerName.s, sizeof(char)*32);
-		file.write(playerIP.s, sizeof(char)*16);
-	}
+	addToBanList(CString("MANUAL-IP-BAN"), playerIP, reason, banningAdmin);
 }
 
 void Scene::unban(int banID)
@@ -318,17 +302,46 @@ void Scene::unban(int banID)
 		std::ofstream file("main/banlist", std::ios::trunc | std::ios::binary);
 		CString name;
 
-		for(std::size_t i = 0; i < server->banList.size(); ++i)
+		for(size_t i = 0, L = server->banList.size(); i < L; ++i)
 		{
-			// Ensure name is 32 characters
-			name = server->banList[i].first;
-			name.resize(32);
-			
-			// Write data
-			file.write(name.s, sizeof(char)*32);
-			file.write(server->banList[i].second.s, sizeof(char)*16);
+			auto tuple = server->banList[i];
+			writeBanToFile(file, std::get<0>(tuple), std::get<1>(tuple), std::get<2>(tuple), std::get<3>(tuple), std::get<4>(tuple));
 		}
 	}
 }
 
+
+
+
+void Scene::addToBanList(CString playerName, CString playerIP, CString reason, CString adminName)
+{
+	if (!server)
+		return;
+
+	time_t     t = time(0);
+	struct tm * now = localtime(&t);
+	CString time = CString("%02i/%02i/%03i %02i:%02i:%02i", now->tm_mday, now->tm_mon, now->tm_year, now->tm_hour, now->tm_min, now->tm_sec);
+
+	playerName.resize(32);
+	playerIP.resize(16);
+	adminName.resize(32);
+	reason.resize(64);
+	time.resize(20);
+
+	auto tuple = std::make_tuple(playerName, playerIP, adminName, reason, time);
+	server->banList.push_back(tuple);
+
+	std::ofstream file("main/banlist", std::ios::app | std::ios::binary);
+	writeBanToFile(file, playerName, playerIP, adminName, reason, time);
+	
+}
+
+void Scene::writeBanToFile(std::ofstream & file, CString bannedPlayerName, CString bannedIp, CString adminName, CString reason, CString time)
+{
+	file.write(bannedPlayerName.s, sizeof(char)* 32);
+	file.write(bannedIp.s, sizeof(char)* 16);
+	file.write(adminName.s, sizeof(char)* 32);
+	file.write(reason.s, sizeof(char)* 64);
+	file.write(time.s, sizeof(char)* 20);
+}
 

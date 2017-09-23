@@ -112,9 +112,9 @@ public:
 	void edit(CString command);
 	void kick(CString playerName);
 	void kick(int ID);
-	void ban(CString playerName);
-	void ban(int ID);
-	void banIP(CString playerIP);
+	void ban(CString playerName, CString reason, CString banningAdmin);
+	void ban(int ID, CString reason, CString banningAdmin);
+	void banIP(CString playerIP, CString reason, CString banningAdmin);
 	void unban(int banID);
 
 	// Pour chatter
@@ -122,6 +122,11 @@ public:
 #ifndef CONSOLE
 	void sayteam(CString message);
 #endif
+
+private:
+	void Scene::addToBanList(CString playerName, CString playerIP, CString reason, CString adminName);
+	void Scene::writeBanToFile(std::ofstream & file, CString bannedPlayerName, CString bannedIp, CString adminName, CString reason, CString time);
+
 };
 
 

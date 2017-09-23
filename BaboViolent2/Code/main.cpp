@@ -24,6 +24,7 @@
 	#include "LinuxHeader.h"
 #endif
 
+
 #include "Zeven.h"
 #include "Scene.h"
 #include "Console.h"
@@ -54,11 +55,15 @@ bool fullscreen = false;
 char * bbNetVersion;
 
 #ifdef CONSOLE
+// Sasha: for some reason dkwForceQuit is found by the linker in dkw.obj 
+// which theoretically should not be included in CONSOLE mode
+// and i have no idea why this happens. If you know how to fix it - please restore the quit function
+
 bool quit = false;
-void dkwForceQuit()
+/*void dkwForceQuit()
 {
 	quit = true;
-}
+}*/
 #else
 CVector2i mousePos_xbox;
 CVector2f mousePos_xboxVel;

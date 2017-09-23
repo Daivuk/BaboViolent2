@@ -106,6 +106,8 @@ public:
 	///Retourne vrai si la string est vide
 	bool isNull(){return (s[0] == '\0') ? true : false;}
 
+	bool isNullOrEmpty();
+
 	//	int len(){int len_=0; while(s[len_++]); return len_-1;}  // On peut tr� bien le faire nous m�e
 	/// Grandeur de la string
 	int len() const {return (int)strlen(s);} // Probablement que strlen() est plus optimis�en _asm

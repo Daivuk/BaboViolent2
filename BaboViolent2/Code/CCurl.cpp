@@ -21,6 +21,7 @@
 #include "md5.h"
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 using std::min;
 using std::max;
 
