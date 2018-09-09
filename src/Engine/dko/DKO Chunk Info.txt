@@ -1,0 +1,47 @@
+
+const short DKO_VERSION = 0x0002;
+
+const short CHUNK_DKO_VERSION = 0x0000; // short
+const short CHUNK_DKO_TIME_INFO = 0x0001; // short[3]
+
+const short CHUNK_DKO_PROPERTIES = 0x0100; // ...
+	const short CHUNK_DKO_NAME = 0x0110; // char*
+	const short CHUNK_DKO_POSITION = 0x0120; // float[3]
+	const short CHUNK_DKO_MATRIX = 0x0130; // float[9]
+
+const short CHUNK_DKO_MATLIST = 0x0200; // short  (nb de material)
+	const short CHUNK_DKO_MATNAME = 0x0210; // char*
+	const short CHUNK_DKO_TEX_DKT = 0x0220; // char*
+	const short CHUNK_DKO_AMBIENT = 0x0230; // float[4]
+	const short CHUNK_DKO_DIFFUSE = 0x0240; // float[4]
+	const short CHUNK_DKO_SPECULAR = 0x0250; // float[4]
+	const short CHUNK_DKO_EMISSIVE = 0x0260; // float[4]
+	const short CHUNK_DKO_SHININESS = 0x0270; // short
+	const short CHUNK_DKO_TRANSPARENCY = 0x0280; // float
+	const short CHUNK_DKO_TWO_SIDED = 0x0290; // char
+	const short CHUNK_DKO_WIRE_FRAME = 0x02A0; // char
+	const short CHUNK_DKO_WIRE_WIDTH = 0x02B0; // float
+	const short CHUNK_DKO_TEX_DIFFUSE = 0x02C0; // char*
+	const short CHUNK_DKO_TEX_BUMP = 0x02D0; // char*
+	const short CHUNK_DKO_TEX_SPECULAR = 0x02E0; // char*
+	const short CHUNK_DKO_TEX_SELFILL = 0x02F0; // char*
+
+const short CHUNK_DKO_TRI_MESH = 0x0300; // ...
+//	const short CHUNK_DKO_NAME = 0x0110; // char*
+//	const short CHUNK_DKO_POSITION = 0x0120; // float[3]
+//	const short CHUNK_DKO_MATRIX = 0x0130; // float[9]
+	const short CHUNK_DKO_NB_MAT_GROUP = 0x0340; // short
+		const short CHUNK_DKO_MAT_ID = 0x0341; // short
+		const short CHUNK_DKO_NB_VERTEX = 0x0342; // long
+		const short CHUNK_DKO_VERTEX_ARRAY = 0x0343; // float* x NbFrame
+		const short CHUNK_DKO_NORMAL_ARRAY = 0x0344; // float* x NbFrame
+		const short CHUNK_DKO_TEXCOORD_ARRAY = 0x0345; // float*
+		const short CHUNK_DKO_TEXCOORD_ARRAY_ANIM = 0x0346; // float* x NbFrame
+
+const short CHUNK_DKO_DUMMY = 0x0400;
+//	const short CHUNK_DKO_NAME = 0x0110; // char*
+//	const short CHUNK_DKO_POSITION = 0x0120; // float[3]
+//	const short CHUNK_DKO_MATRIX = 0x0130; // float[9]
+
+const short CHUNK_DKO_END = 0x0900; // ...
+
