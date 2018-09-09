@@ -30,6 +30,9 @@ if (WIN32)
     add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
 endif()
 
+# PRO version
+add_definitions(-D_PRO_)
+
 # Project files
 file(GLOB src_Engine_Babonet ./src/Engine/Babonet/*.*)
 source_group("Engine\\Babonet" FILES ${src_Engine_Babonet})
