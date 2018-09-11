@@ -36,20 +36,9 @@
 #define DKI_H
 
 
-#ifdef WIN32
-
-
-#include <windows.h>
-#include <dinput.h>
-#else
-#ifdef CALLBACK
-#undef CALLBACK
-#endif
-#define CALLBACK
-#endif
-
 #include "CVector.h"
 
+#include <SDL.h>
 
 
 // Les états des touches
@@ -175,7 +164,7 @@ CVector3f		dkiGetJoyVel();
 /// \param appInstance pointeur vers l'instance de l'application
 /// \param appHandle pointeur vers le lien logique de l'application
 /// \return 0 s'il y a un échec, 1 si tout s'est bien passé
-int				dkiInit(HINSTANCE appInstance, HWND appHandle);
+int				dkiInit(SDL_Window* appHandle);
 
 
 
@@ -200,8 +189,5 @@ void			dkiUpdate(float elapsef, int width, int height);
 
 // Setter la position du cursor
 void			dkiSetMouse(CVector2i & mousePos);
-
-
-
 
 #endif

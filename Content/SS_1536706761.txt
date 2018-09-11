@@ -1,0 +1,12 @@
+CTF-Daivuk
+Blue:0
+Red:0
+PlayerName:Daivuk
+PlayerId:0
+TeamId:1
+Kills:0
+Deaths:0
+Damage:0.000000
+FlagAttempts:0
+Returns:0
+Score:0

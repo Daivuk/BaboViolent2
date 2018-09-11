@@ -40,7 +40,7 @@ public:
 
 	// Pour dessiner notre sphere
 #ifndef _DX_
-	GLUquadricObj* qObj;
+	//GLUquadricObj* qObj;
 #endif
 
 	// Son shadow

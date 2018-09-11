@@ -180,33 +180,33 @@ void Writting::updateWritting(float delay)
 	while (m_cursorAnim >= 1) m_cursorAnim -= 1;
 
 	// Si on déplace avec les flèches
-	if (dkiGetState(DIK_LEFT) == DKI_DOWN)
+	if (dkiGetState(SDLK_LEFT) == DKI_DOWN)
 	{
 		dksPlaySound(m_sfxWrite, -1, 200);
 		m_cursorAnim = 0;
 		m_cursorPos--;
 		if (m_cursorPos < 0) m_cursorPos = 0;
 	}
-	if (dkiGetState(DIK_RIGHT) == DKI_DOWN)
+	if (dkiGetState(SDLK_RIGHT) == DKI_DOWN)
 	{
 		dksPlaySound(m_sfxWrite, -1, 200);
 		m_cursorAnim = 0;
 		m_cursorPos++;
 		if (m_cursorPos > len()) m_cursorPos = len();
 	}
-	if (dkiGetState(DIK_HOME) == DKI_DOWN)
+	if (dkiGetState(SDLK_HOME) == DKI_DOWN)
 	{
 		dksPlaySound(m_sfxWrite, -1, 200);
 		m_cursorAnim = 0;
 		m_cursorPos = 0;
 	}
-	if (dkiGetState(DIK_END) == DKI_DOWN)
+	if (dkiGetState(SDLK_END) == DKI_DOWN)
 	{
 		dksPlaySound(m_sfxWrite, -1, 200);
 		m_cursorAnim = 0;
 		m_cursorPos = len();
 	}
-	if (dkiGetState(DIK_DELETE) == DKI_DOWN)
+	if (dkiGetState(SDLK_DELETE) == DKI_DOWN)
 	{
 		dksPlaySound(m_sfxWrite, -1, 200);
 		m_cursorAnim = 0;

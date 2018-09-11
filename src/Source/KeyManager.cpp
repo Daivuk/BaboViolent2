@@ -25,156 +25,165 @@
 KeyManager keyManager;
 
 
+#include <vector>
+
+static const std::vector < std::pair<const char*, int> > KEY_NAMES = {
+    {"Escape", SDLK_ESCAPE},
+    {"1", SDLK_1},
+    {"2", SDLK_2},
+    {"3", SDLK_3},
+    {"4", SDLK_4},
+    {"5", SDLK_5},
+    {"6", SDLK_6},
+    {"7", SDLK_7},
+    {"8", SDLK_8},
+    {"9", SDLK_9},
+    {"0", SDLK_0},
+    {"-", SDLK_MINUS},    /* - on main keyboard */
+    {"=", SDLK_EQUALS},
+    {"Back", SDLK_BACKSPACE},    /* backspace */
+    {"Tab", SDLK_TAB},
+    {"Q", SDLK_q},
+    {"W", SDLK_w},
+    {"E", SDLK_e},
+    {"R", SDLK_r},
+    {"T", SDLK_t},
+    {"Y", SDLK_y},
+    {"U", SDLK_u},
+    {"I", SDLK_i},
+    {"O", SDLK_o},
+    {"P", SDLK_p},
+    {"[", SDLK_LEFTBRACKET},
+    {"]", SDLK_RIGHTBRACKET},
+    {"Enter", SDLK_RETURN},    /* Enter on main keyboard */
+    {"LCtrl", SDLK_LCTRL},
+    {"A", SDLK_a},
+    {"S", SDLK_s},
+    {"D", SDLK_d},
+    {"F", SDLK_f},
+    {"G", SDLK_g},
+    {"H", SDLK_h},
+    {"J", SDLK_j},
+    {"K", SDLK_k},
+    {"L", SDLK_l},
+    {"Semi", SDLK_SEMICOLON},
+    {"\'", SDLK_QUOTE},
+    {"Grave", SDLK_BACKQUOTE},    /* accent grave */
+    {"LShift", SDLK_LSHIFT},
+    {"\\", SDLK_BACKSLASH},
+    {"Z", SDLK_z},
+    {"X", SDLK_x},
+    {"C", SDLK_c},
+    {"V", SDLK_v},
+    {"B", SDLK_b},
+    {"N", SDLK_n},
+    {"M", SDLK_m},
+    {",", SDLK_COMMA},
+    {".", SDLK_PERIOD},    /* . on main keyboard */
+    {"/", SDLK_SLASH},    /* / on main keyboard */
+    {"RShift", SDLK_RSHIFT},
+    {"Num *", SDLK_KP_MULTIPLY},    /* * on numeric keypad */
+    {"LAlt", SDLK_LALT},    /* left Alt */
+    {"Space", SDLK_SPACE},
+    {"Caps", SDLK_CAPSLOCK},
+    {"F1", SDLK_F1},
+    {"F2", SDLK_F2},
+    {"F3", SDLK_F3},
+    {"F4", SDLK_F4},
+    {"F5", SDLK_F5},
+    {"F6", SDLK_F6},
+    {"F7", SDLK_F7},
+    {"F8", SDLK_F8},
+    {"F9", SDLK_F9},
+    {"F10", SDLK_F10},
+    {"NumLock", SDLK_NUMLOCKCLEAR},
+    {"Scroll", SDLK_SCROLLLOCK},    /* Scroll Lock */
+    {"Num 7", SDLK_KP_7},
+    {"Num 8", SDLK_KP_8},
+    {"Num 9", SDLK_KP_9},
+    {"Num -", SDLK_KP_MINUS},    /* - on numeric keypad */
+    {"Num 4", SDLK_KP_4},
+    {"Num 5", SDLK_KP_5},
+    {"Num 6", SDLK_KP_6},
+    {"Num +", SDLK_KP_PLUS},    /* + on numeric keypad */
+    {"Num 1", SDLK_KP_1},
+    {"Num 2", SDLK_KP_2},
+    {"Num 3", SDLK_KP_3},
+    {"Num 0", SDLK_KP_0},
+    {"Num .", SDLK_KP_DECIMAL},    /* . on numeric keypad */
+                                                    //{"OEM 102", SDLK_OEM_102},    /* <> or \| on RT 102-key keyboard (Non-U.S.) */
+    {"F11", SDLK_F11},
+    {"F12", SDLK_F12},
+    {"F13", SDLK_F13},    /*                     (NEC PC98) */
+    {"F14", SDLK_F14},    /*                     (NEC PC98) */
+    {"F15", SDLK_F15},    /*                     (NEC PC98) */
+                                           //{"Kana", SDLK_KANA},    /* (Japanese keyboard)            */
+                                           //{"ABNT C1", SDLK_ABNT_C1},    /* /? on Brazilian keyboard */
+                                           //{"Conv", SDLK_CONVERT},    /* (Japanese keyboard)            */
+                                           //{"Noconv", SDLK_NOCONVERT},    /* (Japanese keyboard)            */
+                                           //{"Yen", SDLK_YEN},    /* (Japanese keyboard)            */
+                                           //{"ABNT C2", SDLK_ABNT_C2},    /* Numpad . on Brazilian keyboard */
+    {"Num =", SDLK_KP_EQUALS},    /* = on numeric keypad (NEC PC98) */
+                                                   //{"Prev", SDLK_PREVTRACK},    /* Previous Track (SDLK_CIRCUMFLEX on Japanese keyboard) */
+    {"At", SDLK_AT},    /*                     (NEC PC98) */
+    {"Colon", SDLK_COLON},    /*                     (NEC PC98) */
+                                               //{"UnderLn", SDLK_UNDERLINE},    /*                     (NEC PC98) */
+                                               //{"Kanji", SDLK_KANJI},    /* (Japanese keyboard)            */
+    {"Stop", SDLK_STOP},    /*                     (NEC PC98) */
+                                             //{"Ax", SDLK_AX},    /*                     (Japan AX) */
+                                             //{"Unlbl", SDLK_UNLABELED},    /*                        (J3100) */
+                                             //{"Next", SDLK_NEXTTRACK},    /* Next Track */
+    {"NEnter", SDLK_KP_ENTER},    /* Enter on numeric keypad */
+    {"RCtrl", SDLK_RCTRL},
+    {"Mute", SDLK_MUTE},    /* Mute */
+    {"Calc", SDLK_CALCULATOR},    /* Calculator */
+    {"Play", SDLK_AUDIOPLAY},    /* Play / Pause */
+    {"MStop", SDLK_AUDIOSTOP},    /* Media Stop */
+    {"Vol-", SDLK_VOLUMEDOWN},    /* Volume - */
+    {"Vol+", SDLK_VOLUMEUP},    /* Volume + */
+    {"Web", SDLK_AC_HOME},    /* Web home */
+    {"Num ,", SDLK_KP_COMMA},    /* , on numeric keypad (NEC PC98) */
+    {"Num /", SDLK_KP_DIVIDE},    /* / on numeric keypad */
+                                                   //{"Sys RQ", SDLK_SYSRQ},
+    {"RAlt", SDLK_RALT},    /* right Alt */
+    {"Pause", SDLK_PAUSE},    /* Pause */
+    {"Home", SDLK_HOME},    /* Home on arrow keypad */
+    {"Up", SDLK_UP},    /* UpArrow on arrow keypad */
+    {"PgUp", SDLK_PRIOR},    /* PgUp on arrow keypad */
+    {"Left", SDLK_LEFT},    /* LeftArrow on arrow keypad */
+    {"Right", SDLK_RIGHT},    /* RightArrow on arrow keypad */
+    {"End", SDLK_END},    /* End on arrow keypad */
+    {"Down", SDLK_DOWN},    /* DownArrow on arrow keypad */
+    {"PgDn", SDLK_PAGEDOWN},    /* PgDn on arrow keypad */
+    {"Insert", SDLK_INSERT},    /* Insert on arrow keypad */
+    {"Delete", SDLK_DELETE},    /* Delete on arrow keypad */
+                                                 //{"LWin", SDLK_LSU},    /* Left Windows key */
+                                                 //{"RWin", SDLK_RWIN},    /* Right Windows key */
+                                                 //{"Apps", SDLK_APPS},    /* AppMenu key */
+    {"Power", SDLK_POWER},    /* System Power */
+    {"Sleep", SDLK_SLEEP},    /* System Sleep */
+                                               //{"Wake", SDLK_WAKE},    /* System Wake */
+                                               //{"Search", SDLK_WEBSEARCH},    /* Web Search */
+                                               //{"Fav", SDLK_WEBFAVORITES},    /* Web Favorites */
+                                               //{"Refresh", SDLK_WEBREFRESH},    /* Web Refresh */
+                                               //{"WebStop", SDLK_WEBSTOP},    /* Web Stop */
+                                               //{"Forward", SDLK_WEBFORWARD},    /* Web Forward */
+                                               //{"WebBack", SDLK_WEBBACK},    /* Web Back */
+                                               //{"MyComp", SDLK_MYCOMPUTER},    /* My Computer */
+    {"Mail", SDLK_MAIL},    /* Mail */
+    {"MSelect", SDLK_MEDIASELECT},    /* Media Select */
+};
+
 
 //
 // Pour obtenir une touche à partir du nom
 //
 int KeyManager::getKeyByName(CString name)
 {
-	if (name == "Escape") return DIK_ESCAPE;
-	if (name == "1") return DIK_1;
-	if (name == "2") return DIK_2;
-	if (name == "3") return DIK_3;
-	if (name == "4") return DIK_4;
-	if (name == "5") return DIK_5;
-	if (name == "6") return DIK_6;
-	if (name == "7") return DIK_7;
-	if (name == "8") return DIK_8;
-	if (name == "9") return DIK_9;
-	if (name == "0") return DIK_0;
-	if (name == "-") return DIK_MINUS;    /* - on main keyboard */
-	if (name == "=") return DIK_EQUALS;
-	if (name == "Back") return DIK_BACK;    /* backspace */
-	if (name == "Tab") return DIK_TAB;
-	if (name == "Q") return DIK_Q;
-	if (name == "W") return DIK_W;
-	if (name == "E") return DIK_E;
-	if (name == "R") return DIK_R;
-	if (name == "T") return DIK_T;
-	if (name == "Y") return DIK_Y;
-	if (name == "U") return DIK_U;
-	if (name == "I") return DIK_I;
-	if (name == "O") return DIK_O;
-	if (name == "P") return DIK_P;
-	if (name == "[") return DIK_LBRACKET;
-	if (name == "]") return DIK_RBRACKET;
-	if (name == "Enter") return DIK_RETURN;    /* Enter on main keyboard */
-	if (name == "LCtrl") return DIK_LCONTROL;
-	if (name == "A") return DIK_A;
-	if (name == "S") return DIK_S;
-	if (name == "D") return DIK_D;
-	if (name == "F") return DIK_F;
-	if (name == "G") return DIK_G;
-	if (name == "H") return DIK_H;
-	if (name == "J") return DIK_J;
-	if (name == "K") return DIK_K;
-	if (name == "L") return DIK_L;
-	if (name == "Semi") return DIK_SEMICOLON;
-	if (name == "\'") return DIK_APOSTROPHE;
-	if (name == "Grave") return DIK_GRAVE;    /* accent grave */
-	if (name == "LShift") return DIK_LSHIFT;
-	if (name == "\\") return DIK_BACKSLASH;
-	if (name == "Z") return DIK_Z;
-	if (name == "X") return DIK_X;
-	if (name == "C") return DIK_C;
-	if (name == "V") return DIK_V;
-	if (name == "B") return DIK_B;
-	if (name == "N") return DIK_N;
-	if (name == "M") return DIK_M;
-	if (name == ",") return DIK_COMMA;
-	if (name == ".") return DIK_PERIOD;    /* . on main keyboard */
-	if (name == "/") return DIK_SLASH;    /* / on main keyboard */
-	if (name == "RShift") return DIK_RSHIFT;
-	if (name == "Num *") return DIK_MULTIPLY;    /* * on numeric keypad */
-	if (name == "LAlt") return DIK_LMENU;    /* left Alt */
-	if (name == "Space") return DIK_SPACE;
-	if (name == "Caps") return DIK_CAPITAL;
-	if (name == "F1") return DIK_F1;
-	if (name == "F2") return DIK_F2;
-	if (name == "F3") return DIK_F3;
-	if (name == "F4") return DIK_F4;
-	if (name == "F5") return DIK_F5;
-	if (name == "F6") return DIK_F6;
-	if (name == "F7") return DIK_F7;
-	if (name == "F8") return DIK_F8;
-	if (name == "F9") return DIK_F9;
-	if (name == "F10") return DIK_F10;
-	if (name == "NumLock") return DIK_NUMLOCK;
-	if (name == "Scroll") return DIK_SCROLL;    /* Scroll Lock */
-	if (name == "Num 7") return DIK_NUMPAD7;
-	if (name == "Num 8") return DIK_NUMPAD8;
-	if (name == "Num 9") return DIK_NUMPAD9;
-	if (name == "Num -") return DIK_SUBTRACT;    /* - on numeric keypad */
-	if (name == "Num 4") return DIK_NUMPAD4;
-	if (name == "Num 5") return DIK_NUMPAD5;
-	if (name == "Num 6") return DIK_NUMPAD6;
-	if (name == "Num +") return DIK_ADD;    /* + on numeric keypad */
-	if (name == "Num 1") return DIK_NUMPAD1;
-	if (name == "Num 2") return DIK_NUMPAD2;
-	if (name == "Num 3") return DIK_NUMPAD3;
-	if (name == "Num 0") return DIK_NUMPAD0;
-	if (name == "Num .") return DIK_DECIMAL;    /* . on numeric keypad */
-	if (name == "OEM 102") return DIK_OEM_102;    /* <> or \| on RT 102-key keyboard (Non-U.S.) */
-	if (name == "F11") return DIK_F11;
-	if (name == "F12") return DIK_F12;
-	if (name == "F13") return DIK_F13;    /*                     (NEC PC98) */
-	if (name == "F14") return DIK_F14;    /*                     (NEC PC98) */
-	if (name == "F15") return DIK_F15;    /*                     (NEC PC98) */
-	if (name == "Kana") return DIK_KANA;    /* (Japanese keyboard)            */
-	if (name == "ABNT C1") return DIK_ABNT_C1;    /* /? on Brazilian keyboard */
-	if (name == "Conv") return DIK_CONVERT;    /* (Japanese keyboard)            */
-	if (name == "Noconv") return DIK_NOCONVERT;    /* (Japanese keyboard)            */
-	if (name == "Yen") return DIK_YEN;    /* (Japanese keyboard)            */
-	if (name == "ABNT C2") return DIK_ABNT_C2;    /* Numpad . on Brazilian keyboard */
-	if (name == "Num =") return DIK_NUMPADEQUALS;    /* = on numeric keypad (NEC PC98) */
-	if (name == "Prev") return DIK_PREVTRACK;    /* Previous Track (DIK_CIRCUMFLEX on Japanese keyboard) */
-	if (name == "At") return DIK_AT;    /*                     (NEC PC98) */
-	if (name == "Colon") return DIK_COLON;    /*                     (NEC PC98) */
-	if (name == "UnderLn") return DIK_UNDERLINE;    /*                     (NEC PC98) */
-	if (name == "Kanji") return DIK_KANJI;    /* (Japanese keyboard)            */
-	if (name == "Stop") return DIK_STOP;    /*                     (NEC PC98) */
-	if (name == "Ax") return DIK_AX;    /*                     (Japan AX) */
-	if (name == "Unlbl") return DIK_UNLABELED;    /*                        (J3100) */
-	if (name == "Next") return DIK_NEXTTRACK;    /* Next Track */
-	if (name == "NEnter") return DIK_NUMPADENTER;    /* Enter on numeric keypad */
-	if (name == "RCtrl") return DIK_RCONTROL;
-	if (name == "Mute") return DIK_MUTE;    /* Mute */
-	if (name == "Calc") return DIK_CALCULATOR;    /* Calculator */
-	if (name == "Play") return DIK_PLAYPAUSE;    /* Play / Pause */
-	if (name == "MStop") return DIK_MEDIASTOP;    /* Media Stop */
-	if (name == "Vol-") return DIK_VOLUMEDOWN;    /* Volume - */
-	if (name == "Vol+") return DIK_VOLUMEUP;    /* Volume + */
-	if (name == "Web") return DIK_WEBHOME;    /* Web home */
-	if (name == "Num ,") return DIK_NUMPADCOMMA;    /* , on numeric keypad (NEC PC98) */
-	if (name == "Num /") return DIK_DIVIDE;    /* / on numeric keypad */
-	if (name == "Sys RQ") return DIK_SYSRQ;
-	if (name == "RAlt") return DIK_RMENU;    /* right Alt */
-	if (name == "Pause") return DIK_PAUSE;    /* Pause */
-	if (name == "Home") return DIK_HOME;    /* Home on arrow keypad */
-	if (name == "Up") return DIK_UP;    /* UpArrow on arrow keypad */
-	if (name == "PgUp") return DIK_PRIOR;    /* PgUp on arrow keypad */
-	if (name == "Left") return DIK_LEFT;    /* LeftArrow on arrow keypad */
-	if (name == "Right") return DIK_RIGHT;    /* RightArrow on arrow keypad */
-	if (name == "End") return DIK_END;    /* End on arrow keypad */
-	if (name == "Down") return DIK_DOWN;    /* DownArrow on arrow keypad */
-	if (name == "PgDn") return DIK_NEXT;    /* PgDn on arrow keypad */
-	if (name == "Insert") return DIK_INSERT;    /* Insert on arrow keypad */
-	if (name == "Delete") return DIK_DELETE;    /* Delete on arrow keypad */
-	if (name == "LWin") return DIK_LWIN;    /* Left Windows key */
-	if (name == "RWin") return DIK_RWIN;    /* Right Windows key */
-	if (name == "Apps") return DIK_APPS;    /* AppMenu key */
-	if (name == "Power") return DIK_POWER;    /* System Power */
-	if (name == "Sleep") return DIK_SLEEP;    /* System Sleep */
-	if (name == "Wake") return DIK_WAKE;    /* System Wake */
-	if (name == "Search") return DIK_WEBSEARCH;    /* Web Search */
-	if (name == "Fav") return DIK_WEBFAVORITES;    /* Web Favorites */
-	if (name == "Refresh") return DIK_WEBREFRESH;    /* Web Refresh */
-	if (name == "WebStop") return DIK_WEBSTOP;    /* Web Stop */
-	if (name == "Forward") return DIK_WEBFORWARD;    /* Web Forward */
-	if (name == "WebBack") return DIK_WEBBACK;    /* Web Back */
-	if (name == "MyComp") return DIK_MYCOMPUTER;    /* My Computer */
-	if (name == "Mail") return DIK_MAIL;    /* Mail */
-	if (name == "MSelect") return DIK_MEDIASELECT;    /* Media Select */
+    for (const auto& p : KEY_NAMES)
+    {
+        if (name == p.first) return p.second;
+    }
 
 	CString tmp = name;
 	tmp.resize(5);
@@ -202,153 +211,10 @@ int KeyManager::getKeyByName(CString name)
 //
 CString KeyManager::getKeyName(int key)
 {
-	switch (key)
-	{
-		case DIK_ESCAPE          :return "Escape";break;
-		case DIK_1               :return "1";break;
-		case DIK_2               :return "2";break;
-		case DIK_3               :return "3";break;
-		case DIK_4               :return "4";break;
-		case DIK_5               :return "5";break;
-		case DIK_6               :return "6";break;
-		case DIK_7               :return "7";break;
-		case DIK_8               :return "8";break;
-		case DIK_9               :return "9";break;
-		case DIK_0               :return "0";break;
-		case DIK_MINUS           :return "-";break;    /* - on main keyboard */
-		case DIK_EQUALS          :return "=";break;
-		case DIK_BACK            :return "Back";break;    /* backspace */
-		case DIK_TAB             :return "Tab";break;
-		case DIK_Q               :return "Q";break;
-		case DIK_W               :return "W";break;
-		case DIK_E               :return "E";break;
-		case DIK_R               :return "R";break;
-		case DIK_T               :return "T";break;
-		case DIK_Y               :return "Y";break;
-		case DIK_U               :return "U";break;
-		case DIK_I               :return "I";break;
-		case DIK_O               :return "O";break;
-		case DIK_P               :return "P";break;
-		case DIK_LBRACKET        :return "[";break;
-		case DIK_RBRACKET        :return "]";break;
-		case DIK_RETURN          :return "Enter";break;    /* Enter on main keyboard */
-		case DIK_LCONTROL        :return "LCtrl";break;
-		case DIK_A               :return "A";break;
-		case DIK_S               :return "S";break;
-		case DIK_D               :return "D";break;
-		case DIK_F               :return "F";break;
-		case DIK_G               :return "G";break;
-		case DIK_H               :return "H";break;
-		case DIK_J               :return "J";break;
-		case DIK_K               :return "K";break;
-		case DIK_L               :return "L";break;
-		case DIK_SEMICOLON       :return "Semi";break;
-		case DIK_APOSTROPHE      :return "\'";break;
-		case DIK_GRAVE           :return "Grave";break;    /* accent grave */
-		case DIK_LSHIFT          :return "LShift";break;
-		case DIK_BACKSLASH       :return "\\";break;
-		case DIK_Z               :return "Z";break;
-		case DIK_X               :return "X";break;
-		case DIK_C               :return "C";break;
-		case DIK_V               :return "V";break;
-		case DIK_B               :return "B";break;
-		case DIK_N               :return "N";break;
-		case DIK_M               :return "M";break;
-		case DIK_COMMA           :return ",";break;
-		case DIK_PERIOD          :return ".";break;    /* . on main keyboard */
-		case DIK_SLASH           :return "/";break;    /* / on main keyboard */
-		case DIK_RSHIFT          :return "RShift";break;
-		case DIK_MULTIPLY        :return "Num *";break;    /* * on numeric keypad */
-		case DIK_LMENU           :return "LAlt";break;    /* left Alt */
-		case DIK_SPACE           :return "Space";break;
-		case DIK_CAPITAL         :return "Caps";break;
-		case DIK_F1              :return "F1";break;
-		case DIK_F2              :return "F2";break;
-		case DIK_F3              :return "F3";break;
-		case DIK_F4              :return "F4";break;
-		case DIK_F5              :return "F5";break;
-		case DIK_F6              :return "F6";break;
-		case DIK_F7              :return "F7";break;
-		case DIK_F8              :return "F8";break;
-		case DIK_F9              :return "F9";break;
-		case DIK_F10             :return "F10";break;
-		case DIK_NUMLOCK         :return "NumLock";break;
-		case DIK_SCROLL          :return "Scroll";break;    /* Scroll Lock */
-		case DIK_NUMPAD7         :return "Num 7";break;
-		case DIK_NUMPAD8         :return "Num 8";break;
-		case DIK_NUMPAD9         :return "Num 9";break;
-		case DIK_SUBTRACT        :return "Num -";break;    /* - on numeric keypad */
-		case DIK_NUMPAD4         :return "Num 4";break;
-		case DIK_NUMPAD5         :return "Num 5";break;
-		case DIK_NUMPAD6         :return "Num 6";break;
-		case DIK_ADD             :return "Num +";break;    /* + on numeric keypad */
-		case DIK_NUMPAD1         :return "Num 1";break;
-		case DIK_NUMPAD2         :return "Num 2";break;
-		case DIK_NUMPAD3         :return "Num 3";break;
-		case DIK_NUMPAD0         :return "Num 0";break;
-		case DIK_DECIMAL         :return "Num .";break;    /* . on numeric keypad */
-		case DIK_OEM_102         :return "OEM 102";break;    /* <> or \| on RT 102-key keyboard (Non-U.S.) */
-		case DIK_F11             :return "F11";break;
-		case DIK_F12             :return "F12";break;
-		case DIK_F13             :return "F13";break;    /*                     (NEC PC98) */
-		case DIK_F14             :return "F14";break;    /*                     (NEC PC98) */
-		case DIK_F15             :return "F15";break;    /*                     (NEC PC98) */
-		case DIK_KANA            :return "Kana";break;    /* (Japanese keyboard)            */
-		case DIK_ABNT_C1         :return "ABNT C1";break;    /* /? on Brazilian keyboard */
-		case DIK_CONVERT         :return "Conv";break;    /* (Japanese keyboard)            */
-		case DIK_NOCONVERT       :return "Noconv";break;    /* (Japanese keyboard)            */
-		case DIK_YEN             :return "Yen";break;    /* (Japanese keyboard)            */
-		case DIK_ABNT_C2         :return "ABNT C2";break;    /* Numpad . on Brazilian keyboard */
-		case DIK_NUMPADEQUALS    :return "Num =";break;    /* = on numeric keypad (NEC PC98) */
-		case DIK_PREVTRACK       :return "Prev";break;    /* Previous Track (DIK_CIRCUMFLEX on Japanese keyboard) */
-		case DIK_AT              :return "At";break;    /*                     (NEC PC98) */
-		case DIK_COLON           :return "Colon";break;    /*                     (NEC PC98) */
-		case DIK_UNDERLINE       :return "UnderLn";break;    /*                     (NEC PC98) */
-		case DIK_KANJI           :return "Kanji";break;    /* (Japanese keyboard)            */
-		case DIK_STOP            :return "Stop";break;    /*                     (NEC PC98) */
-		case DIK_AX              :return "Ax";break;    /*                     (Japan AX) */
-		case DIK_UNLABELED       :return "Unlbl";break;    /*                        (J3100) */
-		case DIK_NEXTTRACK       :return "Next";break;    /* Next Track */
-		case DIK_NUMPADENTER     :return "NEnter";break;    /* Enter on numeric keypad */
-		case DIK_RCONTROL        :return "RCtrl";break;
-		case DIK_MUTE            :return "Mute";break;    /* Mute */
-		case DIK_CALCULATOR      :return "Calc";break;    /* Calculator */
-		case DIK_PLAYPAUSE       :return "Play";break;    /* Play / Pause */
-		case DIK_MEDIASTOP       :return "MStop";break;    /* Media Stop */
-		case DIK_VOLUMEDOWN      :return "Vol-";break;    /* Volume - */
-		case DIK_VOLUMEUP        :return "Vol+";break;    /* Volume + */
-		case DIK_WEBHOME         :return "Web";break;    /* Web home */
-		case DIK_NUMPADCOMMA     :return "Num ,";break;    /* , on numeric keypad (NEC PC98) */
-		case DIK_DIVIDE          :return "Num /";break;    /* / on numeric keypad */
-		case DIK_SYSRQ           :return "Sys RQ";break;
-		case DIK_RMENU           :return "RAlt";break;    /* right Alt */
-		case DIK_PAUSE           :return "Pause";break;    /* Pause */
-		case DIK_HOME            :return "Home";break;    /* Home on arrow keypad */
-		case DIK_UP              :return "Up";break;    /* UpArrow on arrow keypad */
-		case DIK_PRIOR           :return "PgUp";break;    /* PgUp on arrow keypad */
-		case DIK_LEFT            :return "Left";break;    /* LeftArrow on arrow keypad */
-		case DIK_RIGHT           :return "Right";break;    /* RightArrow on arrow keypad */
-		case DIK_END             :return "End";break;    /* End on arrow keypad */
-		case DIK_DOWN            :return "Down";break;    /* DownArrow on arrow keypad */
-		case DIK_NEXT            :return "PgDn";break;    /* PgDn on arrow keypad */
-		case DIK_INSERT          :return "Insert";break;    /* Insert on arrow keypad */
-		case DIK_DELETE          :return "Delete";break;    /* Delete on arrow keypad */
-		case DIK_LWIN            :return "LWin";break;    /* Left Windows key */
-		case DIK_RWIN            :return "RWin";break;    /* Right Windows key */
-		case DIK_APPS            :return "Apps";break;    /* AppMenu key */
-		case DIK_POWER           :return "Power";break;    /* System Power */
-		case DIK_SLEEP           :return "Sleep";break;    /* System Sleep */
-		case DIK_WAKE            :return "Wake";break;    /* System Wake */
-		case DIK_WEBSEARCH       :return "Search";break;    /* Web Search */
-		case DIK_WEBFAVORITES    :return "Fav";break;    /* Web Favorites */
-		case DIK_WEBREFRESH      :return "Refresh";break;    /* Web Refresh */
-		case DIK_WEBSTOP         :return "WebStop";break;    /* Web Stop */
-		case DIK_WEBFORWARD      :return "Forward";break;    /* Web Forward */
-		case DIK_WEBBACK         :return "WebBack";break;    /* Web Back */
-		case DIK_MYCOMPUTER      :return "MyComp";break;    /* My Computer */
-		case DIK_MAIL            :return "Mail";break;    /* Mail */
-		case DIK_MEDIASELECT     :return "MSelect";break;    /* Media Select */
-	}
+    for (const auto& p : KEY_NAMES)
+    {
+        if (p.second == key) return (char*)p.first;
+    }
 
 	if (key >= DKI_MOUSE_BUTTON1 && key <= DKI_MOUSE_BUTTON8)
 	{

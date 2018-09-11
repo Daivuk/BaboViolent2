@@ -177,7 +177,7 @@ void Client::update(float delay)
 			{
 				if (!game->voting.voted && !(menuManager.root && menuManager.root->visible) && !showMenu)
 				{
-					if (dkiGetState(DIK_F1) == DKI_DOWN)
+					if (dkiGetState(SDLK_F1) == DKI_DOWN)
 					{
 						game->voting.voted = true;
 						net_clsv_vote vote;
@@ -185,7 +185,7 @@ void Client::update(float delay)
 						vote.playerID = game->thisPlayer->playerID;
 						bb_clientSend(uniqueClientID, (char*)(&vote), sizeof(net_clsv_vote), NET_CLSV_VOTE);
 					}
-					else if (dkiGetState(DIK_F2) == DKI_DOWN)
+					else if (dkiGetState(SDLK_F2) == DKI_DOWN)
 					{
 						game->voting.voted = true;
 						net_clsv_vote vote;

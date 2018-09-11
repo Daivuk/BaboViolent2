@@ -41,18 +41,6 @@
 #endif
 
 
-
-#ifdef WIN32
-#ifndef DEDICATED_SERVER
-#ifndef _DX_
-#pragma comment( lib, "opengl32.lib" )
-#pragma comment( lib, "glu32.lib" )
-#else
-#pragma comment (lib, "dkt_dx.lib" )
-#endif
-#endif
-#endif
-
 // Les constantes
 #define DKO_BUMP_MAP			0x0001
 #define DKO_COLOR_ARRAY			0x0002

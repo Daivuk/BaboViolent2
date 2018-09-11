@@ -285,84 +285,84 @@ void Editor2::update(float delay)
 			}
 		}
 		// Hotkeys
-		if (dkiGetState(DIK_G))
+		if (dkiGetState(SDLK_g))
 		{
 			Click(btn_ground);
 		}
-		if (dkiGetState(DIK_H))
+		if (dkiGetState(SDLK_h))
 		{
 			Click(btn_alternative);
 		}
-		if (dkiGetState(DIK_1))
+		if (dkiGetState(SDLK_1))
 		{
 			Click(btn_block1);
 		}
-		if (dkiGetState(DIK_2))
+		if (dkiGetState(SDLK_2))
 		{
 			Click(btn_block2);
 		}
-		if (dkiGetState(DIK_3))
+		if (dkiGetState(SDLK_3))
 		{
 			Click(btn_block3);
 		}
-		if (dkiGetState(DIK_4))
+		if (dkiGetState(SDLK_4))
 		{
 			Click(btn_block4);
 		}
-		if (dkiGetState(DIK_5))
+		if (dkiGetState(SDLK_5))
 		{
 			Click(btn_block5);
 		}
-		if (dkiGetState(DIK_B))
+		if (dkiGetState(SDLK_b))
 		{
 			Click(btn_blueFlag);
 		}
-		if (dkiGetState(DIK_N))
+		if (dkiGetState(SDLK_n))
 		{
 			Click(btn_redFlag);
 		}
-		if (dkiGetState(DIK_T))
+		if (dkiGetState(SDLK_t))
 		{
 			Click(btn_bombSite1);
 		}
-		if (dkiGetState(DIK_Y))
+		if (dkiGetState(SDLK_y))
 		{
 			Click(btn_bombSite2);
 		}
-		if (dkiGetState(DIK_U))
+		if (dkiGetState(SDLK_u))
 		{
 			Click(btn_spawn);
 		}
-		if (dkiGetState(DIK_J))
+		if (dkiGetState(SDLK_j))
 		{
 			Click(btn_blueSpawn);
 		}
-		if (dkiGetState(DIK_M))
+		if (dkiGetState(SDLK_m))
 		{
 			Click(btn_redSpawn);
 		}
-		if (dkiGetState(DIK_PGUP))
+		if (dkiGetState(SDLK_PAGEUP))
 		{
 			Click(btn_theme);
 		}
-		if (dkiGetState(DIK_ESCAPE))
+		if (dkiGetState(SDLK_ESCAPE))
 		{
 			Click(btn_quit);
 		}
 		// Movement
-		if (dkiGetState(DIK_D))
+		if (dkiGetState(SDLK_d))
 		{
 			map->camLookAt[0] += 20 * delay;
 		}
-		if (dkiGetState(DIK_A))
+		if (dkiGetState(SDLK_a))
 		{
 			map->camLookAt[0] -= 20 * delay;
 		}
-		if (dkiGetState(DIK_W))
+		if (dkiGetState(SDLK_w))
 		{
 			map->camLookAt[1] += 20 * delay;
 		}
-		if (dkiGetState(DIK_S))
+		if (dkiGetState(SDLK_s))
 		{
 			map->camLookAt[1] -= 20 * delay;
 		}

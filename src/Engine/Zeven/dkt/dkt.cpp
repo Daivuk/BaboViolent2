@@ -19,12 +19,12 @@
 /* TCE (c) All rights reserved */
 
 
+#include "dkgl.h"
 #include "dkti.h"
 #include <math.h>
 #include <sys/stat.h>
-#if defined(_DEBUG) && defined(USE_VLD)
-#include <vld.h>
-#endif
+
+#include <CVector.h>
 
 
 
@@ -89,8 +89,10 @@ void			 dktBlurTexture(unsigned int textureID, int nbPass)
 			if (texture->bpp == 1) level = GL_LUMINANCE;
 			if (texture->bpp == 3) level = GL_RGB;
 			if (texture->bpp == 4) level = GL_RGBA;
-			gluBuild2DMipmaps(GL_TEXTURE_2D, texture->bpp, texture->size[0], texture->size[1],
-							  GL_RGB, GL_UNSIGNED_BYTE, imageData);
+			//gluBuild2DMipmaps(GL_TEXTURE_2D, texture->bpp, texture->size[0], texture->size[1],
+			//				  GL_RGB, GL_UNSIGNED_BYTE, imageData);
+            glTexImage2D(GL_TEXTURE_2D, 0, level, texture->size[0], texture->size[1], 0, level, GL_UNSIGNED_BYTE, imageData);
+            glGenerateMipmapEXT(GL_TEXTURE_2D);
 
 			// On efface le data temporaire
 			delete [] imageData;
@@ -230,8 +232,10 @@ void reloadTGA(CTexture * texture)
 	glBindTexture(GL_TEXTURE_2D, texture->oglID);
 
 	// On construit les mipmaps
-	gluBuild2DMipmaps(GL_TEXTURE_2D, bytesPerPixel, width, height,
-					  Level, GL_UNSIGNED_BYTE, imageData);
+	//gluBuild2DMipmaps(GL_TEXTURE_2D, bytesPerPixel, width, height,
+	//				  Level, GL_UNSIGNED_BYTE, imageData);
+    glTexImage2D(GL_TEXTURE_2D, 0, Level, width, height, 0, Level, GL_UNSIGNED_BYTE, imageData);
+    glGenerateMipmapEXT(GL_TEXTURE_2D);
 
 	// On delete notre Data qu'on n'a pus besoin
 	delete [] imageData;
@@ -364,8 +368,10 @@ unsigned int createTextureTGA(char * filename, int filter){
 		}
 
 		// On construit les mipmaps
-		gluBuild2DMipmaps(GL_TEXTURE_2D, bytesPerPixel, width, height,
-						  Level, GL_UNSIGNED_BYTE, imageData);
+		//gluBuild2DMipmaps(GL_TEXTURE_2D, bytesPerPixel, width, height,
+		//				  Level, GL_UNSIGNED_BYTE, imageData);
+        glTexImage2D(GL_TEXTURE_2D, 0, Level, width, height, 0, Level, GL_UNSIGNED_BYTE, imageData);
+        glGenerateMipmapEXT(GL_TEXTURE_2D);
 
 		// On delete notre Data qu'on n'a pus besoin
 		delete [] imageData;
@@ -461,8 +467,10 @@ unsigned int	 dktCreateEmptyTexture(int w, int h, int bpp, int filter)
 	}
 
 	// On construit la texture et ses mipmap
-	gluBuild2DMipmaps(GL_TEXTURE_2D, bpp, w, h,
-					  level, GL_UNSIGNED_BYTE, buffer);
+	//gluBuild2DMipmaps(GL_TEXTURE_2D, bpp, w, h,
+	//				  level, GL_UNSIGNED_BYTE, buffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, level, w, h, 0, level, GL_UNSIGNED_BYTE, buffer);
+    glGenerateMipmapEXT(GL_TEXTURE_2D);
 
 	delete [] buffer;
 
@@ -539,8 +547,10 @@ void			 dktCreateTextureFromBuffer(unsigned int *textureID, unsigned char *buffe
 	texture->bpp = bpp;
 
 	// On construit la texture et ses mipmap
-	gluBuild2DMipmaps(GL_TEXTURE_2D, bpp, w, h,
-					  level, GL_UNSIGNED_BYTE, buffer);
+	//gluBuild2DMipmaps(GL_TEXTURE_2D, bpp, w, h,
+	//				  level, GL_UNSIGNED_BYTE, buffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, level, w, h, 0, level, GL_UNSIGNED_BYTE, buffer);
+    glGenerateMipmapEXT(GL_TEXTURE_2D);
 #endif
 }
 

@@ -34,7 +34,7 @@ CUserLogin::CUserLogin(CControl * in_parent, CControl * in_alignTo)
 	m_sfxOver = dksCreateSoundFromFile("main/sounds/ControlOver.wav", false);
 
 #ifndef _DX_
-	qObj = gluNewQuadric();
+	//qObj = gluNewQuadric();
 #endif
 	tex_baboShadow = dktCreateTextureFromFile("main/textures/BaboShadow.tga", DKT_FILTER_BILINEAR);
 
@@ -151,7 +151,7 @@ CUserLogin::CUserLogin(CControl * in_parent, CControl * in_alignTo)
 CUserLogin::~CUserLogin()
 {
 #ifndef _DX_
-	gluDeleteQuadric(qObj);
+	//gluDeleteQuadric(qObj);
 #endif
 	dktDeleteTexture(&tex_baboShadow);
 	dksDeleteSound(m_sfxClic);
@@ -427,8 +427,9 @@ void CUserLogin::Paint(CControl * control)
 
 						glColor3f(1,1,1);
 						glPolygonMode(GL_FRONT, GL_FILL);
-						gluQuadricTexture(qObj, true);
-						gluSphere(qObj, 5, 24, 24);
+						//gluQuadricTexture(qObj, true);
+						//gluSphere(qObj, 5, 24, 24);
+                        drawSphere(5, 24, 24, GL_TRIANGLES);
 					glPopMatrix();
 					
 				glPopAttrib();

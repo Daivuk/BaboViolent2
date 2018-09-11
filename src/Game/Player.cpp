@@ -131,7 +131,7 @@ Player::Player(char pPlayerID, Map * pMap, Game * pGame): pingLogInterval(0.05f)
 	sendPosFrame=0;
 #ifndef DEDICATED_SERVER
 #ifndef _DX_
-	qObj = gluNewQuadric();
+	//qObj = gluNewQuadric();
 #endif
 	isThisPlayer = false;
 #endif
@@ -182,7 +182,7 @@ Player::~Player()
 {
 #ifndef DEDICATED_SERVER
 #ifndef _DX_
-	gluDeleteQuadric(qObj);
+	//gluDeleteQuadric(qObj);
 #endif
 	ZEVEN_SAFE_DELETE(weapon);
 	dktDeleteTexture(&tex_baboShadow);
@@ -568,8 +568,9 @@ void Player::render()
 				glBindTexture(GL_TEXTURE_2D, tex_skin);
 				glColor3f(1,1,1);
 				glPolygonMode(GL_FRONT, GL_FILL);
-				gluQuadricTexture(qObj, true);
-				gluSphere(qObj, .25f, 16, 16);
+				//gluQuadricTexture(qObj, true);
+				//gluSphere(qObj, .25f, 16, 16);
+                drawSphere(0.25f, 16, 16, GL_TRIANGLES);
 
 				//--- On pogne la position sur l'�ran
 				CVector3f screenPos = dkglProject(CVector3f(0,0,0));
@@ -611,8 +612,9 @@ void Player::render()
 					glBindTexture(GL_TEXTURE_2D, tex_skin);
 					glColor3f(1,1,1);
 					glPolygonMode(GL_FRONT, GL_FILL);
-					gluQuadricTexture(qObj, true);
-					gluSphere(qObj, .15f, 8, 8);
+					//gluQuadricTexture(qObj, true);
+					//gluSphere(qObj, .15f, 8, 8);
+                    drawSphere(0.15f, 8, 8, GL_TRIANGLES);
 				glPopMatrix();
 
 				glPushMatrix();

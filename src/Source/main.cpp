@@ -34,6 +34,9 @@
 	#include "CLobby.h"
 #endif
 
+#include "imgui.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl3.h"
 
 #ifdef WIN32
 	#if defined(_DEBUG) && defined(USE_VLD) && !defined(DEDICATED_SERVER)
@@ -207,7 +210,7 @@ public:
 
 #ifdef _DEBUG
 		// LAG GENERATOR , use it to bind a key and test in lag conditions
-		if (dkiGetState(DIK_BACK) == DKI_DOWN)
+		if (dkiGetState(SDLK_BACKSPACE) == DKI_DOWN)
 		{
 			Sleep(300);
 		}
@@ -254,7 +257,7 @@ public:
 #ifndef _DX_
 		if( dkwGetDC() )
 		{
-			SwapBuffers( dkwGetDC() );
+            SDL_GL_SwapWindow(dkwGetHandle());
 		}
 #else
 		dkglGetDXDevice()->Present(	NULL,
@@ -695,75 +698,12 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 
 	// On init nos DLL qui vont �re utilis�dans ce jeu
 	// On initialise quelque cossin important avant tout
-	dkcInit(30); // 30 frame par seconde (m�e que 15 serait le best)
-	   
+    //dkcInit(30); // 30 frame par seconde (m�e que 15 serait le best)
+    dkcInit(120); // FTFY
+
 
 	//--- Windowed mode requires special handling
-	if(!gameVar.r_fullScreen)
-	{
-		// If we create a window at the specified resolution, the client area
-		// will actually be smaller vertically, and players could potentially
-		// manipulate the title-bar height to increase the viewable area further
-
-		//--- So lets make a window
-		WNDCLASS wclass;
-		wclass.style = CS_OWNDC;
-		wclass.cbClsExtra = 0;
-		wclass.cbWndExtra = 0;
-		wclass.hInstance = GetModuleHandle(0);
-		wclass.hIcon = 0;
-		wclass.hCursor = 0;
-		wclass.lpszClassName = "bv2_res_test";
-		wclass.lpszMenuName = 0;
-		wclass.hbrBackground = 0;
-		wclass.lpfnWndProc = &DefWindowProc;
-		RegisterClass(&wclass);
-
-		//--- We'll create a standard window, but we won't show it
-		HWND hwnd = CreateWindow(wclass.lpszClassName, "", WS_CAPTION, 0, 0, gameVar.r_resolution[0], gameVar.r_resolution[1], 0, 0, GetModuleHandle(0), 0);
-
-		//--- Handle errors
-		if(!hwnd)
-		{
-			//--- Uh oohs
-			DWORD	error = GetLastError();
-			LPVOID	buffer;
-	
-			//--- Get the message
-			FormatMessage(	FORMAT_MESSAGE_ALLOCATE_BUFFER |
-							FORMAT_MESSAGE_FROM_SYSTEM,
-							NULL, error, 0, (LPTSTR) &buffer, 0, NULL);
-
-			//--- Put that message in a box
-			MessageBox(hwnd, (LPSTR)buffer, "Error", 0);
-
-			//--- Release mem and exit
-			LocalFree(buffer);
-			return 0;
-		}
-
-		//--- We just want the client area resolution
-		RECT clientRect;
-		GetClientRect(hwnd, &clientRect);
-
-		//--- Great, now some cleanup
-		DestroyWindow(hwnd);
-		UnregisterClass(wclass.lpszClassName, GetModuleHandle(0));
-
-		//--- Now calculate the window size necessary to match the requested resolution
-		CVector2i adjustedRes;
-		adjustedRes[0] = gameVar.r_resolution[0] + (gameVar.r_resolution[0] - clientRect.right);
-		adjustedRes[1] = gameVar.r_resolution[1] + (gameVar.r_resolution[1] - clientRect.bottom);
-
-		//--- Okay, now we're good to go
-		if (!dkwInit(adjustedRes[0], adjustedRes[1], gameVar.r_bitdepth, gameVar.lang_gameName.s, &mainLoopInterface, gameVar.r_fullScreen, gameVar.r_refreshRate)) 
-		{
-			char * error = dkwGetLastError();
-			MessageBox(NULL, error, "Error", 0);
-			return 0;
-		}
-	}
-	else if (!dkwInit(gameVar.r_resolution[0], gameVar.r_resolution[1], gameVar.r_bitdepth, gameVar.lang_gameName.s, &mainLoopInterface, gameVar.r_fullScreen, gameVar.r_refreshRate)) 
+	if (!dkwInit(gameVar.r_resolution[0], gameVar.r_resolution[1], gameVar.r_bitdepth, gameVar.lang_gameName.s, &mainLoopInterface, gameVar.r_fullScreen, gameVar.r_refreshRate)) 
 	{
 		char * error = dkwGetLastError();
 		MessageBox(NULL, error, "Error", 0);
@@ -771,7 +711,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 	}
 
 	// On init les input
-	if (!dkiInit(dkwGetInstance(), dkwGetHandle()))
+	if (!dkiInit(dkwGetHandle()))
 	{
 		dkwShutDown();
 		MessageBox(NULL, "Error creating Input", "Error", 0);
@@ -784,14 +724,8 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 		::SetProcessAffinityMask(::GetCurrentProcess(), 0x1);
 	}
 
-	// On cr�notre API openGL
-	if (!dkglCreateContext(
-#ifndef _DX_
-		dkwGetDC(), gameVar.r_bitdepth
-#else
-		dkwGetHandle(), gameVar.r_fullScreen, gameVar.r_resolution[0], gameVar.r_resolution[1]
-#endif
-		)) 
+	// On cr�notre API openGL (This does nothing anymore
+	if (!dkglCreateContext(dkwGetDC(), gameVar.r_bitdepth)) 
 	{
 		dkiShutDown();
 		dkwShutDown();

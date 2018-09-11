@@ -54,30 +54,12 @@ Voici quelque spécificité :
 using namespace std;
 
 
-#ifdef WIN32
-
-#ifndef _DX_
-#pragma comment( lib, "opengl32.lib" )
-#else
-#pragma comment( lib, "dkt_dx.lib" )
-
-#endif
-
-
 #include <windows.h>
 // Les includes pour opengl
-#ifndef _DX_
-#include <gl/gl.h> 
-#include <gl/glu.h> 
-#endif
+#include "dkgl.h"
+
 //#include <gl/glext.h>
 
-#elif __MACOSX__
-#include <SDL_opengl.h>
-#else
-#include <GL/gl.h>
-#include <GL/glu.h>
-#endif
 // pour pouvoir loader une texture
 #include "dkt.h"
 

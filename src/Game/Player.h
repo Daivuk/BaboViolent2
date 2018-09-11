@@ -331,7 +331,7 @@ public:
 #ifndef DEDICATED_SERVER
 #ifndef _DX_
 	// Pour dessiner notre sphere
-	GLUquadricObj* qObj;
+	//GLUquadricObj* qObj;
 #endif
 
 	// Si on est le joueur controll�

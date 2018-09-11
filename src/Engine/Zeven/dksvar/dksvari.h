@@ -30,12 +30,6 @@
 // #define DLL_API __declspec(dllimport)
 // #endif
 
-#ifdef WIN32
-#pragma comment( lib, "opengl32.lib" )
-#pragma comment( lib, "glu32.lib" )
-
-#endif
-
 #include "CString.h"
 #include "CVector.h"
 #include "dksvardef.h"

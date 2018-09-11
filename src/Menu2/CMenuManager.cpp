@@ -48,10 +48,6 @@ void CMenuManager::update(float delay, CControl * toUpdate)
 {
 	hoveringControl = 0;
 	CVector2i res = dkwGetResolution();
-	RECT rect;
-	GetClientRect(dkwGetHandle(), &rect);
-	res[0] = rect.right - rect.left;
-	res[1] = rect.bottom - rect.top;
 	mousePos = dkwGetCursorPos_main();
 
 	//--- On criss la mouse pos sur 800x600
@@ -77,10 +73,6 @@ void CMenuManager::updateDialogs(float delay)
 		return;
 	hoveringControl = 0;
 	CVector2i res = dkwGetResolution();
-	RECT rect;
-	GetClientRect(dkwGetHandle(), &rect);
-	res[0] = rect.right - rect.left;
-	res[1] = rect.bottom - rect.top;
 	mousePos = dkwGetCursorPos_main();
 
 	//--- On criss la mouse pos sur 800x600

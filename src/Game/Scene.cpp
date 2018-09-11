@@ -79,7 +79,7 @@ Scene::Scene()
 		dkglPopOrtho();
 
 		// On swap les buffers
-		SwapBuffers(dkwGetDC());
+        SDL_GL_SwapWindow(dkwGetHandle());
 #endif
 #endif
 	gameVar.loadModels();

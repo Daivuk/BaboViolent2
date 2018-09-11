@@ -460,9 +460,10 @@ void ToolSpawn::render(Editor2 * editor)
 		}
 		glPushMatrix();
 			glTranslatef(editor->cellCursor[0] + 0.5f, editor->cellCursor[1] + 0.5f, 0.25f);
-			gluQuadricDrawStyle(editor->map->qObj, GLU_SILHOUETTE);
-			gluSphere(editor->map->qObj, 0.25f, 8, 4);
-			gluQuadricDrawStyle(editor->map->qObj, GLU_FILL);
+			//gluQuadricDrawStyle(editor->map->qObj, GLU_SILHOUETTE);
+			//gluSphere(editor->map->qObj, 0.25f, 8, 4);
+			//gluQuadricDrawStyle(editor->map->qObj, GLU_FILL);
+            drawSphere(0.25f, 8, 4, GL_LINES);
 		glPopMatrix();
 	glPopAttrib();
 #endif

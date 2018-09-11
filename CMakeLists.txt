@@ -118,6 +118,39 @@ file(GLOB src_thirdparty_sqlite ./thirdparty/sqlite/*.*)
 source_group("thirdparty\\sqlite" FILES ${src_thirdparty_sqlite})
 list(APPEND includes ./thirdparty/sqlite/)
 
+# SDL
+set(HAVE_LIBC ON)
+add_subdirectory(./thirdparty/SDL/)
+list(APPEND libs SDL2-static)
+list(APPEND includes PUBLIC ./thirdparty/SDL/include/)
+
+# OpenGL
+find_package(OpenGL REQUIRED)
+list(APPEND includes PUBLIC ${OPENGL_INCLUDE_DIR})
+list(APPEND libs ${OPENGL_LIBRARIES})
+
+# Dear imgui
+list(APPEND src_thirdparty_imgui
+    ./thirdparty/imgui/imgui_demo.cpp
+    ./thirdparty/imgui/imgui_draw.cpp
+    ./thirdparty/imgui/imgui_internal.h
+    ./thirdparty/imgui/imgui.cpp
+    ./thirdparty/imgui/imgui.h
+    ./thirdparty/imgui/stb_rect_pack.h
+    ./thirdparty/imgui/stb_textedit.h
+    ./thirdparty/imgui/stb_truetype.h
+    ./thirdparty/imgui/examples/imgui_impl_opengl3.cpp
+    ./thirdparty/imgui/examples/imgui_impl_opengl3.h
+    ./thirdparty/imgui/examples/imgui_impl_sdl.cpp
+    ./thirdparty/imgui/examples/imgui_impl_sdl.h
+)
+source_group("thirdparty\\imgui" FILES ${src_thirdparty_imgui})
+list(APPEND includes PUBLIC ./thirdparty/imgui/ ./thirdparty/imgui/examples/)
+
+# BrebisGL
+list(APPEND includes PUBLIC ./thirdparty/BrebisGL/)
+file(GLOB src_thirdparty_brebisgl ./thirdparty/BrebisGL/*.*)
+
 # BaboViolent.exe, use WinMain on Windows
 add_executable(BaboViolent WIN32
     ${src_Engine_Babonet}
@@ -144,6 +177,8 @@ add_executable(BaboViolent WIN32
     ${src_Zeven_API}
 
     ${src_thirdparty_sqlite}
+    ${src_thirdparty_imgui}
+    ${src_thirdparty_brebisgl}
 )
 
 # Lib/Headers

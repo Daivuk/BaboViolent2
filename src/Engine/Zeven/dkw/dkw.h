@@ -52,13 +52,9 @@
 
 #include "platform_types.h"
 
-#ifdef WIN32
-#include <windows.h>
-#else
-#include "LinuxHeader.h"
-#endif
-
 #include "CVector.h"
+
+#include <SDL.h>
 
 
 
@@ -118,30 +114,8 @@ void			dkwForceQuit();
 
 
 
-/// \brief retourne le Device Context de la fenêtre
-///
-/// Cette fonction retourne le Device Context de la fenêtre créée par le module. Le Device Context est une structure de donnée Windows qui représente l'aspect visuel d'une fenêtre.
-///
-/// \return Device Context de la fenêtre
-HDC				dkwGetDC();
-
-
-
-/// \brief retourne le Handle de la fenêtre
-///
-/// Cette fonction retourne le Handle de la fenêtre créée par le module. Le Handle est une structure de donnée Windows qui représente la fenêtre elle-même.
-///
-/// \return Handle de la fenêtre
-HWND			dkwGetHandle();
-
-
-
-/// \brief retourne l'instance de l'application
-///
-/// Cette fonction retourne l'instance de l'application. Celle-ci est la structure de donnée utiliser par Windows pour distinguer plusieurs applications.
-///
-/// \return instance de l'application
-HINSTANCE		dkwGetInstance();
+SDL_GLContext dkwGetDC();
+SDL_Window* dkwGetHandle();
 
 
 
@@ -177,11 +151,7 @@ CVector2i		dkwGetResolution();
 /// Cette fonction est la boucle principale du programme. Elle ne doit être appelé qu'une fois pour toute la durée de l'exécution du programme. L'exécution de cette fonction ne se terminera que lorsque le message système WM_QUIT aura été reçu.
 ///
 /// \return 0 si l'exécution s'est déroulée normalement, retourne 1 sinon
-#ifdef WIN32
 int				dkwMainLoop();
-#else
-int dkwMainLoop(bool *);
-#endif
 
 
 
@@ -206,11 +176,6 @@ void			dkwUpdate();
 ///
 
 void			dkwClipMouse( bool abEnabled );
-
-#ifndef WIN32
-void dkwGetMouseState(DIMOUSESTATE2 * aMouseState);
-void dkwGetKeysState(unsigned char * aState, int aSize);
-#endif
 
 
 #endif

@@ -81,7 +81,7 @@ Map::Map(CString mapFilename, Game * _game, unsigned int font, bool editor, int 
 		dkglPopOrtho();
 
 		// On swap les buffers
-		SwapBuffers(dkwGetDC());
+        SDL_GL_SwapWindow(dkwGetHandle());
 #endif
 #endif
 #ifndef DEDICATED_SERVER
@@ -115,7 +115,7 @@ Map::Map(CString mapFilename, Game * _game, unsigned int font, bool editor, int 
 	if (!isServer)
 	{
 #ifndef _DX_
-		qObj = gluNewQuadric();
+		//qObj = gluNewQuadric();
 #endif
 
 		// Les textures
@@ -1041,7 +1041,7 @@ Map::~Map()
 	if (!isServer)
 	{
 #ifndef _DX_
-		gluDeleteQuadric(qObj);
+		//gluDeleteQuadric(qObj);
 #endif
 	}
 

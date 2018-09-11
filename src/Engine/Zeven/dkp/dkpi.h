@@ -35,10 +35,6 @@
 #endif
 
 #ifdef WIN32
-#ifndef _DX_
-#pragma comment( lib, "opengl32.lib" )
-#pragma comment( lib, "glu32.lib" )
-#endif
 
 
 #include <windows.h>
@@ -46,24 +42,7 @@
 
 #include <vector>
 
-#ifdef WIN32
-// Les includes pour opengl
-#ifndef _DX_
-#include <gl/gl.h> 
-#include <gl/glu.h> 
-#endif
-//#include <gl/glext.h> 
-#else
-#include "linux_types.h"
-#include "LinuxHeader.h"
-#ifdef __MACOSX__
-#include <SDL_opengl.h>
-#else
-#include <GL/gl.h>
-#include <GL/glu.h>
-#endif
-//#include <GL/glext.h>
-#endif
+#include "dkgl.h"
 
 #include "CParticle.h"
 

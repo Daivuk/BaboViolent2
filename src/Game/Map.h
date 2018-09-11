@@ -191,7 +191,7 @@ public:
 	CVector3f camDest;
 	// Pour dessiner notre sphere
 #ifndef _DX_
-	GLUquadricObj* qObj;
+	//GLUquadricObj* qObj;
 #endif
 
 	CVector4f fogColor;

@@ -815,7 +815,7 @@ void Client::render(float & alphaScope)
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 				if (blink > .25f) printCenterText(400, 300-32, 64, gameVar.lang_connectingC);
 				printCenterText(400, 332, 48, gameVar.lang_pressF10ToCancel);
-				if (dkiGetState(DIK_F10) == DKI_DOWN) console->sendCommand("disconnect");
+				if (dkiGetState(SDLK_F10) == DKI_DOWN) console->sendCommand("disconnect");
 			glPopAttrib();
 		dkglPopOrtho();
 #endif
