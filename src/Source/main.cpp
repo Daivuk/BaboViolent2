@@ -210,7 +210,7 @@ public:
 
 #ifdef _DEBUG
 		// LAG GENERATOR , use it to bind a key and test in lag conditions
-		if (dkiGetState(SDLK_BACKSPACE) == DKI_DOWN)
+		if (dkiGetState(KeyBackspace) == DKI_DOWN)
 		{
 			Sleep(300);
 		}

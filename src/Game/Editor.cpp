@@ -285,84 +285,84 @@ void Editor2::update(float delay)
 			}
 		}
 		// Hotkeys
-		if (dkiGetState(SDLK_g))
+		if (dkiGetState(KeyG))
 		{
 			Click(btn_ground);
 		}
-		if (dkiGetState(SDLK_h))
+		if (dkiGetState(KeyH))
 		{
 			Click(btn_alternative);
 		}
-		if (dkiGetState(SDLK_1))
+		if (dkiGetState(Key1))
 		{
 			Click(btn_block1);
 		}
-		if (dkiGetState(SDLK_2))
+		if (dkiGetState(Key2))
 		{
 			Click(btn_block2);
 		}
-		if (dkiGetState(SDLK_3))
+		if (dkiGetState(Key3))
 		{
 			Click(btn_block3);
 		}
-		if (dkiGetState(SDLK_4))
+		if (dkiGetState(Key4))
 		{
 			Click(btn_block4);
 		}
-		if (dkiGetState(SDLK_5))
+		if (dkiGetState(Key5))
 		{
 			Click(btn_block5);
 		}
-		if (dkiGetState(SDLK_b))
+		if (dkiGetState(KeyB))
 		{
 			Click(btn_blueFlag);
 		}
-		if (dkiGetState(SDLK_n))
+		if (dkiGetState(KeyN))
 		{
 			Click(btn_redFlag);
 		}
-		if (dkiGetState(SDLK_t))
+		if (dkiGetState(KeyT))
 		{
 			Click(btn_bombSite1);
 		}
-		if (dkiGetState(SDLK_y))
+		if (dkiGetState(KeyY))
 		{
 			Click(btn_bombSite2);
 		}
-		if (dkiGetState(SDLK_u))
+		if (dkiGetState(KeyU))
 		{
 			Click(btn_spawn);
 		}
-		if (dkiGetState(SDLK_j))
+		if (dkiGetState(KeyJ))
 		{
 			Click(btn_blueSpawn);
 		}
-		if (dkiGetState(SDLK_m))
+		if (dkiGetState(KeyM))
 		{
 			Click(btn_redSpawn);
 		}
-		if (dkiGetState(SDLK_PAGEUP))
+		if (dkiGetState(KeyPageUp))
 		{
 			Click(btn_theme);
 		}
-		if (dkiGetState(SDLK_ESCAPE))
+		if (dkiGetState(KeyEscape))
 		{
 			Click(btn_quit);
 		}
 		// Movement
-		if (dkiGetState(SDLK_d))
+		if (dkiGetState(KeyD))
 		{
 			map->camLookAt[0] += 20 * delay;
 		}
-		if (dkiGetState(SDLK_a))
+		if (dkiGetState(KeyA))
 		{
 			map->camLookAt[0] -= 20 * delay;
 		}
-		if (dkiGetState(SDLK_w))
+		if (dkiGetState(KeyW))
 		{
 			map->camLookAt[1] += 20 * delay;
 		}
-		if (dkiGetState(SDLK_s))
+		if (dkiGetState(KeyS))
 		{
 			map->camLookAt[1] -= 20 * delay;
 		}

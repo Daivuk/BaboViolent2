@@ -320,9 +320,9 @@ void Console::update(float delay)
 	{
 		if (!m_currentText->haveFocus()) m_currentText->giveFocus();
 
-		if (dkiGetState(SDLK_F1) == DKI_DOWN)
+		if (dkiGetState(KeyF1) == DKI_DOWN)
 			SetDisplayEvents(true);
-		else if (dkiGetState(SDLK_F2) == DKI_DOWN)
+		else if (dkiGetState(KeyF2) == DKI_DOWN)
 			SetDisplayEvents(false);
 
 		// Si on l'a activ?
@@ -352,7 +352,7 @@ void Console::update(float delay)
 			if (m_vPos > ((gameVar.c_huge)?510:310)) m_vPos = (float)((gameVar.c_huge)?510:310);
 		}
 
-		if (dkiGetState(SDLK_BACKQUOTE) == DKI_DOWN || dkiGetState(0x94) == DKI_DOWN)
+		if (dkiGetState(KeyGrave) == DKI_DOWN)
 		{
 			m_isActive = false;
 			m_currentText->clear();
@@ -399,7 +399,7 @@ void Console::update(float delay)
 			}
 			m_lastToken = token;
 
-			if(dkiGetState(SDLK_TAB) == DKI_DOWN)
+			if(dkiGetState(KeyTab) == DKI_DOWN)
 			{
 				// If tab-completion has not yet been started, or the token has been backspaced
 				// set a new recognition var
@@ -440,7 +440,7 @@ void Console::update(float delay)
 			showRecognitionVar = false;
 		}
 
-		if (dkiGetState(SDLK_UP) == DKI_DOWN)
+		if (dkiGetState(KeyUp) == DKI_DOWN)
 		{
 			if (m_cmdHistoryID == -1) m_cmdHistoryID = int(m_cmdHistory.size()) - 1;
 			else if (m_cmdHistoryID > 0)
@@ -449,7 +449,7 @@ void Console::update(float delay)
 				m_currentText->replaceText(m_cmdHistory[m_cmdHistoryID]);
 		}
 
-		if (dkiGetState(SDLK_DOWN) == DKI_DOWN)
+		if (dkiGetState(KeyDown) == DKI_DOWN)
 		{
 			if (m_cmdHistoryID != -1) 
 				m_cmdHistoryID++;
@@ -465,14 +465,14 @@ void Console::update(float delay)
 			}
 		}
 
-		if (dkiGetState(SDLK_ESCAPE) == DKI_DOWN)
+		if (dkiGetState(KeyEscape) == DKI_DOWN)
 		{
 			m_currentText->replaceText("");
 			curRecognitionVar = 0;
 			lastRecognitionVar = "";
 		}
 
-		if (dkiGetState(SDLK_PAGEUP) == DKI_DOWN)
+		if (dkiGetState(KeyPageUp) == DKI_DOWN)
 		{
 			const std::vector<CString>& displayMessages = GetActiveMessages();
 			int linesPerPage;
@@ -490,7 +490,7 @@ void Console::update(float delay)
 			//m_currentText->replaceText(CString("> %i", m_visibleMsgOffset));
 		}
 
-		if (dkiGetState(SDLK_PAGEDOWN) == DKI_DOWN)
+		if (dkiGetState(KeyPageDown) == DKI_DOWN)
 		{
 			if (m_visibleMsgOffset > m_historyMod)
 				m_visibleMsgOffset -= m_historyMod;
@@ -509,7 +509,7 @@ void Console::update(float delay)
 			if (m_vPos < 0) m_vPos = 0;
 		}
 
-		if ((dkiGetState(SDLK_BACKQUOTE) == DKI_DOWN || dkiGetState(0x94) == DKI_DOWN) && !locked)
+		if ((dkiGetState(KeyGrave) == DKI_DOWN) && !locked)
 		{
 			m_isActive = true;
 			m_currentText->clear(); // On l'efface au d?ut

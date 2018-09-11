@@ -31,17 +31,17 @@ static int lastDown = 0;
 static float downTimer = 0;
 
 //
-// Pour obtenir la première touche pressé (utile pour setter les touche dans les options)
+// Pour obtenir la premiï¿½re touche pressï¿½ (utile pour setter les touche dans les options)
 //
 int dkiGetFirstDown()
 {
-	//for (int i=0;i<256+8+128;i++)
-	//{
-	//	if (CDki::allState[i] == DKI_DOWN)
-	//	{
-	//		return i;
-	//	}
-	//}
+	for (int i=0;i<256+8+128;i++)
+	{
+		if (allState[i] == DKI_DOWN)
+		{
+			return i;
+		}
+	}
 
 	return DKI_NOKEY;
 }
@@ -74,7 +74,7 @@ CVector2i dkiGetMouseVel()
 
 
 //
-// Pour obtenir l'état d'une touche ou d'un bouton
+// Pour obtenir l'ï¿½tat d'une touche ou d'un bouton
 //
 int dkiGetState(int inputID)
 {

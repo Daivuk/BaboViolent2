@@ -1156,7 +1156,7 @@ void Player::hitSV(Weapon * fromWeapon, Player * from, float damage)
 			break;
 		case 2://(a-d/(x-b)c)
 			if (distance == 0)
-				distance = 0.0000000000000000000000000000000000000000000000000000000001f;
+				distance = 0.000001f;
 			cdamage = cdamage*(gameVar.sv_photonVerticalShift+gameVar.sv_photonDamageCoefficient/((distance-gameVar.sv_photonHorizontalShift)*gameVar.sv_photonDistMult));
 			break;
 		case 3:

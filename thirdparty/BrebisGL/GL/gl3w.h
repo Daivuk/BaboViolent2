@@ -1,4 +1,7 @@
 /*
+    WARNING: This file despite his name, is NOT gl3w. It's named like that so 
+    some thirdparties using glw3 didn't require code changes.
+
    BrebisGL.h
        A Public domain ANSI C (C89) compliant GL/GLES extension wrangler
 
