@@ -269,7 +269,7 @@ public:
 
       #ifdef NDEBUG
       #ifdef WIN32
-      #ifdef _PRO_
+      #if defined(_PRO_)
   //    if (IsDebuggerPresent() == TRUE)
   //       {
   //       throw(0);

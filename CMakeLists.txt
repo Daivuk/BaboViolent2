@@ -32,6 +32,7 @@ endif()
 
 # PRO version
 add_definitions(-D_PRO_)
+add_definitions(-D_MINIBOT_)
 
 # Project files
 file(GLOB src_Engine_Babonet ./src/Engine/Babonet/*.*)

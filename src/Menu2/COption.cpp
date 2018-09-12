@@ -145,7 +145,7 @@ COption::COption(CControl * in_parent, CControl * in_alignTo)
 			item = new CControl(lst_bitDepth, CVector2i(10,10), CVector2i(150,20),"32 bits", this, "LABEL", item, CONTROL_SNAP_BOTTOM);
 		if (gameVar.r_bitdepth == 16) lst_bitDepth->selectChild(0);
 		if (gameVar.r_bitdepth == 32) lst_bitDepth->selectChild(1);
-#ifdef _PRO_
+#if defined(_PRO_)
 		//--- Display refresh rate
 		label1 = new CControl(instance, CVector2i(20,10), CVector2i(200,170),"Display refresh rate:", this, "LABEL", label1, CONTROL_SNAP_BOTTOM);
 		label1->textAlign = CONTROL_TEXTALIGN_MIDDLERIGHT;
@@ -262,7 +262,7 @@ COption::COption(CControl * in_parent, CControl * in_alignTo)
 
 
    //--- GUI OPTIONS
-#ifdef _PRO_
+#if defined(_PRO_)
 	separator = new CControl(instance, CVector2i(10,20), CVector2i(200,25),"User Interface options", this, "SEPARATOR",label1, CONTROL_SNAP_BOTTOM, 15);
 
    //--- Chat Text Size
@@ -435,7 +435,7 @@ COption::COption(CControl * in_parent, CControl * in_alignTo)
 			keyManager.getKeyName(gameVar.k_menuAccess), this, "KEY", label1, CONTROL_SNAP_RIGHT);
 		key_menuAccess->selectedIndex = gameVar.k_menuAccess;
 
-#ifdef _PRO_	
+#if defined(_PRO_)	
 		//--- Key
 		label1 = new CControl(instance, CVector2i(20,10), CVector2i(200,25),"Screen shot:", this, "LABEL", label1, CONTROL_SNAP_BOTTOM);
 		label1->textAlign = CONTROL_TEXTALIGN_MIDDLERIGHT;
@@ -715,7 +715,7 @@ void COption::Click(CControl * control)
 		case 1: gameVar.r_bitdepth = 32; break;
 		default: gameVar.r_bitdepth = 32; break;
 		}
-#ifdef _PRO_
+#if defined(_PRO_)
 		switch (lst_refreshRate->selectedIndex)
 		{
 		case 0: gameVar.r_refreshRate = -1; break;
@@ -750,7 +750,7 @@ void COption::Click(CControl * control)
 				scene->client->game->map->reloadWeather();
 		}
 
-#ifdef _PRO_
+#if defined(_PRO_)
       // GUI Options
       gameVar.r_chatTextSize = slc_chatTextSize->value;
       gameVar.r_eventTextSize = slc_eventTextSize->value;
@@ -782,7 +782,7 @@ void COption::Click(CControl * control)
 		gameVar.k_showScore = key_showScore->selectedIndex;
 		gameVar.k_menuAccess = key_menuAccess->selectedIndex;
 
-#ifdef _PRO_	
+#if defined(_PRO_)	
       gameVar.k_screenShot = key_screenShot->selectedIndex;
       gameVar.k_stats = key_stats->selectedIndex;
 #endif
@@ -876,7 +876,7 @@ void COption::Validate(CControl * control)
 				scene->client->game->map->reloadWeather();
 		}
 
-#ifdef _PRO_
+#if defined(_PRO_)
 		switch (lst_refreshRate->selectedIndex)
 		{
 		case 0: gameVar.r_refreshRate = -1; break;
@@ -919,7 +919,7 @@ void COption::Validate(CControl * control)
 		gameVar.k_showScore = key_showScore->selectedIndex;
 		gameVar.k_menuAccess = key_menuAccess->selectedIndex;
 
-#ifdef _PRO_
+#if defined(_PRO_)
       gameVar.k_screenShot = key_screenShot->selectedIndex;
       gameVar.k_stats = key_stats->selectedIndex;
 #endif

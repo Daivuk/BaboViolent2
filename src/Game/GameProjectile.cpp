@@ -308,7 +308,7 @@ void Projectile::update(float delay, Map* map)
 		if (projectileType == PROJECTILE_GRENADE)
 		{
 			//--- Depending of the team, the color change
-#ifdef _PRO_
+#if defined(_PRO_)
 			if ((scene->client->game->gameType == GAME_TYPE_DM) || (scene->client->game->gameType == GAME_TYPE_SND))
 #else
          if (scene->client->game->gameType == GAME_TYPE_DM)

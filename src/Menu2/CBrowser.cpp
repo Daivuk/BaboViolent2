@@ -132,7 +132,7 @@ void CBrowser::updatePerso(float delay)
 				gameType = "Capture the Flag";
 				break;
 			case 3:
-#ifdef _PRO_
+#if defined(_PRO_)
             gameType = "Champion";
 #else
 				gameType = "Counter Baborist";

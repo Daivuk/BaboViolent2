@@ -17,7 +17,7 @@
 */
 
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 
 #include "Player.h"
 #include "Game.h"

@@ -25,7 +25,7 @@
 #include "Helper.h"
 #include "GameVar.h"
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #include <list>
 #endif
 
@@ -51,7 +51,7 @@ struct CoordFrame
 	long frameID;
 	float angle;
 	CVector3f mousePosOnMap;
-#ifdef _PRO_
+#if defined(_PRO_)
 	float camPosZ;
 #endif
 
@@ -158,7 +158,7 @@ struct PlayerStats
 
 #define PING_LOG_SIZE 60
 
-#ifdef _PRO_
+#if defined(_PRO_)
 
 class Player;
 
@@ -221,7 +221,7 @@ public:
 
 	CVector3f shootShakeDis;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 
    int spawnSlot;
 
@@ -427,7 +427,7 @@ public:
 	CVector3f p1;
 	CVector3f p2;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	//--- His bot
 	CMiniBot * minibot;
 #endif
@@ -467,7 +467,7 @@ public:
 
 	// Pour setter le coordframe du player
 	void setCoordFrame(net_clsv_svcl_player_coord_frame & playerCoordFrame);
-#ifdef _PRO_
+#if defined(_PRO_)
 	void setCoordFrameMinibot(net_svcl_minibot_coord_frame & minibotCoordFrame);
 #endif
 
@@ -486,7 +486,7 @@ public:
 	void updateSkin();
 #endif
 
-	#ifdef _PRO_
+	#if defined(_PRO_)
 		void SpawnMiniBotSV();
 		void SpawnNukeBotSV();
 		void SpawnMiniBot(const CVector3f & spawnPoint, const CVector3f & mousePos);

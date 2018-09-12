@@ -75,7 +75,7 @@ Player::Player(char pPlayerID, Map * pMap, Game * pGame): pingLogInterval(0.05f)
 	mfCumulativeVel = 0.0f; 
 	shootShakeDis.set(0,0,0);
 
-#ifdef _PRO_
+#if defined(_PRO_)
    spawnSlot = -1;
 #endif
 
@@ -84,7 +84,7 @@ Player::Player(char pPlayerID, Map * pMap, Game * pGame): pingLogInterval(0.05f)
 	timeIdle = 0.0f;
 	timeInServer = 0.0f;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	minibot = 0;
 #endif
 
@@ -190,7 +190,7 @@ Player::~Player()
 	dktDeleteTexture(&tex_skinOriginal);
 	dktDeleteTexture(&tex_skin);
 #endif
-#ifdef _PRO_
+#if defined(_PRO_)
 	if (minibot) delete minibot;
 #endif
 	//--- Est-ce qu'on est server et que ce player poc�e le flag???
@@ -246,7 +246,7 @@ void Player::kill(bool silenceDeath)
 		game->spawnBlood(currentCF.position, 1);
 		deadSince = 0;
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 		//--- Spawn bot blood
 		if (minibot)
 		{
@@ -264,7 +264,7 @@ void Player::kill(bool silenceDeath)
 	}
 #endif
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	//--- Delete minibot
 	if (minibot) delete minibot; minibot = 0;
 #endif
@@ -297,7 +297,8 @@ void Player::kill(bool silenceDeath)
 
 
 
-#ifdef _PRO_
+#if defined(_PRO_)
+#if defined(_MINIBOT_)
 //
 //--- Spawn the little evil bot
 //
@@ -391,6 +392,7 @@ void Player::SpawnMiniBot(const CVector3f & spawnPoint, const CVector3f & mouseP
 	minibot->netCF1 = minibot->currentCF;
 }
 #endif
+#endif
 
 
 #ifndef DEDICATED_SERVER
@@ -405,7 +407,7 @@ void Player::render()
 		glPushAttrib(GL_CURRENT_BIT | GL_ENABLE_BIT | GL_POLYGON_BIT);
 #endif
 		//--- TEMP render path with his bot
-#ifdef _PRO_
+#if defined(_PRO_)
 		if (minibot && gameVar.d_showPath)
 		{
 #ifndef _DX_
@@ -451,7 +453,7 @@ void Player::render()
 					glEnd();
 				glPopMatrix();
 #endif
-#ifdef _PRO_
+#if defined(_PRO_)
 				//--- Mini bot shadow :D
 				if (minibot)
 				{
@@ -527,7 +529,7 @@ void Player::render()
 				glVertex3f(d[0], d[1], d[2]);
 				glEnd();
 				glPopMatrix();
-#ifdef _PRO_
+#if defined(_PRO_)
 				if(minibot)
 				{
 					a = a*0.5f;
@@ -600,7 +602,7 @@ void Player::render()
 
 
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 			//--- Minibot !!!
 			if (minibot)
 			{
@@ -761,7 +763,7 @@ void Player::updateSkin()
 	dktGetTextureData(tex_skinOriginal, imgData);
 
 	//--- Celon son team, on set la couleur du babo en cons�uence
-#ifdef _PRO_
+#if defined(_PRO_)
    if ((game->gameType != GAME_TYPE_DM) && (game->gameType != GAME_TYPE_SND) && gameVar.cl_teamIndicatorType == 0)
 #else
 	if (game->gameType != GAME_TYPE_DM)
@@ -889,7 +891,7 @@ void Player::reinit()
 	flagAttempts = 0;
 	timePlayedCurGame = 0.0f;
 
-#ifdef _PRO_
+#if defined(_PRO_)
    spawnSlot = -1;
 #endif
 
@@ -1188,7 +1190,7 @@ void Player::hitSV(Weapon * fromWeapon, Player * from, float damage)
 		cdamage = 0.0f;
 	}
 
-#ifdef _PRO_
+#if defined(_PRO_)
    if ((gameVar.sv_subGameType == SUBGAMETYPE_INSTAGIB) && (fromWeapon->weaponID != WEAPON_GRENADE) &&  (fromWeapon->weaponID != WEAPON_KNIVES) && (fromWeapon->weaponID != WEAPON_COCKTAIL_MOLOTOV))
       {
       cdamage = life; 
@@ -1521,7 +1523,7 @@ void Player::setCoordFrame(net_clsv_svcl_player_coord_frame & playerCoordFrame)
 	currentCF.vel[1] = (float)playerCoordFrame.vel[1] / 10.0f;
 	currentCF.vel[2] = (float)playerCoordFrame.vel[2] / 10.0f;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	currentCF.camPosZ = (float)playerCoordFrame.camPosZ;
 #endif
 
@@ -1550,7 +1552,7 @@ void Player::setCoordFrame(net_clsv_svcl_player_coord_frame & playerCoordFrame)
 	}
 }
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 void Player::setCoordFrameMinibot(net_svcl_minibot_coord_frame & minibotCoordFrame)
 {
 	if (playerID != minibotCoordFrame.playerID) return; // Wtf c pas le bon player!? (Pas suposer arriver)

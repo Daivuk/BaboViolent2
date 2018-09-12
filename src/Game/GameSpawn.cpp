@@ -80,7 +80,7 @@ void Game::spawnBlood(CVector3f & position, float damage)
 	}
 }
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 void Game::spawnBloodMinibot(CVector3f & position, float damage)
 {
 	float bloodColor;
@@ -149,7 +149,7 @@ bool Game::spawnPlayer(int playerID)
 			players[playerID]->teamID == PLAYER_TEAM_RED)
 		{
 
-#ifdef _PRO_
+#if defined(_PRO_)
 			// On lui trouve une place libre loin des ennemies
          if (gameType == GAME_TYPE_SND)
 			{
@@ -284,7 +284,7 @@ bool Game::spawnPlayer(int playerID)
 					}
                CVector3f spawnPosition(map->dm_spawns[bestFound][0],map->dm_spawns[bestFound][1],.25f);
                
-#ifdef _PRO_
+#if defined(_PRO_)
                if ((gameType == GAME_TYPE_CTF)&&(spawnType == SPAWN_TYPE_LADDER))
                {
                float timeElapsed = gameVar.sv_gameTimeLimit - gameTimeLeft;               

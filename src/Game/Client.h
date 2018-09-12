@@ -19,7 +19,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #define GAME_VERSION_CL 21100
 #else
 #define GAME_VERSION_CL 21000
@@ -81,7 +81,7 @@ public:
 
 	// Si le client run
 	bool isRunning;
-#ifdef _PRO_
+#if defined(_PRO_)
    bool proServer;
 #endif
 

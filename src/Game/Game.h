@@ -683,7 +683,7 @@ public:
 	// Pour spawner des particules sur le murs l'hors d'un impact
 	void spawnImpact(CVector3f & p1, CVector3f & p2, CVector3f & normal, Weapon*weapon, float damage, int team);
 	void spawnBlood(CVector3f & position, float damage);
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 	void spawnBloodMinibot(CVector3f & position, float damage);
 #endif
 	void spawnExplosion(CVector3f & position, CVector3f & normal, float size);
@@ -711,12 +711,12 @@ public:
 	// Pour starter un new round
 	void resetRound();
 
-   // Number of players
+    // Number of players
 
-   int numPlayers();
+    int numPlayers();
 
-#ifdef _PRO_
-	void shootMinibotSV(CMiniBot * minibot, float imp, CVector3f p1, CVector3f p2);
+#if defined(_PRO_) && defined(_MINIBOT_)
+    void shootMinibotSV(CMiniBot * minibot, float imp, CVector3f p1, CVector3f p2);
 #endif
 private:
 	void shootSV(int playerID, int nuzzleID, float imp, CVector3f p1, CVector3f p2);

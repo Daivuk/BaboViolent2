@@ -27,7 +27,7 @@
 #include <algorithm>
 #include <string>
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	#include "md5.h"
 #endif
 
@@ -730,7 +730,7 @@ void Console::sendCommand(CString commandLine, bool isAdmin, unsigned long bbnet
 			return;
 		}
 #ifndef DEDICATED_SERVER
-#ifdef _PRO_
+#if defined(_PRO_)
 		if (scene->client)
 		{
 			CString login = tokenize.getFirstToken(' ');
@@ -2298,7 +2298,7 @@ void Console::sendCommand(CString commandLine, bool isAdmin, unsigned long bbnet
 		// "Unkown command" ;)
 	}
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	// getinvalidchecksums [offsetFromEnd=50 [number=50]]
 	// request number(max 50) of entries from BadChecksums starting from number of entries-offsetFromEnd
 	if (command == "getinvalidchecksums")

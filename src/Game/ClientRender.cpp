@@ -533,7 +533,7 @@ void Client::render(float & alphaScope)
 					break;
 				case GAME_TYPE_SND:
 
-#ifdef _PRO_
+#if defined(_PRO_)
                printLeftText(5,5,64,CString("%01i:%02i", (int)((game->gameTimeLeft+1)/60), (int)(game->gameTimeLeft+1)%60));
                printLeftText(5,5+64,64,CString("%01i:%02i", (int)((game->roundTimeLeft+1)/60), (int)(game->roundTimeLeft+1)%60));
 
@@ -563,7 +563,7 @@ void Client::render(float & alphaScope)
 					break;
 				}
          
-#ifdef _PRO_	      
+#if defined(_PRO_)	      
 
             float textSize = (float)gameVar.r_chatTextSize;
 #endif
@@ -585,7 +585,7 @@ void Client::render(float & alphaScope)
 					glBegin(GL_QUADS);
 
          
-#ifdef _PRO_	      
+#if defined(_PRO_)	      
                float chatWidth = dkfGetStringWidth(textSize, chatMessages[i].message.s);
 
 					glVertex2f(8,yPos - (float)((chatMessages.size() - i - 1) * textSize)+1);
@@ -613,7 +613,7 @@ void Client::render(float & alphaScope)
 					// On l'écris à peut pret au tier de l'écran à gauche
 					glEnable(GL_TEXTURE_2D);
 
-#ifdef _PRO_	
+#if defined(_PRO_)	
 					printLeftText(10,yPos - (float)(chatMessages.size() - i - 1) * textSize, textSize, chatMessages[i].message);
 #else
                printLeftText(10,yPos - (float)(chatMessages.size() - i - 1) * 28, 28, chatMessages[i].message);
@@ -660,7 +660,7 @@ void Client::render(float & alphaScope)
 					}
 					// On l'écris à peut pret au 2 tier de l'écran à gauche
 
-#ifdef _PRO_	                  
+#if defined(_PRO_)	                  
             float eventTextSize = (float)gameVar.r_eventTextSize;
 
             if (gameVar.r_showEventText)
@@ -760,7 +760,7 @@ void Client::render(float & alphaScope)
 					printCenterText(400, 5+88, 32, gameVar.lang_captureTheFlagD);
 					break;
 				case GAME_TYPE_SND:
-#ifdef _PRO_
+#if defined(_PRO_)
 					printCenterText(400, 5, 64, gameVar.lang_championC);
 					printCenterText(400, 5+88, 32, gameVar.lang_championD);
 #else

@@ -26,7 +26,7 @@
 #include "CStatus.h"
 #include "dki.h"
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #include "Screengrab.h"
 #endif
 
@@ -54,7 +54,7 @@ Client::Client(Game * pGame)
 	isConnected = false;
 	gotGameState = false;
 
-#ifdef _PRO_
+#if defined(_PRO_)
    proServer = false;
 #endif
 
@@ -106,7 +106,7 @@ Client::Client(Game * pGame)
 	btn_meleeguns[0] = new CControl(clientRoot, CVector2i(475, 130 + 0 * 40), CVector2i(200,30), gameVar.weapons[WEAPON_KNIVES]->weaponName, this, "BUTTON");
 	btn_meleeguns[1] = new CControl(clientRoot, CVector2i(475, 130 + 1 * 40), CVector2i(200,30), gameVar.weapons[WEAPON_NUCLEAR]->weaponName, this, "BUTTON");
 	btn_meleeguns[2] = new CControl(clientRoot, CVector2i(475, 130 + 2 * 40), CVector2i(200,30), gameVar.weapons[WEAPON_SHIELD]->weaponName, this, "BUTTON");
-	#ifdef _PRO_
+	#if defined(_PRO_) && defined(_MINIBOT_)
 		btn_meleeguns[3] = new CControl(clientRoot, CVector2i(475, 130 + 3 * 40), CVector2i(200,30), gameVar.weapons[WEAPON_MINIBOT]->weaponName, this, "BUTTON");
 	#endif
 	currentGun = btn_guns[gameVar.cl_primaryWeapon/*0*/];
@@ -427,7 +427,7 @@ void Client::update(float delay)
 		}
 
 		// Screenshot
-#ifdef _PRO_
+#if defined(_PRO_)
 #ifdef WIN32
 		if (dkiGetState(gameVar.k_screenShot) == DKI_DOWN && !console->isActive() && !chatting.haveFocus() && isConnected && !(menuManager.root && menuManager.root->visible))
 		{
@@ -717,7 +717,7 @@ void Client::Click(CControl * control)
 		}
 		return;
 	}
-	#ifdef _PRO_
+	#if defined(_PRO_) && defined(_MINIBOT_)
 		if (control == btn_meleeguns[3])
 		{
 			if (game->thisPlayer)

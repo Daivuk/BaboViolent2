@@ -37,7 +37,7 @@
 #define WEAPON_KNIVES 10
 #define WEAPON_NUCLEAR 11
 #define WEAPON_SHIELD 12
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 #define WEAPON_MINIBOT 13
 #define WEAPON_MINIBOT_WEAPON 100
 #endif
@@ -47,7 +47,7 @@
 #define SOUND_OVERHEAT 3
 #define SOUND_PHOTON_START 4
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #define SUBGAMETYPE_NORMAL 0
 #define SUBGAMETYPE_INSTAGIB 1
 #define SUBGAMETYPE_RANDOMWEAPON 2
@@ -121,7 +121,7 @@ public:
 	bool sv_enableKnives;
 	bool sv_enableNuclear;
 	bool sv_enableShield;
-	#ifdef _PRO_
+	#if defined(_PRO_)
 		bool sv_enableMinibot;
 	#endif
 	float sv_shottyDropRadius;
@@ -245,7 +245,7 @@ public:
 	int r_widescreen;
 	int r_maxNameLenOverBabo;
 
-#ifdef _PRO_	
+#if defined(_PRO_)	
    int r_chatTextSize;
    int r_eventTextSize;
    bool r_showEventText;
@@ -269,7 +269,7 @@ public:
 	int k_showScore;
 	int k_menuAccess;
 	int k_melee;
-#ifdef _PRO_	
+#if defined(_PRO_)	
    int k_screenShot;
    int k_stats;
 #endif
@@ -395,7 +395,7 @@ public:
 	CString lang_captureTheFlagD;
 	CString lang_counterBaboristC;
 	CString lang_counterBaboristD;
-#ifdef _PRO_
+#if defined(_PRO_)
 	CString lang_championC;
 	CString lang_championD;
 #endif
@@ -433,7 +433,7 @@ public:
 	CString lang_gameNameS;
 	CString lang_gameType;
    CString lang_serverType;
-#ifdef _PRO_   
+#if defined(_PRO_)   
    CString lang_spawnType;
    CString lang_subGameType;
 #endif

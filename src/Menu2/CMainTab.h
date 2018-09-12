@@ -31,6 +31,7 @@
 #include "CCredit.h"
 #include "COption.h"
 #include "CMaster.h"
+#include "CUserLogin.h"
 
 
 
@@ -62,7 +63,7 @@ public:
 	CControl * lastButtonPress;
 	CListener * current;
 	CNews * news;
-	CProfile * profile;
+    CUserLogin * profile;
 	CBrowser * browser;
 	CHost * host;
 	CEditor * editor;

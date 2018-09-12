@@ -27,7 +27,7 @@
 #include <string.h>
 extern Scene* scene;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	#include "md5.h"
 #endif
 
@@ -185,7 +185,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 		}
 	case NET_CLSV_ADMIN_REQUEST:
 		{
-#ifdef _PRO_
+#if defined(_PRO_)
 			net_clsv_admin_request adminRequest;
 			memcpy(&adminRequest, buffer, sizeof(net_clsv_admin_request));
 			CString loginRecv(adminRequest.login);
@@ -454,7 +454,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 				// broadcast the info at remote admins
 				if( master ) master->RA_NewPlayer( textColorLess(playerInfo.playerName).s, playerInfo.playerIP, (long)playerInfo.playerID );
 
-#ifdef _PRO_
+#if defined(_PRO_)
 				// if we are using the pro client/serv, generate a new hash query
 				m_checksumQueries.push_back( new CChecksumQuery(playerInfo.playerID,bbnetID) );
 #endif
@@ -694,7 +694,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 						if (!(spawnRequest.meleeID == WEAPON_KNIVES ||
 							spawnRequest.meleeID == WEAPON_NUCLEAR ||
 							spawnRequest.meleeID == WEAPON_SHIELD
-							#ifdef _PRO_
+							#if defined(_PRO_) && defined(_MINIBOT_)
 								|| spawnRequest.meleeID == WEAPON_MINIBOT
 							#endif
 							))
@@ -707,7 +707,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 					}
 
 					// *** small checkup to make sure people can't choose minibot if sv_enableMinibot is false
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 					if( !gameVar.sv_enableMinibot && spawnRequest.meleeID == WEAPON_MINIBOT )
 					{
 						// force knives
@@ -783,7 +783,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 			memcpy(&playerCoordFrame, buffer, sizeof(net_clsv_svcl_player_coord_frame));
 			if (game->players[playerCoordFrame.playerID])
 			{
-#ifdef _PRO_
+#if defined(_PRO_)
 				if (gameVar.sv_beGoodServer == false &&
 					(game->players[playerCoordFrame.playerID]->teamID == PLAYER_TEAM_RED ||
 					game->players[playerCoordFrame.playerID]->teamID == PLAYER_TEAM_BLUE) &&
@@ -956,7 +956,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 					//special case with the shotty and sniper that shots 2 and 5 bullets on the same frame :(
 					if( playerShoot.weaponID == WEAPON_SHOTGUN || playerShoot.weaponID == WEAPON_SNIPER )
 					{
-#ifdef _PRO_
+#if defined(_PRO_)
 						if (game->players[playerShoot.playerID]->weapon->weaponID == WEAPON_SNIPER)
 						{
 							if (game->players[playerShoot.playerID]->currentCF.camPosZ >= 10.0f)
@@ -1172,7 +1172,7 @@ void Server::recvPacket(char * buffer, int typeID, unsigned long bbnetID)
 			}
 			break;
 		}
-#ifdef _PRO_
+#if defined(_PRO_)
 	case NET_SVCL_HASH_SEED_REPLY:
 		{
 			net_svcl_hash_seed hashseed;

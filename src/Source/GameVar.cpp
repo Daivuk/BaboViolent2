@@ -156,7 +156,7 @@ GameVar::GameVar()
 	langs.push_back(SLangText("lang_gameType", &lang_gameType));
 
    langs.push_back(SLangText("lang_serverType", &lang_serverType));
-#ifdef _PRO_
+#if defined(_PRO_)
    langs.push_back(SLangText("lang_spawnType", &lang_spawnType));
    langs.push_back(SLangText("lang_subGameType", &lang_subGameType));
 #endif
@@ -295,7 +295,7 @@ GameVar::GameVar()
 		.08f, 10, 1, 0, 10, WEAPON_FLAME_THROWER, PROJECTILE_DIRECT);
 	weapons[WEAPON_SHIELD] = new Weapon("main/models/Shield.DKO", "main/sounds/shield.wav", 3.0f, "Instant Shield",
 		0, 0, 1, 0, 0, WEAPON_SHIELD, PROJECTILE_NONE);
-	#ifdef _PRO_
+	#if defined(_PRO_) && defined(_MINIBOT_)
 		weapons[WEAPON_MINIBOT] = new Weapon("main/models/Antena.DKO", "main/sounds/equip.wav", 1.0f, "Mini Bot",
 			.05f, 0, 1, 0, 0, WEAPON_MINIBOT, PROJECTILE_NONE);
 	#endif
@@ -326,7 +326,7 @@ GameVar::GameVar()
 		.08f, 6, 1, 0, 6, WEAPON_FLAME_THROWER, PROJECTILE_DIRECT);
 	weapons[WEAPON_SHIELD] = new Weapon("", "", 3.0f, "Instant Shield",
 		0, 0, 1, 0, 0, WEAPON_SHIELD, PROJECTILE_NONE);
-	#ifdef _PRO_
+	#if defined(_PRO_) && defined(_MINIBOT_)
 		weapons[WEAPON_MINIBOT] = new Weapon("", "", 1.0f, "Mini Bot",
 			.05f, 0, 1, 0, 0, WEAPON_MINIBOT, PROJECTILE_NONE);
 	#endif
@@ -366,7 +366,7 @@ GameVar::GameVar()
 	dksvarRegister(CString("sv_serverType [int : 0=Normal, 1=Pro]"),
 		&sv_serverType, 0, 1, LIMIT_MIN | LIMIT_MAX, true);
 
-#ifdef _PRO_
+#if defined(_PRO_)
    sv_spawnType = 0;
 	dksvarRegister(CString("sv_spawnType [int : 0=Normal, 1=Ladder]"),
 		&sv_spawnType, 0, 1, LIMIT_MIN | LIMIT_MAX, true);
@@ -433,7 +433,7 @@ GameVar::GameVar()
 	dksvarRegister(CString("sv_enableNuclear [bool : true | false (default true)]"), &sv_enableNuclear, true);
 	sv_enableShield = true;
 	dksvarRegister(CString("sv_enableShield [bool : true | false (default true)]"), &sv_enableShield, true);
-	#ifdef _PRO_
+	#if defined(_PRO_)
 		sv_enableMinibot = true;
 		dksvarRegister(CString("sv_enableMinibot [bool : true | false (default true)]"), &sv_enableMinibot, true);
 	#endif
@@ -692,7 +692,7 @@ GameVar::GameVar()
 	r_maxNameLenOverBabo = 0;
 	dksvarRegister(CString("r_maxNameLenOverBabo [int : (default 0=no limit)]"), &r_maxNameLenOverBabo, 0, 0, LIMIT_MIN, true);
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	r_chatTextSize = 28;   
 	dksvarRegister(CString("r_chatTextSize [int : (default 28)]"), &r_chatTextSize,
 		8, 28, LIMIT_MIN | LIMIT_MAX, true);
@@ -742,7 +742,7 @@ GameVar::GameVar()
 	dksvarRegister(CString("k_menuAccess [int]"), &k_menuAccess, 0, 0, 0, true);
 	k_melee = keyManager.getKeyByName("Space");
 	dksvarRegister(CString("k_melee [int]"), &k_melee, 0, 0, 0, true);
-#ifdef _PRO_
+#if defined(_PRO_)
    k_screenShot = keyManager.getKeyByName("P");
 	dksvarRegister(CString("k_screenShot [int]"), &k_screenShot, 0, 0, 0, true);
 
@@ -823,7 +823,7 @@ void GameVar::sendSVVar(UINT4 babonetID)
 	sendOne("sv_winLimit", babonetID);
 	sendOne("sv_gameType", babonetID);
    sendOne("sv_serverType", babonetID);
-#ifdef _PRO_
+#if defined(_PRO_)
    sendOne("sv_spawnType", babonetID);
    sendOne("sv_subGameType", babonetID);
 #endif
@@ -848,7 +848,7 @@ void GameVar::sendSVVar(UINT4 babonetID)
 	sendOne("sv_enableKnives", babonetID);
 	sendOne("sv_enableNuclear", babonetID);
 	sendOne("sv_enableShield", babonetID);
-#ifdef _PRO_
+#if defined(_PRO_)
 	sendOne("sv_enableMinibot", babonetID);
 #endif
 	sendOne("sv_autoBalance", babonetID);
@@ -903,7 +903,7 @@ void GameVar::sendSVVar(INT4 peerId)
 	sendOne("sv_winLimit", peerId);
 	sendOne("sv_gameType", peerId);
    sendOne("sv_serverType", peerId);
-#ifdef _PRO_
+#if defined(_PRO_)
    sendOne("sv_spawnType", peerId);
    sendOne("sv_subGameType", peerId);
 #endif
@@ -928,7 +928,7 @@ void GameVar::sendSVVar(INT4 peerId)
 	sendOne("sv_enableKnives", peerId);
 	sendOne("sv_enableNuclear", peerId);
 	sendOne("sv_enableShield", peerId);
-#ifdef _PRO_
+#if defined(_PRO_)
 	sendOne("sv_enableMinibot", peerId);
 	sendOne("sv_showKills", peerId);
 	sendOne("sv_beGoodServer", peerId);
@@ -1028,7 +1028,7 @@ void GameVar::loadModels()
 	weapons[WEAPON_PHOTON_RIFLE]->loadModels();
 	weapons[WEAPON_FLAME_THROWER]->loadModels();
 	weapons[WEAPON_SHIELD]->loadModels();
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 	weapons[WEAPON_MINIBOT]->loadModels();
 #endif
 
@@ -1174,7 +1174,7 @@ void GameVar::deleteModels()
 	delete weapons[WEAPON_KNIVES];
 	delete weapons[WEAPON_NUCLEAR];
 	delete weapons[WEAPON_SHIELD];
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 	delete weapons[WEAPON_MINIBOT];
 #endif
 

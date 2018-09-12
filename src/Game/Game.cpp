@@ -335,7 +335,7 @@ int SelectToAvailableMeleeWeapon()
 	if (gameVar.sv_enableKnives)	return WEAPON_KNIVES;
 	if (gameVar.sv_enableNuclear)	return WEAPON_NUCLEAR;
 	if (gameVar.sv_enableShield)	return WEAPON_SHIELD;
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 	if (gameVar.sv_enableMinibot)	return WEAPON_MINIBOT;
 #endif
 
@@ -410,7 +410,7 @@ void Game::update(float delay)
 							{
 								if (j != i)
 								{
-#ifdef _PRO_
+#if defined(_PRO_)
 									if (players[j]->status == PLAYER_STATUS_ALIVE && (players[j]->teamID != players[i]->teamID || gameType == GAME_TYPE_DM || gameType == GAME_TYPE_SND || gameVar.sv_friendlyFire || gameVar.sv_reflectedDamage))
 #else
 									if (players[j]->status == PLAYER_STATUS_ALIVE && (players[j]->teamID != players[i]->teamID || gameType == GAME_TYPE_DM || gameVar.sv_friendlyFire))
@@ -523,7 +523,7 @@ void Game::update(float delay)
 								players[i]->switchMeleeWeapon(SelectToAvailableMeleeWeapon(), true);
 							}
 						}
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 						if (players[i]->meleeWeapon->weaponID == WEAPON_MINIBOT)
 						{
 							if (!gameVar.sv_enableMinibot)
@@ -538,7 +538,7 @@ void Game::update(float delay)
 		}
 	}
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	//--- Perform bot collisions with walls
 	if (isServerGame)
 	{
@@ -779,7 +779,7 @@ void Game::update(float delay)
 			scene->client->btn_meleeguns[WEAPON_KNIVES-WEAPON_KNIVES]->enable = gameVar.sv_enableKnives;
 			scene->client->btn_meleeguns[WEAPON_NUCLEAR-WEAPON_KNIVES]->enable = gameVar.sv_enableNuclear;
 			scene->client->btn_meleeguns[WEAPON_SHIELD-WEAPON_KNIVES]->enable = gameVar.sv_enableShield;
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 			scene->client->btn_meleeguns[WEAPON_MINIBOT-WEAPON_KNIVES]->enable = gameVar.sv_enableMinibot;
 #endif
 		}
@@ -788,7 +788,7 @@ void Game::update(float delay)
 			scene->client->btn_meleeguns[WEAPON_KNIVES-WEAPON_KNIVES]->enable = false;
 			scene->client->btn_meleeguns[WEAPON_NUCLEAR-WEAPON_KNIVES]->enable = false;
 			scene->client->btn_meleeguns[WEAPON_SHIELD-WEAPON_KNIVES]->enable = false;
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 			scene->client->btn_meleeguns[WEAPON_MINIBOT-WEAPON_KNIVES]->enable = false;
 #endif
 		}
@@ -887,7 +887,7 @@ int Game::assignPlayerTeam(int playerID, char teamRequested, Client * client)
 {
 	if (players[playerID])
 	{
-#ifdef _PRO_
+#if defined(_PRO_)
    players[playerID]->spawnSlot = -1;
 #endif
 
@@ -1121,7 +1121,7 @@ void Game::shoot(const CVector3f & position, const CVector3f & direction, float 
 			playerShoot.p1[0] = (short)(position[0] * 100);
 			playerShoot.p1[1] = (short)(position[1] * 100);
 			playerShoot.p1[2] = (short)(position[2] * 100);
-#ifdef _PRO_
+#if defined(_PRO_)
 			playerShoot.p2[0] = (short)(direction[0] * 100);
 			playerShoot.p2[1] = (short)(direction[1] * 100);
 			playerShoot.p2[2] = (short)(direction[2] * 100);
@@ -1240,7 +1240,7 @@ void Game::shootSV(net_clsv_player_shoot & playerShoot)
 	p2[2] = (float)playerShoot.p2[2] / 100.0f;
 	player->weapon->shotFrom = p1;
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	if (player->weapon->weaponID == WEAPON_SHOTGUN)
 	{
 		// ves's suggestion
@@ -1292,7 +1292,7 @@ void Game::shootSV(net_clsv_player_shoot & playerShoot)
 	}
 }
 
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 void Game::shootMinibotSV(CMiniBot * minibot, float imp, CVector3f p1, CVector3f p2)
 {
 	CVector3f normal;
@@ -1395,7 +1395,7 @@ void Game::shootSV(int playerID, int nuzzleID, float imp, CVector3f p1, CVector3
 	{
 		imp = 3.5f;
 	}
-#ifdef _PRO_
+#if defined(_PRO_)
 	CVector3f dir = p2;
     
 	if (player->weapon->projectileType == PROJECTILE_DIRECT && player->weapon->weaponID == WEAPON_FLAME_THROWER)
@@ -1495,7 +1495,7 @@ void Game::shootSV(int playerID, int nuzzleID, float imp, CVector3f p1, CVector3
 			{
 				if (i != player->playerID)
 				{
-#ifdef _PRO_
+#if defined(_PRO_)
                if (players[i]->status == PLAYER_STATUS_ALIVE && (players[i]->teamID != player->teamID || gameType == GAME_TYPE_DM || gameType == GAME_TYPE_SND || gameVar.sv_friendlyFire || gameVar.sv_reflectedDamage))
 #else
                if (players[i]->status == PLAYER_STATUS_ALIVE && (players[i]->teamID != player->teamID || gameType == GAME_TYPE_DM || gameVar.sv_friendlyFire))

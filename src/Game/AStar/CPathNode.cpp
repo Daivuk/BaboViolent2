@@ -16,7 +16,7 @@
 	BaboViolent 2 source code. If not, see http://www.gnu.org/licenses/.
 */
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #include "CPathNode.h"
 #include <math.h>
 

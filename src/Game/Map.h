@@ -24,7 +24,7 @@
 #include <vector>
 #include "GameVar.h"
 #include "Player.h"
-#ifdef _PRO_
+#if defined(_PRO_)
 #include "CAStar.h"
 #endif
 
@@ -174,7 +174,7 @@ class Map
 public:
 	// Sa grosseur
 	CVector2i size;
-#ifdef _PRO_
+#if defined(_PRO_)
 
 	CAStar * aStar;
 #endif

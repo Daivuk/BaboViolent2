@@ -64,7 +64,7 @@ public:
 	CControl * chk_simpleText;
 	CControl * chk_inGameMusic;
 
-#ifdef _PRO_
+#if defined(_PRO_)
    // GUI options
    CControl * slc_chatTextSize;
    CControl * slc_eventTextSize;
@@ -89,7 +89,7 @@ public:
 	CControl * key_chatTeam;
 	CControl * key_showScore;
 	CControl * key_menuAccess;
-#ifdef _PRO_	
+#if defined(_PRO_)	
    CControl * key_screenShot;
    CControl * key_stats;
 #endif

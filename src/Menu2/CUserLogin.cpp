@@ -41,7 +41,7 @@ CUserLogin::CUserLogin(CControl * in_parent, CControl * in_alignTo)
 	parent = in_parent;
 
 	//--- Da big frame
-	instance = new CControl(parent, CVector2i(0,0), CVector2i(in_parent->size.s[0]-20, 450), "", this, "FRAME", in_alignTo, CONTROL_SNAP_BOTTOM);
+	instance = new CControl(parent, CVector2i(0,0), CVector2i(736, 506/*in_parent->size.s[0]-20, 450*/), "", this, "FRAME", in_alignTo, CONTROL_SNAP_BOTTOM);
 	instance->texture = dktCreateTextureFromFile("main/textures/Menu1Back.tga", DKT_FILTER_LINEAR);
 //	instance->texture = dktCreateTextureFromFile("main/textures/Smoke2.tga", DKT_FILTER_LINEAR);
 	instance->borderColor.set(1,.5f,.25f);

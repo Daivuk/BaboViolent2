@@ -42,7 +42,7 @@ public:
 	CControl * txt_password;
 	CControl * lst_gameType;
    CControl * lst_serverType;
-#ifdef _PRO_
+#if defined(_PRO_)
    CControl * lst_spawnType;
 #endif
 	CControl * txt_maxPlayer; CControl * btn_maxPlayerPreset[4];

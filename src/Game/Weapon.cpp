@@ -389,7 +389,7 @@ void Weapon::shoot(Player * owner)
 			}
 
 			// On en shot le nb qui faut
-#ifdef _PRO_
+#if defined(_PRO_)
 			owner->shootShakeDis = -gameVar.dkpp_firingSmoke.direction * reculVel * .5f;
 			//for (int i=0;i<nbShot;++i)
 			{
@@ -459,7 +459,7 @@ void Weapon::shootMeleeSV(Player * owner)
 		break;
 	case WEAPON_NUCLEAR:
 //#ifndef DEDICATED_SERVER
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 		owner->SpawnNukeBotSV();
 #endif
 		nukeFrameID = 0;
@@ -469,7 +469,7 @@ void Weapon::shootMeleeSV(Player * owner)
 		//--- Protect this player for 2 seconde
 		owner->protection = 2;
 		break;
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 	case WEAPON_MINIBOT:
 		if (!owner->minibot)
 			owner->SpawnMiniBotSV();

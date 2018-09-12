@@ -79,7 +79,7 @@ struct net_clsv_pickup_request
 
 // On demande au server d'�tre admin!
 #define NET_CLSV_ADMIN_REQUEST 6
-#ifdef _PRO_
+#if defined(_PRO_)
 struct net_clsv_admin_request
 {
 	char login[33];		//md5
@@ -469,13 +469,13 @@ struct net_clsv_svcl_player_coord_frame
 	char vel[3]; // Sa velocity
 	short mousePos[3]; // La position o� il vise
 	int32_t babonetID;
-#ifdef _PRO_
+#if defined(_PRO_)
 	int camPosZ;
 #endif
 	// Son orientation sera calcul� client side, vu que c pas full important c une boule
 };
 
-#ifdef _PRO_
+#if defined(_PRO_)
 //--- mini bot creation
 #define NET_SVCL_CREATE_MINIBOT 1001
 struct net_svcl_create_minibot
@@ -595,7 +595,7 @@ struct net_svcl_broadcast_game_info
 
 
 // things specific to the pro client
-#ifdef _PRO_
+#if defined(_PRO_)
 
 	#define NET_SVCL_HASH_SEED 404
 	struct net_svcl_hash_seed

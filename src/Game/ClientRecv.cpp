@@ -24,7 +24,7 @@
 #include "md5.h"
 #include "CStatus.h"
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	#include "md5_2.h"
 #endif
 
@@ -35,7 +35,7 @@ extern Scene * scene;
 //
 void Client::recvPacket(char * buffer, int typeID)
 {
-#ifdef _PRO_
+#if defined(_PRO_)
    
 	if( typeID == NET_SVCL_HASH_SEED )
 	{
@@ -498,7 +498,7 @@ void Client::recvPacket(char * buffer, int typeID)
 			}
 			break;
 		}
-#ifdef _PRO_
+#if defined(_PRO_) && defined(_MINIBOT_)
 	case NET_SVCL_MINIBOT_COORD_FRAME:
 		{
 			net_svcl_minibot_coord_frame minibotCoordFrame;
@@ -601,7 +601,7 @@ void Client::recvPacket(char * buffer, int typeID)
 			memcpy(&playerShoot, buffer, sizeof(net_svcl_player_shoot));
 			if (game->players[playerShoot.playerID])
 			{
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 				if (playerShoot.weaponID == WEAPON_MINIBOT_WEAPON)
 				{
 					Player * player = game->players[playerShoot.playerID];
@@ -841,7 +841,7 @@ void Client::recvPacket(char * buffer, int typeID)
 			if(explosion.playerID == game->thisPlayer->playerID)
 			{
 				game->thisPlayer->rocketInAir = false;
-#if defined(_PRO_)
+#if defined(_PRO_) && defined(_MINIBOT_)
 				if(game->thisPlayer->meleeWeapon->weaponID == WEAPON_NUCLEAR && 
 					game->thisPlayer->minibot && explosion.radius >= 4.0f)
 				{

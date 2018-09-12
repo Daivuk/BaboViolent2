@@ -370,7 +370,7 @@ void Map::renderGround()
 	glPopAttrib();
 #endif
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	//--- Render path finding
 	if (aStar && gameVar.d_showNodes)
 	{

@@ -24,6 +24,7 @@
 #include "CMaster.h"
 #include "CCurl.h"
 #include "Scene.h"
+#include "CUserLogin.h"
 
 
 CControl * btn_resume;
@@ -39,23 +40,24 @@ CMainTab::CMainTab(CControl * in_parent)
 	parent = in_parent;
 
 	//btn_userLogin = new CControl(parent, CVector2i(32,32),CVector2i(128,25),"Babo Profile",this,"BUTTON");
-	btn_news = new CControl(parent, CVector2i(32,32),CVector2i(128,25),"News",this,"BUTTON");
+	//btn_news = new CControl(parent, CVector2i(32,32),CVector2i(128,25),"News",this,"BUTTON");
+    btn_profile = new CControl(parent, CVector2i(32, 32), CVector2i(100, 25), "Profile", this, "BUTTON");
 
 	//userLogin = new CUserLogin(in_parent, btn_userLogin);
-	news = new CNews(in_parent, btn_news);
-	profile = new CProfile(in_parent, btn_news);
-	browser = new CBrowser(in_parent, btn_news);
-	host = new CHost(in_parent, btn_news);
-	editor = new CEditor(in_parent, btn_news);
-	credit = new CCredit(in_parent, btn_news);
-	option = new COption(in_parent, btn_news);
+	//news = new CNews(in_parent, btn_news);
+	profile = new CUserLogin(in_parent, btn_profile);
+	browser = new CBrowser(in_parent, btn_profile);
+	host = new CHost(in_parent, btn_profile);
+	editor = new CEditor(in_parent, btn_profile);
+	credit = new CCredit(in_parent, btn_profile);
+	option = new COption(in_parent, btn_profile);
 
 	if(gameVar.r_animatedMenu)
 	{
 		unsigned int tex = dktCreateTextureFromFile("main/textures/Smoke2.tga", DKT_FILTER_NEAREST);
 		option->instance->superPanel = true;
 		//userLogin->instance->superPanel = true;
-		news->lst_news->superPanel = true;
+		//news->lst_news->superPanel = true;
 		profile->instance->superPanel = true;
 		browser->lst_browseList->superPanel = true;
 		//friends->lst_browseList->superPanel = true;
@@ -65,7 +67,7 @@ CMainTab::CMainTab(CControl * in_parent)
 
 		option->instance->texture = tex;
 		//userLogin->instance->texture = tex;
-		news->lst_news->texture = tex;
+		//news->lst_news->texture = tex;
 		profile->instance->texture = tex;
 		browser->lst_browseList->texture = tex;
 		//friends->lst_browseList->texture = tex;
@@ -80,33 +82,35 @@ CMainTab::CMainTab(CControl * in_parent)
 
 	//--- Buttons at the top
 	//delete btn_userLogin;
-	delete btn_news;
+	//delete btn_news;
+    delete btn_profile;
 	//btn_userLogin = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"Babo Profile",this,"BUTTON");
 	//btn_userLogin->toolTips = "User login information and stats.";
-	btn_news = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"News",this,"BUTTON");
-	btn_news->toolTips = "News from Babo World.";
-	btn_profile = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"Profile",this,"BUTTON", btn_news, CONTROL_SNAP_RIGHT);
+	//btn_news = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"News",this,"BUTTON");
+	//btn_news->toolTips = "News from Babo World.";
+	btn_profile = new CControl(parent, CVector2i(32,32),CVector2i(117,25),"Profile",this,"BUTTON");
 	btn_profile->toolTips = "User login information and stats.";
-	btn_browser = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"Game Browser",this,"BUTTON", btn_profile, CONTROL_SNAP_RIGHT);
+	btn_browser = new CControl(parent, CVector2i(32,32),CVector2i(123,25),"Game Browser",this,"BUTTON", btn_profile, CONTROL_SNAP_RIGHT);
 	btn_browser->toolTips = "Browse games over the Internet or on a local network.";
 	//btn_friends = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"Friends",this,"BUTTON", btn_browser, CONTROL_SNAP_RIGHT);
 	//btn_friends->toolTips = "Find out where your friends are playing.";
-	btn_create = new CControl(parent, CVector2i(32,32),CVector2i(90,25),"Host",this,"BUTTON", btn_browser, CONTROL_SNAP_RIGHT);
+	btn_create = new CControl(parent, CVector2i(32,32),CVector2i(107,25),"Host",this,"BUTTON", btn_browser, CONTROL_SNAP_RIGHT);
 	btn_create->toolTips = "Host a game and play in it.\nSee CTF.cfg for more informations about dedicating a server.";
-	btn_editor = new CControl(parent, CVector2i(32,32),CVector2i(100,25),"Map Editor",this,"BUTTON", btn_create, CONTROL_SNAP_RIGHT);
+	btn_editor = new CControl(parent, CVector2i(32,32),CVector2i(117,25),"Map Editor",this,"BUTTON", btn_create, CONTROL_SNAP_RIGHT);
 	btn_editor->toolTips = "Edit or create a new map.";
-	btn_option = new CControl(parent, CVector2i(32,32),CVector2i(80,25),"Options",this,"BUTTON", btn_editor, CONTROL_SNAP_RIGHT);
+	btn_option = new CControl(parent, CVector2i(32,32),CVector2i(97,25),"Options",this,"BUTTON", btn_editor, CONTROL_SNAP_RIGHT);
 	btn_option->toolTips = "Setup all game options.";
-	btn_credits = new CControl(parent, CVector2i(32,32),CVector2i(80,25),"Credits",this,"BUTTON", btn_option, CONTROL_SNAP_RIGHT);
+	btn_credits = new CControl(parent, CVector2i(32,32),CVector2i(97,25),"Credits",this,"BUTTON", btn_option, CONTROL_SNAP_RIGHT);
 	btn_credits->toolTips = "See who are the dudes who created this bloody hell!!";
 	btn_quit = new CControl(parent, CVector2i(32,32),CVector2i(48,25),"\x4X",this,"BUTTON", btn_credits, CONTROL_SNAP_RIGHT);
 	btn_quit->toolTips = "Quit the game. :(";
 
 	//userLogin->setVisible(true);
-	news->setVisible(true);
+	//news->setVisible(true);
 	//btn_userLogin->enable = false;
-	btn_news->enable = false;
-	profile->setVisible(false);
+	//btn_news->enable = false;
+    btn_profile->enable = false;
+	profile->setVisible(true);
 	browser->setVisible(false);
 	//friends->setVisible(false);
 	host->setVisible(false);
@@ -115,8 +119,8 @@ CMainTab::CMainTab(CControl * in_parent)
 	option->setVisible(false);
 
 	//current = userLogin;
-	current = news;
-	lastButtonPress = btn_news;//btn_userLogin;
+	current = profile;
+	lastButtonPress = btn_profile;//btn_userLogin;
 
 	timeBrowseDelay = -1;
 }
@@ -163,15 +167,15 @@ void CMainTab::Click(CControl * control)
 		lastButtonPress = control;
 		current->setVisible(true);
 	}*/
-	if (control == btn_news)
-	{
-		if (current) current->setVisible(false);
-		current = news;
-		lastButtonPress->enable = true;
-		control->enable = false;
-		lastButtonPress = control;
-		current->setVisible(true);
-	}
+	//if (control == btn_news)
+	//{
+	//	if (current) current->setVisible(false);
+	//	current = news;
+	//	lastButtonPress->enable = true;
+	//	control->enable = false;
+	//	lastButtonPress = control;
+	//	current->setVisible(true);
+	//}
 	if (control == btn_profile)
 	{
 		if (current) current->setVisible(false);
@@ -181,7 +185,7 @@ void CMainTab::Click(CControl * control)
 		control->enable = false;
 		lastButtonPress = control;
 		current->setVisible(true);
-		profile->current->setVisible(true);
+		//profile->current->setVisible(true);
 	}
 	if (control == btn_browser)
 	{
@@ -254,7 +258,7 @@ void CMainTab::Click(CControl * control)
 		{
 			scene->client->game->thisPlayer->updateSkin();
 
-#ifdef _PRO_
+#if defined(_PRO_)
             Player* tplayer = scene->client->game->thisPlayer;
 			net_clsv_svcl_player_update_skin updateSkin;
 			updateSkin.playerID = tplayer->playerID;

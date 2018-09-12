@@ -17,7 +17,7 @@
 */
 
 
-#ifdef _PRO_
+#if defined(_PRO_)
 #include "CAStar.h"
 #include <math.h>
 

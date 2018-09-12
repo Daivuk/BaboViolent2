@@ -238,7 +238,7 @@ CHost::CHost(CControl * in_parent, CControl * in_alignTo)
 			item->toolTips = "Capture the enemy\'s flag and return it to your base.\nThe team with the more captures wins.";
 			//item = new CControl(lst_gameType, CVector2i(10,10), CVector2i(150,20),"Counter Baborist", this, "LABEL", item, CONTROL_SNAP_BOTTOM);
 			//item->toolTips = "Red team plank the bomb,\nblue team should deactivate it in time!.";
-#ifdef _PRO_
+#if defined(_PRO_)
 			item = new CControl(lst_gameType, CVector2i(10,10), CVector2i(150,20),"Champion", this, "LABEL", item, CONTROL_SNAP_BOTTOM);
 			item->toolTips = "1v1 Duel your way to the top!.";
 #endif
@@ -257,7 +257,7 @@ CHost::CHost(CControl * in_parent, CControl * in_alignTo)
 		lst_serverType->selectChild(gameVar.sv_serverType);
 
 
-#ifdef _PRO_
+#if defined(_PRO_)
 		//--- Spawn type
 		label1 = new CControl(instance, CVector2i(10,10), CVector2i(150,60),"Spawn type:", this, "LABEL", label1, CONTROL_SNAP_BOTTOM);
 		label1->textAlign = CONTROL_TEXTALIGN_MIDDLERIGHT;
@@ -564,7 +564,7 @@ void CHost::Click(CControl * control)
 		gameVar.sv_password = txt_password->text;
 		gameVar.sv_gameType = lst_gameType->selectedIndex;
       gameVar.sv_serverType = lst_serverType->selectedIndex;
-#ifdef _PRO_
+#if defined(_PRO_)
       gameVar.sv_spawnType = lst_spawnType->selectedIndex;
 #endif
 		gameVar.sv_maxPlayer = txt_maxPlayer->value;      

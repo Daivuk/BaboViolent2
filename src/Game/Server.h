@@ -27,7 +27,7 @@
 	#include "platform_types.h"
     #include <string>
 #endif
-#ifdef _PRO_
+#if defined(_PRO_)
 	#include "ChecksumQuery.h"
 	#include <vector>
    #define GAME_VERSION_SV 21100
@@ -66,7 +66,7 @@ public:
 	unsigned int font;
 #endif
 
-	#ifdef _PRO_
+	#if defined(_PRO_)
 		std::vector<CChecksumQuery *> m_checksumQueries;
 	#endif
 
@@ -144,7 +144,7 @@ public:
 	void removemap(CString & mapName);
 	std::vector<CString> populateMapList(bool all = false);
 
-#ifdef _PRO_
+#if defined(_PRO_)
 	std::vector<invalidChecksumEntity> getInvalidChecksums(unsigned long bbnetID, int number, int offsetFromEnd);
 	//void sendInvalidChecksums(unsigned long bbnetID, int number, int offsetFromEnd);
 	void deleteInvalidChecksums();
